@@ -1,0 +1,9 @@
+{
+  "*.{css,scss,sass,less}": ["stylelint --fix", "prettier --write"],
+  "*.{js,jsx,ts,tsx}": [
+    "tsc-files --noEmit",
+    "eslint --fix",
+    "prettier --write"
+  ],
+  "*.{md,mdx,html}": ["prettier --write"]
+}

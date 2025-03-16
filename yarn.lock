@@ -1078,11 +1078,11 @@ __metadata:
     eslint-config-prettier: "npm:10.1.1"
     eslint-plugin-json-format: "npm:2.0.1"
     eslint-plugin-simple-import-sort: "npm:12.1.1"
-    husky: "npm:9.1.7"
     next: "npm:15.2.2"
     postcss: "npm:8.5.3"
     react: "npm:19.0.0"
     react-dom: "npm:19.0.0"
+    simple-git-hooks: "npm:2.11.1"
     stylelint: "npm:16.15.0"
     stylelint-config-css-modules: "npm:4.4.0"
     stylelint-config-idiomatic-order: "npm:10.0.0"
@@ -2318,15 +2318,6 @@ __metadata:
   version: 3.3.1
   resolution: "html-tags@npm:3.3.1"
   checksum: 10c0/680165e12baa51bad7397452d247dbcc5a5c29dac0e6754b1187eee3bf26f514bc1907a431dd2f7eb56207611ae595ee76a0acc8eaa0d931e72c791dd6463d79
-  languageName: node
-  linkType: hard
-
-"husky@npm:9.1.7":
-  version: 9.1.7
-  resolution: "husky@npm:9.1.7"
-  bin:
-    husky: bin.js
-  checksum: 10c0/35bb110a71086c48906aa7cd3ed4913fb913823715359d65e32e0b964cb1e255593b0ae8014a5005c66a68e6fa66c38dcfa8056dbbdfb8b0187c0ffe7ee3a58f
   languageName: node
   linkType: hard
 
@@ -3825,6 +3816,15 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 10c0/41602dce540e46d599edba9d9860193398d135f7ff72cab629db5171516cfae628d21e7bfccde1bbfdf11c48726bc2a6d1a8fb8701125852fbfda7cf19c6aa83
+  languageName: node
+  linkType: hard
+
+"simple-git-hooks@npm:2.11.1":
+  version: 2.11.1
+  resolution: "simple-git-hooks@npm:2.11.1"
+  bin:
+    simple-git-hooks: cli.js
+  checksum: 10c0/ba48c38bcfebc80f8050f36bf313dd6ec3c6d4ccee55b05c1e2c3b2983b13acf7baaca705de8b9b9a6d81a5934a7b22aca3d6116d5550000c97dc76b0219fa54
   languageName: node
   linkType: hard
 

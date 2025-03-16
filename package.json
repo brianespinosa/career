@@ -6,10 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./ && stylelint \"**/*.{css,scss,sass}\"",
-    "prepare": "husky"
+    "lint": "eslint ./ && stylelint \"**/*.{css,scss,sass}\""
   },
   "prettier": "@bjeco/prettier-config",
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
   "dependencies": {
     "next": "15.2.2",
     "react": "19.0.0",
@@ -26,8 +28,8 @@
     "eslint-config-prettier": "10.1.1",
     "eslint-plugin-json-format": "2.0.1",
     "eslint-plugin-simple-import-sort": "12.1.1",
-    "husky": "9.1.7",
     "postcss": "8.5.3",
+    "simple-git-hooks": "2.11.1",
     "stylelint": "16.15.0",
     "stylelint-config-css-modules": "4.4.0",
     "stylelint-config-idiomatic-order": "10.0.0",

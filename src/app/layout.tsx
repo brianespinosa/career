@@ -1,5 +1,6 @@
 import './global.scss';
 
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
@@ -46,7 +47,9 @@ export default function RootLayout({
                     Career Ladder
                   </Heading>
                   <Flex ml='auto' gap='2'>
-                    <CareerSelect />
+                    <Suspense>
+                      <CareerSelect />
+                    </Suspense>
 
                     <AlertDialog.Root>
                       <AlertDialog.Trigger>

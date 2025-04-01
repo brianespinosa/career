@@ -1,0 +1,163 @@
+{
+  "P1": {
+    "key": "P1",
+    "name": "Software Engineer I",
+    "experience": "0-2 Years",
+    "attributes": {
+      "accountability": "Responsible for delivering features of small projects",
+      "coding_testing_debugging": "Authors new small and/or well-defined programming tasks; debugs own code; designs for testability and documents how to test a feature and/or technology",
+      "competencies": "Functional and technical skills",
+      "data_driven_process": "Collects and reports existing metrics",
+      "data_structures": "Uses classical data structures, algorithms, and resource mgmt techniques",
+      "decision_making": "Offers constructive opinions, makes decisions within established policies and procedures, seeks guidance from supervisor or more senior peers as needed when determining the appropriate course of action\n",
+      "direction": "Works under general supervision with manager providing work priorities, timelines, and resources\nRecieve instruction on new lines of work or special assignments and progress on work assignments is generally reviewed on a regular basis",
+      "impact": "Work impacts immediate team and may reach across multiple teams\n\nMay make recommendations regarding processes in  immediate scope of responsibility",
+      "influence": "Interactions are primarily with peers across the organization, interaction at the Supervisor and Manager levels on matters pertaining to immediate area of work\nProductive internal working relationships with have limited external working relationships\n",
+      "passion_innovation": "Supports new ideas and change. Recommends and may implement alternative approaches.",
+      "performance_availability": "Can enhance basic telemetry for existing feature",
+      "planning_roi": "Provides task breakdown planning, dependencies and time estimates",
+      "requirements_design": "Understand requirements and authors technical designs",
+      "results": "Accepts feedback\n Proactive learner, turns mistakes into learning opportunities. Adapts to ambiguity, is open to new ideas, adjusts plans to meet changing needs.",
+      "risks_dependencies": "Identifies own dependencies and problems.",
+      "team_building": "Coordinates work with peers."
+    }
+  },
+  "P2": {
+    "key": "P2",
+    "name": "Software Engineer II",
+    "experience": "2-4 Years",
+    "attributes": {
+      "accountability": "Responsible for delivering small projects",
+      "coding_testing_debugging": "Competent in programming and debugging across multiple modules and dealing with related external dependencies; writes high-quality code with domain in mind.",
+      "competencies": "Independent problem solving",
+      "data_driven_process": "Analyzes localized metrics; suggests process improvements and best practices. Identifies new areas to be measured.",
+      "data_structures": "Develops according to specific requirements with awareness of scalability, hardware capabilities, and cross-environment and platform implications; implements optimizations with direction.",
+      "decision_making": "Justifies decisions and achieves peer consent, makes decisions within established policies and procedures, may propose and/or assist in determining methods and procedures on new assignments\n",
+      "direction": "Works under only very general supervision and guidance, with more detailed instructions on new assignments\nWork is reviewed for soundness of judgment and overall adequacy and accuracy. Works with manager to establish priorities and timelines",
+      "impact": "Work impacts immmediate team and may reach across multiple teams\n\nMay make recommendations regarding processes within immediate scope of responsibility",
+      "influence": "Typical interactions are internal and have infrequent external interactions on routine matters, may represent engineering on specific projects.   Interactions require tact and effective communication skills as they often involve complex and sensitive information",
+      "passion_innovation": "Iterates and improves upon current technology; develops and implements new approaches to very complex issues.",
+      "performance_availability": "Can build basic telemetry to show feature is working as expected",
+      "planning_roi": "Defines an implementation plan that includes schedule, priorities, dependencies and deliverables.",
+      "requirements_design": "Gathers and verifies technical requirements; authors and audits technical designs for features and modules.",
+      "results": "Seeks out and accepts feedback, is a proactive learner, takes on tough assignments to improve skills, turns mistakes into learning opportunities. Adapts to ambiguity, is open to new ideas, handles pressure.",
+      "risks_dependencies": "Identifies feature and module dependencies and critical path; proposes mitigation plans for identified risks and problems",
+      "team_building": "Mentors co-workers within expertise; improves others' productivity; participates in staff recruiting."
+    }
+  },
+  "P3": {
+    "key": "P3",
+    "name": "Senior Software Engineer I",
+    "experience": "5-7 Years",
+    "attributes": {
+      "accountability": "Responsible for a minor technology or a shareable feature across several projects",
+      "coding_testing_debugging": "Mastery of domain programming language; engineers extensible solutions with the team in mind and can fix complex bugs; owns testing plan for domain",
+      "competencies": "Action oriented; time management",
+      "data_driven_process": "Defines useful metrics and targets for domain; measurably improves process and best practices to achieve targets.",
+      "data_structures": "Defines and implements optimizations; understands metrics and targets; devises new algorithms and data structures for target environment and platform attributes.",
+      "decision_making": "Achieves team consent and buy-in, drives meetings to conclusive results, particularly cross-functionally, makes decisions based on your experience and standard practice within team,\nmay determine methods and procedures on new assignments",
+      "direction": "Work is performed under limited direction and guidance, with general instructions on new assignments\n and work results are reviewed upon completion\nMakes recommendations to your manager about work priorities, timelines and resources\nMay provide guidance to other employees",
+      "impact": "Participates in developing courses of action that either impact your broader function's goals and objectives OR may impact multiple teams",
+      "influence": "Networks with senior internal employees and external representatives in own area of expertise\nRepresents the organization on assigned projects  Can explain challenges to and can build concensus within your team",
+      "passion_innovation": "Iterates and improves upon current technology; develops and implements new approaches to very complex issues.",
+      "performance_availability": "Can design and build telemetry for issue analysis including sufficient use case coverage and P1 failures",
+      "planning_roi": "Proposes alternative solutions and provides input on staff competencies; audits plans for domain area.",
+      "requirements_design": "Authors, reviews and approves requirements and designs for a domain. ",
+      "results": "Takes on tough assignments. Adapts to ambiguity, is open to new ideas, takes on new responsibilities, handles pressure, adjusts plans to meet changing needs.",
+      "risks_dependencies": "Accountable for domain dependencies and critical paths; anticipates risks and provides contingency solutions and timelines.",
+      "team_building": "Assists in career development for engineers; inspires teamwork; creates and sustains a positive work environment"
+    }
+  },
+  "P4": {
+    "key": "P4",
+    "name": "Senior Software Engineer II",
+    "experience": "8-11 Years",
+    "attributes": {
+      "accountability": "Responsible for a major technology or shareable feature across several projects",
+      "coding_testing_debugging": "Architects domain with multiple teams in mind; creates extensible, shareable code; can quickly get up to speed on any project or technology; recognized as an expert and acts within the team as \"go to person.\"",
+      "competencies": "Learning on the fly; perseverance",
+      "data_driven_process": "Proposes and implements viable process and measurement solutions within the team.",
+      "data_structures": "Finds and implements strategic data structures and algorithms within domain that result in significant performance improvements; recognized and acts within team as an expert.",
+      "decision_making": "Influences team to achieve project goals; negotiates process, metrics, and targets with external teams, exercise judgment in deciding which method or technique to use to obtain department results or on new assignments",
+      "direction": "Work is performed under limited direction, establishing own work priorities and timelines\nMay provide guidance and coordinate work activities of other employees",
+      "impact": "Work directly impacts function's goals and objectives and may have cross-functional impact",
+      "influence": "Interacts with senior internal employees and external representatives on significant matters\n Represents the organization as a prime contact on initiatives and projects\nCan explain challenges to, and can build concensus within, your function",
+      "passion_innovation": "Iterates measureable improvements to existing technologies; pioneers new directions in critical technologies; makes significant contributions that can be extended in the future. Creative problem solver.",
+      "performance_availability": "Can design and build telemetry to show complex failure modes based on usage patterns",
+      "planning_roi": "For the team, acts as a planning consultant and makes recommendations with Return on Investment in mind.",
+      "requirements_design": "Authors, reviews and approves requirements and designs for domains within multiple projects",
+      "results": "Takes on the toughest assignments, keeps knowledge and skills on the leading edge. Deals well with ambiguity, is open to new ideas, handles pressure, adjusts plans to meet changing needs. Able to take on multiple assignments.",
+      "risks_dependencies": "Responsible for domain risk assessment for team.",
+      "team_building": "Builds special-interestcommunities and performs formal mentoring within team"
+    }
+  },
+  "P5": {
+    "key": "P5",
+    "name": "Staff Engineer",
+    "experience": "12-15 Years",
+    "attributes": {
+      "accountability": "Responsible for a major technology area at Company",
+      "coding_testing_debugging": "Assists peers with even the most difficult programming and debugging issues; recognized as an expert and acts within the team as \"go to person.\"",
+      "competencies": "Composure Under Pressure, Customer focus;",
+      "data_driven_process": "Proposes and implements viable processes and measurement solutions within the function; researches external solutions and proposes adoption strategies.",
+      "data_structures": "Investigates, proposes and solves complex algorithmic and optimization issues; recognized and acts within the function as an expert.",
+      "decision_making": "Influences large or multiple teams to achieve project goals, exercises independent judgment in deciding which method or technique to use to obtain functional results\nEnsures solutions and results are consistent with organization objectives, decisions made impact goals and objectives of the organizatoin",
+      "direction": "Work is performed without appreciable direction Exercises considerable latitude in determining objectives and approaches to assignments\n May provide guidance and manage work activities of other staff members for specific projects or objectives",
+      "impact": "Your work directly impacts your function's overall performance and success which includes goals, objectives, and results",
+      "influence": "Serves as consultant to management and internal/external spokesperson for the function on matters pertaining to its policies, plans, objectives and operations  Educate and influce functional leadership on decisions affecting the function",
+      "passion_innovation": "Deploys innovative end-to-end solutions; consistently implements breakthrough ideas; proactively seeks long-term solutions; highly creative problem solver",
+      "performance_availability": "Can design and build telemetry to show complex failure modes based on usage patterns",
+      "planning_roi": "For the function, acts as a planning consultant and makes recommendations with Return In Investment in mind.",
+      "requirements_design": "Authors, reviews and approves requirements and designs for several projects in a function; contributes to and guides architectural decisions.",
+      "results": "Seeks out and takes on the toughest assignments\n keeps knowledge and skills on the leading edge.\n Deals well with ambiguity, is open to new ideas, thrives under pressure, adjusts plans to meet changing needs.",
+      "risks_dependencies": "Responsible for domain risk assessment for a function.",
+      "team_building": "Leads SE communities within function, with contributions to Company; provides formal mentoring within function"
+    }
+  },
+  "P6": {
+    "key": "P6",
+    "name": "Principal Engineer",
+    "experience": "15+ Years",
+    "attributes": {
+      "accountability": "Responsible for a major technology area at Company",
+      "coding_testing_debugging": "Recognized and acts as an expert within company",
+      "competencies": "Integrity and trust",
+      "data_driven_process": "Anticipates process and measurement solutions that will meet the current and future needs of Company",
+      "data_structures": "Investigates, proposes and solves complex algorithmic and optimization issues; recognized and acts within Company as an expert.",
+      "decision_making": "Influences technical organization to achieve imperatives, makes independent decisions having significant impact on the function. Decisions made impact financial, employee, and / or public relations of organization",
+      "direction": "Exercises wide latitude in determining objectives and approaches to assignments. Provides guidance and manages work activities of other staff members for specific projects or objectives\n",
+      "impact": "Work can impact the financial, employee and/or public relations posture of the function\n\nDecisions and work significantly impact company or multiple function's performance and success",
+      "influence": "Serves as primary consultant to senior management and may act as a consultant to top executives\n Serves as the internal/external spokesperson for the function on highly significant matters relating to policies, programs, capabilities, and long-range goals and objectives\n Creates formal networks with key decisions makers",
+      "passion_innovation": "Actively encourages innovation and implementation of new ideas; does not avoid risks or fear failures and mistakes; highly creative problem solver",
+      "performance_availability": "Can design and build telemetry to show complex failure modes based on usage patterns",
+      "planning_roi": "For Company, acts as a planning consultant and makes recommendations with Return In Investment in mind.",
+      "requirements_design": "Authors, reviews and approves reqts and designs across functions; defines and advocates best practices for architectural direction in their domain of expertise.",
+      "results": "Extremely effective in high-pressure and/or ambiguous situations. Anticipates and adjusts long--range plans to meet changing complex and interdependent needs. Able to take on and lead multiple assignments.",
+      "risks_dependencies": "Responsible for domain risk assessment across multiple functions",
+      "team_building": "Builds SE communities within Company in domain expertise."
+    }
+  },
+  "P7": {
+    "key": "P7",
+    "name": "Distinguished Engineer",
+    "experience": "15+ Years",
+    "attributes": {
+      "accountability": "",
+      "coding_testing_debugging": "",
+      "competencies": "",
+      "data_driven_process": "",
+      "data_structures": "",
+      "decision_making": "",
+      "direction": "",
+      "impact": "",
+      "influence": "",
+      "passion_innovation": "",
+      "performance_availability": "",
+      "planning_roi": "",
+      "requirements_design": "",
+      "results": "",
+      "risks_dependencies": "",
+      "team_building": ""
+    }
+  }
+}

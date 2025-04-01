@@ -1,0 +1,102 @@
+{
+  "M3": {
+    "key": "M3",
+    "name": "Manager",
+    "experience": "8 - 11 years",
+    "attributes": {
+      "accountability": "Accountable for all technology/technical function on a large project or several small projects, accountable for quality of customer experience",
+      "coding_testing_debugging": "Accountable for overall code quality; ensures code is reviewed, reusable and testable, meeting architectural-design and customer requirements",
+      "communication": "Represents the organization as a prime contact on initiatives and projects Conducts briefings and technical meetings for internal and external representatives Develops strong relationships and serve as a trusted advisor within the team",
+      "competencies": "Building effective teams; decision quality; developing direct reports; drive for results; managing and measuring work",
+      "data_driven_process": "Champions systems and project metric collection, analysis, and utilization to improve quality and efficiency; actively participates in the design and planning of workflow and pipelines.",
+      "decision_making": "Exercises judgment in deciding which method or techniques to use to obtain departmental results\nMakes independent decisions within guidelines which have short-term team impacts and limited impact on long-term results\nMay recommend changes to policies which effec the team",
+      "direction": "Work is performed under limited direction, establishes own work priorities and timelines. Accomplishes results through subordinate tech leads and engineers, spending at least 30% - 50% of  time managing and providing guidance to subordinates within the latitude of established company policies .  Responsible for the staffing and development direct reports, and may provide guidance and coordinate the work activities of other employees\n",
+      "impact": "Work directly impacts function's goals and objectives and may have cross-functional impact\nMakes recommendations to management on matters relating to human resources, budget and department operations",
+      "influence": "Manages and provides direction for a small team, explains challenges to, and can build concensus within, the function\nInteracts frequently with senior internal employees and external representatives on significant matters concerning functional operatoins, scheduling of projects\n ",
+      "org_size": "Small to Medium team\n(manages 6-10 people)",
+      "passion_innovation": "Leads innovation in critical products or technologies; highly creative problem solver",
+      "performance_availability": "Accountable for overall performance and availability; defines metrics and sets targets for project.",
+      "planning_roi": "Identifies gaps in plans; approves project plans; provides cost-effective solutions and directions todifficult problems; answers what-if questions; validates staff competencies.",
+      "requirements_design": "Accountable for overall technical designs for a project; influences and approves overall architecture; ensures design is reviewed.",
+      "results": "Clarifies ambiguity and directs team; mentor for junior staff; goes above and beyond to complete tasks and get the job done right,work is reviewed and measured based on meeting objectives and schedules\n",
+      "risks_dependencies": "Oversees all internal and external project dependencies and critical paths; ensures contingency plan is in place; recommends solutions and approves plan and timelines; understands overall impact on all stakeholders.",
+      "team_development": "Participates in identifying career opportunities and growing capabilities; acts as staff advocate and assesses morale for the team; takes advantage of opportunities to recruit talent; shares wins and successes; drives engagement; accountable for performance plans and promotions, \n",
+      "technical_contribution": "Significant technical contribution to area of responsibility"
+    }
+  },
+  "M4": {
+    "key": "M4",
+    "name": "Senior Manager",
+    "experience": "12 - 15 years",
+    "attributes": {
+      "accountability": "Accountable for all technology/technical function on multiple projects, accountable for quality of customer experience",
+      "coding_testing_debugging": "Drives strategic code-sharing and architecture for a function; identifies core technology that needs to be replaced or re-factored.",
+      "communication": "Educates and influences functional leadership on decisions affecting the function, while developing strong relationships and serving as a trusted advisor within the function Frequently interacts with senior level management and external representatives concerning functional operations, scheduling of projects or contracts Conducts meetings regarding functional operations with staff members and management",
+      "competencies": "Composure under pressure;\nDealing with ambiguity; motivating; priority setting; process management",
+      "data_driven_process": "Defines standardized process, metric collection, analysis, and utilization for function to improve efficiency and quality; learns and shares best practices and processes within function",
+      "decision_making": "Exercises independent judgment in deciding which method or technique to use to obtain functional results\nEnsures solutions and results are consistent with organization objectives\nMakes independent decisions that have significant short-term and moderate long-term impact on your team or function, activities and project schedules",
+      "direction": "Work is performed without appreciable direction. Exercises considerable latitude in determining objectives and approaches to assignments. May provide guidance and manage work activities of other staff members for specific projects or objectives. Responsible for staffing and development of your direct reports\n \n",
+      "impact": "Work directly impacts function's overall performance and success including goals, objectives, and results\nParticipates in defining functional objectives, timelines, budgets, human resources matters and allocation of resources",
+      "influence": "Manages and provides direction for a small team, explains challenges to, and can build concensus within, the function\nServes as consultant to management and internal/external spokesperson for the function on matters pertaining to its policies, plans, objectives and operations\n",
+      "org_size": "Large team\n(manages 8-15 people or multiple teams)",
+      "passion_innovation": "Pioneers new directions across product lines. Routinely makes significant innovative contributions in areas critical to success. Actively encourages team innovation. Highly creative problem solver.",
+      "performance_availability": "Responsible for sharing and adopting best practices for performance and availability within a function; interacts with external partners to set performance priorities and expectations.",
+      "planning_roi": "Creates and carries through on multi-quarter technology roadmap for one or more projects; achieves technical economies of scale across multiple teams.",
+      "requirements_design": "Ensures design and architecture is extensible across multiple projects\nconducts technical-design reviews\naudits projects to ensure best practices are followed\ndefines standards for technical designs and reviews for the function",
+      "results": "Understands the \"big picture\" and effectively directs multiple teams in the execution of components of the strategic vision; considers people, teams, due process, and norms/ethics while driving for results",
+      "risks_dependencies": "Leverages existing and available options to address dependencies; identifies and eliminates redundant or outdated technology/practices; oversees function dependencies, risks and critical paths.",
+      "team_development": "Participates in establishing staff profile, performance and training standards; blends people well into teams;celebrates the overall team’s work;drives engagement",
+      "technical_contribution": "Significant technical contribution to area of responsibility"
+    }
+  },
+  "M5": {
+    "key": "M5",
+    "name": "Director",
+    "experience": "15+ years",
+    "attributes": {
+      "accountability": "Accountable for a major technical function at Company, accountable for quality of customer experience. May develop and oversee execution of large scale initiatives that directly support functional or cross functional strategies and plans",
+      "coding_testing_debugging": "Drives strategic code-sharing and architecture for a technology; identifies core technology that needs to be replaced or re-factored.",
+      "communication": "Represent the function or company as a prime internal and external contact on matters of significance to the company Can educate executives on decisions with significant impact to the company",
+      "competencies": "Strategic agility; executive presence; presentation and influence skills; cross functional impact",
+      "data_driven_process": "Contributes to and evangelizes best practices and processes within Company; learns and shares from other functions and external sources.",
+      "decision_making": "Makes independent decisions having significant short-term impact on immediate team(s), activities and project schedules or long term impact on immediate function or multiple functions",
+      "direction": "Exercises wide latitude in determining objectives and approaches to assignments.  Provides guidance and manages work activities of other staff members for specific projects or objectives\nDirects and control the activities of one or more functional areas through lower level managers .  Spends at least 30% - 50% of your time managing\n Has overall responsibility for the direction of assigned areas to define and achieve organizational objectives\n",
+      "impact": "Work can impact the financial, employee and/or public relations posture of engineering .  Decisions and work significantly impact company or multiple function's performance and success .  Work has a direct impact on the ability to achieve major goals and objectives of the function as well as impact the financial, employee, or public relations posture of the company",
+      "influence": "Manages and provides direction for multiple-large teams or teams with multiple mgmt layers. Serves as primary consultant to senior management and may act as a consultant to top executives Serves as the internal/external spokesperson for the function on highly significant matters relating to policies, programs, capabilities, and long-range goals and objectives Creates formal networks with key decisions makers . \n ",
+      "org_size": "Large team\n(manages 15+ people)",
+      "passion_innovation": "Creates new technology or innovation that moves the company forward. Ideas are critical to company's long-term success. Actively encourages department innovation. Highly creative problem solver",
+      "performance_availability": "Responsible for sharing and adopting best practices for performance and availability within a function",
+      "planning_roi": "Creates, publishes, maintains and carries through on multi-quarter roadmap for function; communicates, reviews and audits other team plans.",
+      "requirements_design": "Collects best practices for requirements, design and architecture at company and shares within a function; contributes to standards for architecture, technical designs and reviews for company as a whole\nParticipates with senior staff to establish strategic plans and objectives.",
+      "results": "Strategic; able to generate vision around direction of the function; understands resources and limitations; steadfastly pushes self and others for results; develops effective leaders",
+      "risks_dependencies": "Identifies key technology risks and proposes and coordinates mitigation plans across multiple function",
+      "team_development": "Responsible for staff balancing within function; recommends training strategies; participates in short- and long-term workforce planning for function; defines success in terms of the whole team; drives engagement; develops effective leaders.",
+      "technical_contribution": "Some technical contribution to area of responsibility"
+    }
+  },
+  "M6": {
+    "key": "M6",
+    "name": "Senior Director",
+    "experience": "15+ years",
+    "attributes": {
+      "accountability": "Accountable for strategic direction of a major technical function. Accountable for quality of customer experience. Develops and oversee execution of large scale initiatives that directly support functional or cross-functional strategies and plans",
+      "coding_testing_debugging": "Drives strategic code-sharing and architecture multiple functions",
+      "communication": "Can present complex ideas at all levels and lead differing viewpoints to a single clear path forward",
+      "competencies": "Command skills; strategic agility; executive presence; Influence; Business level impact",
+      "data_driven_process": "Directs process and measurement standards based on best practices across multiple functions",
+      "decision_making": "Makes independent decisions that have company-wide impact of major significance\n\n",
+      "direction": "Directs and controls the activities of multiple functional areas through directors and/or senior managers Spends at least 30% - 50% of your time managing\nHas overall responsibility for the direction of multiple assigned areas to define and achieve organizational objectives",
+      "impact": "Work has a direct impact on the ability to achieve critical goals and objectives that impact the success of the function or company\n",
+      "influence": "Directs a team(s) that Influences direction of technical organization . Serves as a principal spokesperson for function or company on matters of critical importance to the company\n",
+      "org_size": "Large\n(manages 20+ people)",
+      "passion_innovation": "Creates new technology or innovation that moves the company and industry forward. Ideas are critical to company's long-term success. Actively encourages and directs department innovation.",
+      "performance_availability": "Responsible for sharing and adopting best practices for performance and availability within multiple functions",
+      "planning_roi": "Creates strategic vision and roadmap for multiple function areas",
+      "requirements_design": "Determines technology architecture and design\n\nParticipates with executive staff to establish strategic plans and objectives.",
+      "results": "Strategic; able to generate vision around direction along multiple functions; understands resources and limitations; effectively communicates vision and wins leadership buy-in; bottom-line oriented",
+      "risks_dependencies": "Evaluates and oversees risk mitigation across multiple functions",
+      "team_development": "Accountable for effective short- and long-term staffing strategies and development of cross functional workforce plans; drives engagement",
+      "technical_contribution": "Some technical contribution to area of responsibility"
+    }
+  }
+}

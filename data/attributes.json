@@ -1,0 +1,122 @@
+{
+  "accountability": {
+    "key": "accountability",
+    "param": "acc",
+    "name": "Accountability",
+    "theme": "WHY"
+  },
+  "coding_testing_debugging": {
+    "key": "coding_testing_debugging",
+    "param": "ctd",
+    "name": "Coding, Testing, & Debugging",
+    "theme": "WHAT"
+  },
+  "communication": {
+    "key": "communication",
+    "param": "com",
+    "name": "Communication",
+    "theme": "WHO"
+  },
+  "data_driven_process": {
+    "key": "data_driven_process",
+    "param": "ddp",
+    "name": "Data Driven Process",
+    "theme": "WHAT"
+  },
+  "data_structures": {
+    "key": "data_structures",
+    "param": "ds",
+    "name": "Data Structures, Algorithms, Performance",
+    "theme": "WHAT"
+  },
+  "decision_making": {
+    "key": "decision_making",
+    "param": "dm",
+    "name": "Decision Making",
+    "theme": "HOW"
+  },
+  "direction": {
+    "key": "direction",
+    "param": "dir",
+    "name": "Direction",
+    "theme": "HOW"
+  },
+  "results": {
+    "key": "results",
+    "param": "rslt",
+    "name": "Drives for Results",
+    "theme": "HOW"
+  },
+  "impact": {
+    "key": "impact",
+    "param": "imp",
+    "name": "Impact",
+    "theme": "WHY"
+  },
+  "competencies": {
+    "key": "competencies",
+    "param": "comp",
+    "name": "Key Incremental Competencies",
+    "theme": "HOW"
+  },
+  "org_size": {
+    "key": "org_size",
+    "param": "os",
+    "name": "Org Size",
+    "theme": "WHO"
+  },
+  "passion_innovation": {
+    "key": "passion_innovation",
+    "param": "pi",
+    "name": "Passion / Innovation",
+    "theme": "HOW"
+  },
+  "performance_availability": {
+    "key": "performance_availability",
+    "param": "pa",
+    "name": "Performance & Availability",
+    "theme": "WHAT"
+  },
+  "planning_roi": {
+    "key": "planning_roi",
+    "param": "pln",
+    "name": "Planning & ROI",
+    "theme": "WHAT"
+  },
+  "requirements_design": {
+    "key": "requirements_design",
+    "param": "req",
+    "name": "Requirements & Design",
+    "theme": "WHAT"
+  },
+  "risks_dependencies": {
+    "key": "risks_dependencies",
+    "param": "rsk",
+    "name": "Risks & Dependencies",
+    "theme": "WHAT"
+  },
+  "influence": {
+    "key": "influence",
+    "param": "inf",
+    "name": "Sphere of Influence",
+    "theme": "WHO"
+  },
+  "team_building": {
+    "key": "team_building",
+    "param": "tbld",
+    "name": "Team Building",
+    "theme": "WHO"
+  },
+  "team_development": {
+    "key": "team_development",
+    "param": "tdev",
+    "name": "Team Development",
+    "theme": "WHAT"
+  },
+  "technical_contribution": {
+    "key": "technical_contribution",
+    "param": "tcon",
+    "name": "Technical Contribution",
+    "theme": "WHAT"
+  }
+}

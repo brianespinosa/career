@@ -1,6 +1,6 @@
-import styles from './page.module.css';
-
 import { Metadata } from 'next';
+
+import CareerThemes from '@/components/CareerThemes';
 
 export const metadata: Metadata = {
   title: 'Career Ladder',
@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <h1>Career Ladder</h1>
-    </div>
+    <>
+      <CareerThemes />
+    </>
   );
 }

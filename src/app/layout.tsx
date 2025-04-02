@@ -6,12 +6,14 @@ import Link from 'next/link';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 import CareerSelect from '@/components/CareerSelect';
+import { GitHubLogoIcon, ResetIcon } from '@radix-ui/react-icons';
 import {
   AlertDialog,
   Button,
   Container,
   Flex,
   Heading,
+  IconButton,
   Theme,
 } from '@radix-ui/themes';
 
@@ -34,7 +36,7 @@ export default function RootLayout({
       <NuqsAdapter>
         <Theme
           appearance='dark'
-          accentColor='purple'
+          accentColor='pink'
           grayColor='slate'
           radius='small'
           asChild
@@ -53,7 +55,9 @@ export default function RootLayout({
 
                     <AlertDialog.Root>
                       <AlertDialog.Trigger>
-                        <Button variant='outline'>Reset</Button>
+                        <IconButton variant='surface'>
+                          <ResetIcon />
+                        </IconButton>
                       </AlertDialog.Trigger>
                       <AlertDialog.Content maxWidth='450px'>
                         <AlertDialog.Title>Reset Ratings</AlertDialog.Title>
@@ -65,7 +69,7 @@ export default function RootLayout({
 
                         <Flex gap='3' mt='4' justify='end'>
                           <AlertDialog.Cancel>
-                            <Button variant='outline' color='gray'>
+                            <Button variant='surface' color='gray'>
                               Cancel
                             </Button>
                           </AlertDialog.Cancel>
@@ -77,6 +81,11 @@ export default function RootLayout({
                         </Flex>
                       </AlertDialog.Content>
                     </AlertDialog.Root>
+                    <IconButton variant='surface' asChild>
+                      <a href='https://github.com/brianespinosa/career'>
+                        <GitHubLogoIcon />
+                      </a>
+                    </IconButton>
                   </Flex>
                 </Flex>
               </header>
@@ -84,7 +93,6 @@ export default function RootLayout({
             <Container asChild my='6' mx='4'>
               <main>{children}</main>
             </Container>
-            {/* <ThemePanel /> */}
           </body>
         </Theme>
       </NuqsAdapter>

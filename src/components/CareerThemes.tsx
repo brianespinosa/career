@@ -1,14 +1,28 @@
 'use client';
 
+import { Fragment } from 'react';
+import * as R from 'ramda';
+
+import ATTRIBUTES from '@/data/attributes.json';
 import EM from '@/data/em.json';
 import IC from '@/data/ic.json';
+import THEMES from '@/data/themes.json';
 import useCareerParam from '@/hooks/useCareerParam';
-import type { AttributeKeys } from '@/types/attributes';
-import { Card, Grid, Heading } from '@radix-ui/themes';
+import type { AttributeKeys, AttributeValues } from '@/types/attributes';
+import {
+  Box,
+  Card,
+  Flex,
+  Grid,
+  Heading,
+  Separator,
+  // Text,
+  Theme,
+  ThemeProps,
+} from '@radix-ui/themes';
 
 import AltChart from './AltChart';
 import CareerAttribute from './CareerAttribute';
-// import CareerChart from './CareerChart';
 import PropertyList from './PropertyList';
 
 const LEVELS = { ...IC, ...EM };
@@ -22,32 +36,75 @@ const CareerThemes = () => {
     'Typical Experience': experience,
   };
 
-  const attributeData = Object.entries(attributes) as [AttributeKeys, string][];
+  const attributeValues = Object.values(ATTRIBUTES)
+    .map((attribute) => ({
+      ...attribute,
+      description: attributes[attribute.key as keyof typeof attributes],
+      color: THEMES[attribute.theme as keyof typeof THEMES].color,
+    }))
+    .filter(({ description }) => description !== undefined);
+
+  const themeGroups = R.groupBy(R.prop('theme'), attributeValues);
 
   return (
     <Grid
-      columns={{ initial: '1', sm: 'auto 35vw', lg: 'auto 28em' }}
+      columns={{ initial: '1', sm: 'auto 32vw', lg: 'auto 25em' }}
       gap='4'
       width='auto'
       align='start'
     >
-      <Card id='role-visualization'>
-        <AltChart attributes={attributeData} />
-        {/* <CareerChart attributes={attributeData} /> */}
-        <Heading as='h2' m='4'>
-          {name}
-        </Heading>
-        <PropertyList properties={properties} minWidth='10rem' />
-      </Card>
-      <Card>
-        {attributeData.map(([key, description]) => (
-          <CareerAttribute
-            key={key}
-            attribute={key as AttributeKeys}
-            description={description}
+      <Flex id='role-visualization' direction='column' gap='4'>
+        <Card>
+          <AltChart
+            themeGroups={themeGroups as Record<string, AttributeValues[]>}
           />
+          <Heading as='h2'>{name}</Heading>
+          <PropertyList properties={properties} minWidth='8rem' />
+        </Card>
+        {/* <Card>
+          <Text as='div' size='2' weight='bold'>
+            Opportunities
+          </Text>
+          <Text as='div' size='2' color='gray'>
+            Engineering
+          </Text>
+        </Card> */}
+      </Flex>
+      <Flex direction='column' gap='4'>
+        {Object.entries(themeGroups).map(([theme, attributes]) => (
+          <Fragment key={theme}>
+            <Card asChild>
+              <section>
+                <Box ml='8rem'>
+                  <Heading
+                    as='h3'
+                    size='4'
+                    color={attributes?.[0].color as ThemeProps['accentColor']}
+                  >
+                    {theme}
+                  </Heading>
+                  <Separator
+                    my='2'
+                    size='4'
+                    color={attributes?.[0].color as ThemeProps['accentColor']}
+                  />
+                </Box>
+                {attributes?.map(({ key, description, color }) => (
+                  <Theme
+                    key={key}
+                    accentColor={color as ThemeProps['accentColor']}
+                  >
+                    <CareerAttribute
+                      attribute={key as AttributeKeys}
+                      description={description}
+                    />
+                  </Theme>
+                ))}
+              </section>
+            </Card>
+          </Fragment>
         ))}
-      </Card>
+      </Flex>
     </Grid>
   );
 };

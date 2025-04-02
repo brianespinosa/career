@@ -14,11 +14,16 @@ const RatingSelect = ({ attributeParam }: RatingSelectProps) => {
 
   return (
     <Select.Root
-      size='3'
+      size='2'
       value={rating as keyof typeof RATINGS} // TODO: Move this type assertion to useRatingParam
       onValueChange={setRating as Dispatch<SetStateAction<string>>} // TODO: Move this type assertion to useRatingParam
     >
-      <Select.Trigger placeholder='Pick one' />
+      <Select.Trigger
+        placeholder='Pick one'
+        variant={rating ? 'soft' : 'surface'}
+      >
+        {RATINGS[rating as keyof typeof RATINGS] ?? 'Pick one'}
+      </Select.Trigger>
       <Select.Content>
         {Object.entries(RATINGS).map(([key, value]) => (
           <Select.Item key={key} value={key}>

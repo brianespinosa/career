@@ -3,8 +3,7 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-import ATTRIBUTES from '@/data/attributes.json';
-import type { AttributeKeys } from '@/types/attributes';
+import type { AttributeValues } from '@/types/attributes';
 import { localPoint } from '@visx/event';
 import { Group } from '@visx/group';
 import { ScaleSVG } from '@visx/responsive';
@@ -13,7 +12,6 @@ import { Arc } from '@visx/shape';
 import { Text } from '@visx/text';
 import { defaultStyles, TooltipWithBounds, useTooltip } from '@visx/tooltip';
 
-const PRIMARY_COLOR = 'var(--accent-7)';
 const TEXT_COLOR = 'var(--color-panel-solid)';
 const ATTRIBUTE_LEVELS = 4;
 
@@ -27,20 +25,15 @@ const tooltipStyles = {
   color: 'var(--gray-12)',
 };
 
-type AttributeValues = {
-  attribute: string;
-  value: number;
-};
-
-const getAttribute = (d: AttributeValues) => d.attribute;
+const getAttribute = (d: AttributeValues) => d.key;
 const getAttributeFrequency = (d: AttributeValues) => Number(d.value) * 100;
 const toDegrees = (x: number) => (x * 180) / SIMPLE_PI;
 
 interface AltChartProps {
-  attributes: [AttributeKeys, string][];
+  themeGroups: Record<string, AttributeValues[]>;
 }
 
-const AltChart = ({ attributes }: AltChartProps) => {
+const AltChart = ({ themeGroups }: AltChartProps) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -62,17 +55,17 @@ const AltChart = ({ attributes }: AltChartProps) => {
 
   const innerRadius = radiusMax / 5;
 
-  const attributesWithValues = attributes.map((attribute) => {
-    const { param, name } = ATTRIBUTES[attribute[0]];
+  const enrichedGroups = Object.values(themeGroups)
+    .flat()
+    .map((attribute) => {
+      return {
+        ...attribute,
+        value: Number(searchParams.get(attribute.param)) || 0,
+      };
+    });
 
-    return {
-      attribute: name,
-      value: Number(searchParams.get(param)) || 0,
-    };
-  });
-
-  const xDomain = useMemo(() => attributesWithValues.map(getAttribute), [
-    attributesWithValues,
+  const xDomain = useMemo(() => enrichedGroups.map(getAttribute), [
+    enrichedGroups,
   ]);
 
   const xScale = useMemo(
@@ -99,7 +92,7 @@ const AltChart = ({ attributes }: AltChartProps) => {
       <>
         <ScaleSVG width={SIZE} height={SIZE}>
           <Group top={SIZE / 2} left={SIZE / 2}>
-            {attributesWithValues.map((d) => {
+            {enrichedGroups.map((d) => {
               const attr = getAttribute(d);
               const startAngle = xScale(attr) || 0;
               const midAngle = startAngle + xScale.bandwidth() / 2;
@@ -123,7 +116,7 @@ const AltChart = ({ attributes }: AltChartProps) => {
                     endAngle={endAngle}
                     outerRadius={outerRadius}
                     innerRadius={innerRadius}
-                    fill={PRIMARY_COLOR}
+                    fill={`var(--${d.color}-6)`}
                     onClick={() => {
                       console.log('TODO: Scroll to', attr);
                     }}
@@ -135,7 +128,7 @@ const AltChart = ({ attributes }: AltChartProps) => {
                       }
                       const coords = localPoint(ownerSVGElement, event);
                       showTooltip({
-                        tooltipData: attr,
+                        tooltipData: d.name,
                         tooltipTop: (coords?.y ?? 0) + 10,
                         tooltipLeft: (coords?.x ?? 0) + 10,
                       });

@@ -1,0 +1,26 @@
+{
+  "WHAT": {
+    "key": "WHAT",
+    "name": "What",
+    "description": "The specific tasks and responsibilities involved in the work.",
+    "color": "red"
+  },
+  "WHO": {
+    "key": "WHO",
+    "name": "Who",
+    "description": "The people involved in the work and their roles.",
+    "color": "blue"
+  },
+  "WHY": {
+    "key": "WHY",
+    "name": "Why",
+    "description": "The purpose of the work and the impact it has on the world.",
+    "color": "green"
+  },
+  "HOW": {
+    "key": "HOW",
+    "name": "How",
+    "description": "The methods and processes used to accomplish the work.",
+    "color": "yellow"
+  }
+}

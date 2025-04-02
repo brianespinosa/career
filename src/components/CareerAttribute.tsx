@@ -15,10 +15,10 @@ const CareerAttribute = ({ attribute, description }: CarrerAttributesProps) => {
 
   return (
     <>
-      <Flex gap='8' m='4' py='4' align='center' justify='start'>
-        <Box minWidth='8.25rem'>
+      <Flex gap='4' py='3' align='center' justify='start'>
+        <Flex minWidth='7rem' justify='center'>
           <RatingSelect attributeParam={param} />
-        </Box>
+        </Flex>
         <Box>
           <Heading
             as='h4'
@@ -28,7 +28,9 @@ const CareerAttribute = ({ attribute, description }: CarrerAttributesProps) => {
           >
             {name}
           </Heading>
-          <Text>{description}</Text>
+          <Text size='2' color='gray'>
+            {description}
+          </Text>
         </Box>
       </Flex>
     </>

@@ -15,7 +15,7 @@ const PropertyList = ({ properties, minWidth }: PropertyListProps) => {
       'em';
 
   return (
-    <DataList.Root m='4'>
+    <DataList.Root mt='4'>
       {entries.map(([label, value]) => (
         <DataList.Item key={label}>
           <DataList.Label minWidth={labelWidth}>{label}</DataList.Label>

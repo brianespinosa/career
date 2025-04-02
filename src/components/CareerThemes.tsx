@@ -10,6 +10,7 @@ import THEMES from '@/data/themes.json';
 import useCareerParam from '@/hooks/useCareerParam';
 import type { AttributeKeys, AttributeValues } from '@/types/attributes';
 import {
+  AspectRatio,
   Box,
   Card,
   Flex,
@@ -55,9 +56,11 @@ const CareerThemes = () => {
     >
       <Flex id='role-visualization' direction='column' gap='4'>
         <Card>
-          <AltChart
-            themeGroups={themeGroups as Record<string, AttributeValues[]>}
-          />
+          <AspectRatio>
+            <AltChart
+              themeGroups={themeGroups as Record<string, AttributeValues[]>}
+            />
+          </AspectRatio>
           <Heading as='h2'>{name}</Heading>
           <PropertyList properties={properties} minWidth='8rem' />
         </Card>

@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { AnimatePresence, motion } from 'motion/react';
 
 import type { AttributeValues } from '@/types/attributes';
 import { localPoint } from '@visx/event';
@@ -92,13 +93,13 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
       <>
         <ScaleSVG width={SIZE} height={SIZE}>
           <Group top={SIZE / 2} left={SIZE / 2}>
-            {enrichedGroups.map((d) => {
-              const attr = getAttribute(d);
+            {enrichedGroups.map((group) => {
+              const attr = getAttribute(group);
               const startAngle = xScale(attr) || 0;
               const midAngle = startAngle + xScale.bandwidth() / 2;
               const endAngle = startAngle + xScale.bandwidth();
 
-              const attributeFrequency = getAttributeFrequency(d);
+              const attributeFrequency = getAttributeFrequency(group);
               const attributeNumber = attributeFrequency / 100;
 
               const outerRadius = yScale(attributeFrequency) ?? 0;
@@ -116,7 +117,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                     endAngle={endAngle}
                     outerRadius={outerRadius}
                     innerRadius={innerRadius}
-                    fill={`var(--${d.color}-6)`}
+                    fill={`var(--${group.color}-6)`}
                     onClick={() => {
                       console.log('TODO: Scroll to', attr);
                     }}
@@ -128,13 +129,29 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                       }
                       const coords = localPoint(ownerSVGElement, event);
                       showTooltip({
-                        tooltipData: d.name,
+                        tooltipData: group.name,
                         tooltipTop: (coords?.y ?? 0) + 10,
                         tooltipLeft: (coords?.x ?? 0) + 10,
                       });
                     }}
                     onMouseOut={hideTooltip}
-                  />
+                  >
+                    {({ path }) => {
+                      const d = path('color') || '';
+                      return (
+                        <AnimatePresence>
+                          {group.value ? (
+                            <motion.path
+                              fill={`var(--${group.color}-6)`}
+                              initial={{ d: d, opacity: 0, scale: 0 }}
+                              animate={{ d: d, opacity: 1, scale: 1 }}
+                              exit={{ d: d, opacity: 0, scale: 0 }}
+                            />
+                          ) : null}
+                        </AnimatePresence>
+                      );
+                    }}
+                  </Arc>
                   <Text
                     style={{ pointerEvents: 'none' }}
                     x={textX}

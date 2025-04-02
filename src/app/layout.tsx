@@ -15,6 +15,7 @@ import {
   Heading,
   IconButton,
   Theme,
+  Tooltip,
 } from '@radix-ui/themes';
 
 export const metadata: Metadata = {
@@ -52,13 +53,14 @@ export default function RootLayout({
                     <Suspense>
                       <CareerSelect />
                     </Suspense>
-
                     <AlertDialog.Root>
-                      <AlertDialog.Trigger>
-                        <IconButton variant='surface'>
-                          <ResetIcon />
-                        </IconButton>
-                      </AlertDialog.Trigger>
+                      <Tooltip content='Reset'>
+                        <AlertDialog.Trigger>
+                          <IconButton variant='surface'>
+                            <ResetIcon />
+                          </IconButton>
+                        </AlertDialog.Trigger>
+                      </Tooltip>
                       <AlertDialog.Content maxWidth='450px'>
                         <AlertDialog.Title>Reset Ratings</AlertDialog.Title>
                         <AlertDialog.Description size='2'>
@@ -81,11 +83,13 @@ export default function RootLayout({
                         </Flex>
                       </AlertDialog.Content>
                     </AlertDialog.Root>
-                    <IconButton variant='surface' asChild>
-                      <a href='https://github.com/brianespinosa/career'>
-                        <GitHubLogoIcon />
-                      </a>
-                    </IconButton>
+                    <Tooltip content='GitHub'>
+                      <IconButton variant='surface' asChild>
+                        <a href='https://github.com/brianespinosa/career'>
+                          <GitHubLogoIcon />
+                        </a>
+                      </IconButton>
+                    </Tooltip>
                   </Flex>
                 </Flex>
               </header>

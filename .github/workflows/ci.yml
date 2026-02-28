@@ -31,7 +31,6 @@ jobs:
     permissions:
       contents: read
       deployments: write
-      pull-requests: write
     environment:
       name: ${{ github.event_name == 'pull_request' && 'Preview' || 'Production' }}
       url: ${{ steps.deploy.outputs.url }}
@@ -45,12 +44,9 @@ jobs:
       - run: yarn vercel pull --yes --token $VERCEL_TOKEN
       - run: yarn vercel build ${{ github.ref_name == github.event.repository.default_branch && '--prod' || '' }}
       - id: deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             URL=$(yarn vercel deploy --prebuilt --token $VERCEL_TOKEN)
-            gh pr comment ${{ github.event.pull_request.number }} --body "Preview: $URL"
           else
             URL=$(yarn vercel deploy --prebuilt --prod --token $VERCEL_TOKEN)
           fi

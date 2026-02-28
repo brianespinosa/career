@@ -28,6 +28,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: [biome, typecheck]
+    permissions:
+      contents: read
+      pull-requests: write
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -35,6 +38,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
       - uses: ./.github/actions/setup
+      - run: yarn vercel pull --yes
       - run: yarn vercel build --prod
       - if: github.ref_name == github.event.repository.default_branch
         run: yarn vercel deploy --prebuilt --prod
+      - if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DEPLOY_URL=$(yarn vercel deploy --prebuilt)
+          gh pr comment ${{ github.event.pull_request.number }} --body "Preview: $DEPLOY_URL"

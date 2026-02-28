@@ -50,12 +50,9 @@ jobs:
           DEPLOY_URL=$(yarn vercel deploy --prebuilt --token $VERCEL_TOKEN)
           DEPLOYMENT_ID=$(gh api repos/${{ github.repository }}/deployments \
             --method POST \
-            -f ref=${{ github.sha }} \
-            -f environment=Preview \
-            -F auto_merge=false \
-            -F transient_environment=true \
-            -F required_contexts='[]' \
-            --jq '.id')
+            --input - \
+            --jq '.id' \
+            <<< '{"ref":"${{ github.sha }}","environment":"Preview","auto_merge":false,"transient_environment":true,"required_contexts":[]}')
           gh api repos/${{ github.repository }}/deployments/$DEPLOYMENT_ID/statuses \
             --method POST \
             -f state=success \

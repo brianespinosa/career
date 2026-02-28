@@ -1,14 +1,13 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-
-import ATTRIBUTES from '@/data/attributes.json';
-import type { AttributeKeys } from '@/types/attributes';
 import { Group } from '@visx/group';
 import { Point } from '@visx/point';
 import { ScaleSVG } from '@visx/responsive';
 import { scaleLinear } from '@visx/scale';
 import { Line, LineRadial } from '@visx/shape';
+import { useSearchParams } from 'next/navigation';
+import ATTRIBUTES from '@/data/attributes.json';
+import type { AttributeKeys } from '@/types/attributes';
 
 const STROKE_WEIGHT = 0.5;
 const ATTRIBUTE_LEVELS = 4;
@@ -39,7 +38,7 @@ const genPoints = (length: number, radius: number) => {
 function genPolygonPoints<Datum>(
   dataArray: Datum[],
   scale: (n: number) => number,
-  getValue: (d: Datum) => number
+  getValue: (d: Datum) => number,
 ) {
   const step = (Math.PI * 2) / dataArray.length;
   const points: { x: number; y: number }[] = new Array(dataArray.length).fill({
@@ -91,7 +90,7 @@ const CareerChart = ({ attributes }: CareerChartProps) => {
   const polygonPoints = genPolygonPoints(
     attributesWithValues,
     (d) => yScale(d) ?? 0,
-    y
+    y,
   );
   const zeroPoint = new Point({ x: 0, y: 0 });
 

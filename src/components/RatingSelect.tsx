@@ -1,9 +1,8 @@
 'use client';
 
-import { Dispatch, SetStateAction } from 'react';
-
-import useRatingParam from '@/hooks/useRatingParam';
 import { Select } from '@radix-ui/themes';
+import type { Dispatch, SetStateAction } from 'react';
+import useRatingParam from '@/hooks/useRatingParam';
 
 interface RatingSelectProps {
   attributeParam: string;

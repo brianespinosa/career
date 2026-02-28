@@ -1,7 +1,7 @@
 'use client';
 
-import { Dispatch, SetStateAction } from 'react';
 import { useQueryState } from 'nuqs';
+import type { Dispatch, SetStateAction } from 'react';
 
 import EM from '@/data/em.json';
 import IC from '@/data/ic.json';

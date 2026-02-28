@@ -1,10 +1,5 @@
 'use client';
 
-import { Fragment, useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { AnimatePresence, motion } from 'motion/react';
-
-import type { AttributeValues } from '@/types/attributes';
 import { localPoint } from '@visx/event';
 import { Group } from '@visx/group';
 import { ScaleSVG } from '@visx/responsive';
@@ -12,6 +7,10 @@ import { scaleBand, scaleRadial } from '@visx/scale';
 import { Arc } from '@visx/shape';
 import { Text } from '@visx/text';
 import { defaultStyles, TooltipWithBounds, useTooltip } from '@visx/tooltip';
+import { AnimatePresence, motion } from 'motion/react';
+import { useSearchParams } from 'next/navigation';
+import { Fragment, useEffect, useMemo, useState } from 'react';
+import type { AttributeValues } from '@/types/attributes';
 
 const TEXT_COLOR = 'var(--color-panel-solid)';
 const ATTRIBUTE_LEVELS = 4;
@@ -65,9 +64,10 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
       };
     });
 
-  const xDomain = useMemo(() => enrichedGroups.map(getAttribute), [
-    enrichedGroups,
-  ]);
+  const xDomain = useMemo(
+    () => enrichedGroups.map(getAttribute),
+    [enrichedGroups],
+  );
 
   const xScale = useMemo(
     () =>
@@ -76,7 +76,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
         domain: xDomain,
         padding: 0.25,
       }),
-    [xDomain]
+    [xDomain],
   );
 
   const yScale = useMemo(
@@ -85,7 +85,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
         range: [innerRadius, radiusMax],
         domain: [0, ATTRIBUTE_LEVELS * 100],
       }),
-    [innerRadius, radiusMax]
+    [innerRadius, radiusMax],
   );
 
   return (

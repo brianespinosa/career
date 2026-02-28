@@ -1,14 +1,5 @@
 'use client';
 
-import { Fragment } from 'react';
-import * as R from 'ramda';
-
-import ATTRIBUTES from '@/data/attributes.json';
-import EM from '@/data/em.json';
-import IC from '@/data/ic.json';
-import THEMES from '@/data/themes.json';
-import useCareerParam from '@/hooks/useCareerParam';
-import type { AttributeKeys, AttributeValues } from '@/types/attributes';
 import {
   AspectRatio,
   Box,
@@ -19,8 +10,16 @@ import {
   Separator,
   // Text,
   Theme,
-  ThemeProps,
+  type ThemeProps,
 } from '@radix-ui/themes';
+import * as R from 'ramda';
+import { Fragment } from 'react';
+import ATTRIBUTES from '@/data/attributes.json';
+import EM from '@/data/em.json';
+import IC from '@/data/ic.json';
+import THEMES from '@/data/themes.json';
+import useCareerParam from '@/hooks/useCareerParam';
+import type { AttributeKeys, AttributeValues } from '@/types/attributes';
 
 import AltChart from './AltChart';
 import CareerAttribute from './CareerAttribute';

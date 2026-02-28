@@ -1,11 +1,5 @@
 import './global.scss';
 
-import { Suspense } from 'react';
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
-
-import CareerSelect from '@/components/CareerSelect';
 import { GitHubLogoIcon, ResetIcon } from '@radix-ui/react-icons';
 import {
   AlertDialog,
@@ -17,6 +11,11 @@ import {
   Theme,
   Tooltip,
 } from '@radix-ui/themes';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { Suspense } from 'react';
+import CareerSelect from '@/components/CareerSelect';
 
 export const metadata: Metadata = {
   title: {

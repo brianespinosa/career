@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 import CareerThemes from '@/components/CareerThemes';
 
@@ -7,9 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return (
-    <>
-      <CareerThemes />
-    </>
-  );
+  return <CareerThemes />;
 }

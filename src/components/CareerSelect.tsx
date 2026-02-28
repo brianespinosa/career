@@ -1,14 +1,14 @@
 'use client';
 
+import { Select } from '@radix-ui/themes';
 import EM from '@/data/em.json';
 import IC from '@/data/ic.json';
 import useCareerParam from '@/hooks/useCareerParam';
 import type { LevelDetails, LevelRecord } from '@/types/levels';
-import { Select } from '@radix-ui/themes';
 
 const LEVELS = { ...IC, ...EM };
 
-const getLabel = ({ name, key }: LevelDetails) => '[' + key + '] ' + name;
+const getLabel = ({ name, key }: LevelDetails) => `[${key}] ${name}`;
 
 const renderOptions = (obj: LevelRecord) =>
   Object.entries(obj).map(([key, obj]) => (

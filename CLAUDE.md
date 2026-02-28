@@ -42,6 +42,18 @@ When making code changes, you MUST proactively suggest updates to relevant docum
 
 Do not wait for the user to ask about documentation. Identify when your changes have made documentation stale and suggest specific updates.
 
+### Worktrees
+
+**REQUIRED**: All issue work MUST be done in a git worktree, not on the main working tree.
+
+Start a worktree session using Claude's built-in flag:
+
+```
+claude --worktree <issue-name>
+```
+
+This creates an isolated checkout at `.claude/worktrees/<issue-name>` on its own branch, so multiple issues can be worked in parallel without conflict. Claude will prompt to keep or clean up the worktree on exit.
+
 ### Git Workflow
 
 All commit messages MUST follow [Conventional Commits](https://www.conventionalcommits.org/) syntax:

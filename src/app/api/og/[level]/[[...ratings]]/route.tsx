@@ -7,9 +7,6 @@ import { LEVELS } from '@/lib/levels';
 import { parseRatings } from '@/lib/ratingPath';
 
 export const runtime = 'edge';
-export const alt = 'Career Ladder radial chart';
-export const size = { width: 1200, height: 630 };
-export const contentType = 'image/png';
 
 // Hardcoded Radix dark palette *-6 hex values (dark appearance)
 const THEME_COLORS: Record<string, string> = {
@@ -62,12 +59,13 @@ function arcPath(
   ].join(' ');
 }
 
-export default async function OgImage({
-  params,
-}: {
-  params: Promise<{ level: string; ratings?: string[] }>;
-}) {
+export async function GET(
+  _req: Request,
+  { params }: { params: Promise<{ level: string; ratings?: string[] }> },
+) {
   const { level, ratings: ratingsSegments = [] } = await params;
+
+  const size = { width: 1200, height: 630 };
 
   const levelData = LEVELS[level as keyof typeof LEVELS];
   if (!levelData) {
@@ -92,7 +90,6 @@ export default async function OgImage({
 
   const ratingsMap = parseRatings(level, ratingsSegments);
 
-  // Build attribute list in the same order as CareerThemes
   const attributeList = Object.values(ATTRIBUTES)
     .map((attribute) => ({
       ...attribute,
@@ -132,7 +129,6 @@ export default async function OgImage({
   });
 
   const hasRatings = attributeList.some((a) => a.value > 0);
-
   const CHART_DISPLAY = 500;
 
   return new ImageResponse(
@@ -191,7 +187,6 @@ export default async function OgImage({
           aria-label='Career ratings radial chart'
         >
           <g transform={`translate(${SIZE / 2}, ${SIZE / 2})`}>
-            {/* Background ring */}
             <circle
               r={radiusMax - 0.5}
               fill='none'

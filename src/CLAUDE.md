@@ -25,7 +25,7 @@ layout.tsx         — header, CareerSelect, ResetButton, GitHub link
 
 ## OG Image
 
-`src/app/[level]/[[...ratings]]/opengraph-image.tsx` — Next.js file-based OG image. Receives params directly; no Route Handler needed. See `docs/adr/003-satori-og-image-constraints.md` for Satori constraints.
+`src/app/api/og/[level]/[[...ratings]]/route.tsx` — Route Handler for OG image. File-based `opengraph-image.tsx` cannot be placed inside `[[...ratings]]` (Next.js forbids non-terminal catch-alls). See `docs/adr/003-satori-og-image-constraints.md` for Satori constraints.
 
 ## Shared Utilities
 

@@ -23,11 +23,13 @@ Encoding/decoding utilities live in `src/lib/ratingPath.ts`.
 
 ## OG Image
 
-`opengraph-image.tsx` receives `params: { level: string; ratings?: string[] }` directly from Next.js — no Route Handler needed.
+The OG image is served by a Route Handler at `src/app/api/og/[level]/[[...ratings]]/route.tsx`. A file-based `opengraph-image.tsx` cannot be placed inside `[[...ratings]]` because Next.js registers it as a URL segment, which makes the catch-all non-terminal (invalid). The Route Handler has no such constraint since `route.ts` is a file convention, not a URL segment.
 
-See `docs/adr/003-satori-og-image-constraints.md` for why `AltChart.tsx` cannot be reused here and what the path to reuse would look like.
+`generateMetadata` in `page.tsx` sets `og:image` to `/api/og/{level}/{ratings...}` so Slack and other crawlers fetch the correct per-rating image.
 
-**Hardcoded colors**: The OG image uses Radix dark `*-6` hex values from `@radix-ui/colors`. If the palette changes, update `THEME_COLORS` in `opengraph-image.tsx`.
+See `docs/adr/003-satori-og-image-constraints.md` for why `AltChart.tsx` cannot be reused and what the path to reuse would look like.
+
+**Hardcoded colors**: The OG image uses Radix dark `*-6` hex values from `@radix-ui/colors`. If the palette changes, update `THEME_COLORS` in `src/app/api/og/[level]/[[...ratings]]/route.tsx`.
 
 ## History Behavior
 

@@ -1,7 +1,6 @@
 'use client';
 
 import { Select } from '@radix-ui/themes';
-import type { Dispatch, SetStateAction } from 'react';
 import useRatingParam from '@/hooks/useRatingParam';
 
 interface RatingSelectProps {
@@ -12,16 +11,12 @@ const RatingSelect = ({ attributeParam }: RatingSelectProps) => {
   const [rating, setRating, RATINGS] = useRatingParam(attributeParam);
 
   return (
-    <Select.Root
-      size='2'
-      value={rating as keyof typeof RATINGS} // TODO: Move this type assertion to useRatingParam
-      onValueChange={setRating as Dispatch<SetStateAction<string>>} // TODO: Move this type assertion to useRatingParam
-    >
+    <Select.Root size='2' value={rating ?? undefined} onValueChange={setRating}>
       <Select.Trigger
         placeholder='Pick one'
         variant={rating ? 'soft' : 'surface'}
       >
-        {RATINGS[rating as keyof typeof RATINGS] ?? 'Pick one'}
+        {(rating && RATINGS[rating]) ?? 'Pick one'}
       </Select.Trigger>
       <Select.Content>
         {Object.entries(RATINGS).map(([key, value]) => (

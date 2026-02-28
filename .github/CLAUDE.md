@@ -15,7 +15,7 @@ Config: `.github/workflows/ci.yml`
 Runs on push and pull request to `main`. Jobs:
 
 - **biome** and **typecheck** run in parallel on all events
-- **build** runs after both pass on all events — runs `vercel build --prod`, then conditionally deploys on pushes to `main`
+- **build** runs after both pass on all events — runs `vercel build`, then conditionally deploys to production when on the default branch (checked via `github.event.repository.default_branch`, not a hardcoded branch name)
 
 Concurrency is configured to cancel in-progress runs on PRs when new commits are pushed. Runs on `main` are never cancelled.
 

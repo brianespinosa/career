@@ -9,13 +9,19 @@ const RATINGS = {
   '4': 'Always',
 };
 
-export default function useRatingParam(attributeParam: string) {
+export type RatingKey = keyof typeof RATINGS;
+
+export default function useRatingParam(
+  attributeParam: string,
+): [RatingKey | null, (value: string) => void, typeof RATINGS] {
   const [rating, setRating] = useQueryState(attributeParam, {
     // defaultValue: '',
     clearOnDefault: false,
   });
 
-  const ratingOrUndefined = (rating as keyof typeof RATINGS) ?? undefined;
-
-  return [ratingOrUndefined, setRating, RATINGS];
+  return [
+    rating as RatingKey | null,
+    setRating as (value: string) => void,
+    RATINGS,
+  ];
 }

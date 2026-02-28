@@ -12,20 +12,15 @@ import {
   Theme,
   type ThemeProps,
 } from '@radix-ui/themes';
-import * as R from 'ramda';
-import { Fragment } from 'react';
 import ATTRIBUTES from '@/data/attributes.json';
-import EM from '@/data/em.json';
-import IC from '@/data/ic.json';
 import THEMES from '@/data/themes.json';
 import useCareerParam from '@/hooks/useCareerParam';
+import { LEVELS } from '@/lib/levels';
 import type { AttributeKeys, AttributeValues } from '@/types/attributes';
 
 import AltChart from './AltChart';
 import CareerAttribute from './CareerAttribute';
 import PropertyList from './PropertyList';
-
-const LEVELS = { ...IC, ...EM };
 
 const CareerThemes = () => {
   const [career] = useCareerParam();
@@ -44,7 +39,7 @@ const CareerThemes = () => {
     }))
     .filter(({ description }) => description !== undefined);
 
-  const themeGroups = R.groupBy(R.prop('theme'), attributeValues);
+  const themeGroups = Object.groupBy(attributeValues, (attr) => attr.theme);
 
   return (
     <Grid
@@ -74,37 +69,35 @@ const CareerThemes = () => {
       </Flex>
       <Flex direction='column' gap='4'>
         {Object.entries(themeGroups).map(([theme, attributes]) => (
-          <Fragment key={theme}>
-            <Card asChild>
-              <section>
-                <Box ml='8rem'>
-                  <Heading
-                    as='h3'
-                    size='4'
-                    color={attributes?.[0].color as ThemeProps['accentColor']}
-                  >
-                    {theme}
-                  </Heading>
-                  <Separator
-                    my='2'
-                    size='4'
-                    color={attributes?.[0].color as ThemeProps['accentColor']}
+          <Card key={theme} asChild>
+            <section>
+              <Box ml='8rem'>
+                <Heading
+                  as='h3'
+                  size='4'
+                  color={attributes?.[0].color as ThemeProps['accentColor']}
+                >
+                  {theme}
+                </Heading>
+                <Separator
+                  my='2'
+                  size='4'
+                  color={attributes?.[0].color as ThemeProps['accentColor']}
+                />
+              </Box>
+              {attributes?.map(({ key, description, color }) => (
+                <Theme
+                  key={key}
+                  accentColor={color as ThemeProps['accentColor']}
+                >
+                  <CareerAttribute
+                    attribute={key as AttributeKeys}
+                    description={description}
                   />
-                </Box>
-                {attributes?.map(({ key, description, color }) => (
-                  <Theme
-                    key={key}
-                    accentColor={color as ThemeProps['accentColor']}
-                  >
-                    <CareerAttribute
-                      attribute={key as AttributeKeys}
-                      description={description}
-                    />
-                  </Theme>
-                ))}
-              </section>
-            </Card>
-          </Fragment>
+                </Theme>
+              ))}
+            </section>
+          </Card>
         ))}
       </Flex>
     </Grid>

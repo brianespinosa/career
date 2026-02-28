@@ -5,12 +5,12 @@ import ATTRIBUTES from '@/data/attributes.json';
 
 import RatingSelect from './RatingSelect';
 
-interface CarrerAttributesProps {
+interface CareerAttributeProps {
   attribute: keyof typeof ATTRIBUTES;
   description: string;
 }
 
-const CareerAttribute = ({ attribute, description }: CarrerAttributesProps) => {
+const CareerAttribute = ({ attribute, description }: CareerAttributeProps) => {
   const { param, name } = ATTRIBUTES[attribute];
 
   return (

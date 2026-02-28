@@ -5,9 +5,14 @@ import { Group } from '@visx/group';
 import { ScaleSVG } from '@visx/responsive';
 import { scaleBand, scaleRadial } from '@visx/scale';
 import { Arc } from '@visx/shape';
-import { Text } from '@visx/text';
 import { defaultStyles, TooltipWithBounds, useTooltip } from '@visx/tooltip';
-import { AnimatePresence, motion } from 'motion/react';
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+} from 'motion/react';
 import { useSearchParams } from 'next/navigation';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { ratingAppearAnimation } from '@/lib/animations';
@@ -15,6 +20,20 @@ import { scrollToAttribute } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';
 
 const TEXT_COLOR = 'var(--color-panel-solid)';
+
+const AnimatedNumber = ({ value }: { value: number }) => {
+  const mv = useMotionValue(value);
+  const [display, setDisplay] = useState(value);
+
+  useMotionValueEvent(mv, 'change', (v) => setDisplay(Math.round(v)));
+
+  useEffect(() => {
+    const controls = animate(mv, value, { duration: 0.3, ease: 'easeOut' });
+    return controls.stop;
+  }, [value, mv]);
+
+  return <>{display || ''}</>;
+};
 const ATTRIBUTE_LEVELS = 4;
 
 const SIZE = 100;
@@ -145,8 +164,14 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                               fill={`var(--${group.color}-6)`}
                               style={{ cursor: 'pointer' }}
                               onClick={() => scrollToAttribute(group.name)}
+                              whileHover={{ filter: 'brightness(1.3)' }}
+                              whileTap={{ filter: 'brightness(0.85)' }}
                               initial={{ ...ratingAppearAnimation.initial, d }}
-                              animate={{ ...ratingAppearAnimation.animate, d }}
+                              animate={{
+                                ...ratingAppearAnimation.animate,
+                                d,
+                                filter: 'brightness(1)',
+                              }}
                               exit={{ ...ratingAppearAnimation.exit, d }}
                             />
                           ) : null}
@@ -154,19 +179,43 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                       );
                     }}
                   </Arc>
-                  <Text
-                    style={{ pointerEvents: 'none' }}
-                    x={textX}
-                    y={textY}
-                    dominantBaseline='end'
-                    textAnchor='middle'
-                    fontSize='5'
-                    fontWeight='bold'
-                    fill={TEXT_COLOR}
-                    angle={toDegrees(midAngle)}
-                  >
-                    {attributeNumber}
-                  </Text>
+                  <AnimatePresence>
+                    {group.value ? (
+                      <motion.g
+                        key={`text-${attr}`}
+                        style={{
+                          pointerEvents: 'none',
+                          rotate: toDegrees(midAngle),
+                        }}
+                        initial={{
+                          ...ratingAppearAnimation.initial,
+                          x: textX,
+                          y: textY,
+                        }}
+                        animate={{
+                          ...ratingAppearAnimation.animate,
+                          x: textX,
+                          y: textY,
+                        }}
+                        exit={{
+                          ...ratingAppearAnimation.exit,
+                          x: textX,
+                          y: textY,
+                        }}
+                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                      >
+                        <text
+                          dominantBaseline='central'
+                          textAnchor='middle'
+                          fontSize='5'
+                          fontWeight='bold'
+                          fill={TEXT_COLOR}
+                        >
+                          <AnimatedNumber value={attributeNumber} />
+                        </text>
+                      </motion.g>
+                    ) : null}
+                  </AnimatePresence>
                 </Fragment>
               );
             })}

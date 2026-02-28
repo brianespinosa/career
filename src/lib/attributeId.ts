@@ -6,6 +6,15 @@ export const toAttributeId = (name: string): string =>
 
 export const scrollToAttribute = (name: string): void => {
   const el = document.getElementById(toAttributeId(name));
-  el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  el?.focus({ preventScroll: true });
+  if (!el) return;
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  const description = el.nextElementSibling;
+  if (description) {
+    range.setEnd(description, description.childNodes.length);
+  }
+  const selection = window.getSelection();
+  selection?.removeAllRanges();
+  selection?.addRange(range);
 };

@@ -1,9 +1,7 @@
 import './global.scss';
 
-import { GitHubLogoIcon, ResetIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import {
-  AlertDialog,
-  Button,
   Container,
   Flex,
   Heading,
@@ -12,10 +10,9 @@ import {
   Tooltip,
 } from '@radix-ui/themes';
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { Suspense } from 'react';
 import CareerSelect from '@/components/CareerSelect';
+import ResetButton from '@/components/ResetButton';
 
 export const metadata: Metadata = {
   title: {
@@ -33,72 +30,43 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <meta name='robots' content='noindex,nofollow' />
-      <NuqsAdapter>
-        <Theme
-          appearance='dark'
-          accentColor='pink'
-          grayColor='slate'
-          radius='small'
-          asChild
-        >
-          <body>
-            <Container asChild my='6' mx='4'>
-              <header>
-                <Flex align='center'>
-                  <Heading as='h1' size='7' my='4' trim='both'>
-                    Career Ladder
-                  </Heading>
-                  <Flex ml='auto' gap='2'>
-                    <Suspense>
-                      <CareerSelect />
-                    </Suspense>
-                    <AlertDialog.Root>
-                      <Tooltip content='Reset'>
-                        <AlertDialog.Trigger>
-                          <IconButton variant='surface'>
-                            <ResetIcon />
-                          </IconButton>
-                        </AlertDialog.Trigger>
-                      </Tooltip>
-                      <AlertDialog.Content maxWidth='450px'>
-                        <AlertDialog.Title>Reset Ratings</AlertDialog.Title>
-                        <AlertDialog.Description size='2'>
-                          Are you sure? Your ratings and career level will be
-                          removed but your current career rating will remain in
-                          browser history.
-                        </AlertDialog.Description>
-
-                        <Flex gap='3' mt='4' justify='end'>
-                          <AlertDialog.Cancel>
-                            <Button variant='surface' color='gray'>
-                              Cancel
-                            </Button>
-                          </AlertDialog.Cancel>
-                          <AlertDialog.Action>
-                            <Button asChild>
-                              <Link href='/'>Reset</Link>
-                            </Button>
-                          </AlertDialog.Action>
-                        </Flex>
-                      </AlertDialog.Content>
-                    </AlertDialog.Root>
-                    <Tooltip content='GitHub'>
-                      <IconButton variant='surface' asChild>
-                        <a href='https://github.com/brianespinosa/career'>
-                          <GitHubLogoIcon />
-                        </a>
-                      </IconButton>
-                    </Tooltip>
-                  </Flex>
+      <Theme
+        appearance='dark'
+        accentColor='pink'
+        grayColor='slate'
+        radius='small'
+        asChild
+      >
+        <body>
+          <Container asChild my='6' mx='4'>
+            <header>
+              <Flex align='center'>
+                <Heading as='h1' size='7' my='4' trim='both'>
+                  Career Ladder
+                </Heading>
+                <Flex ml='auto' gap='2'>
+                  <Suspense>
+                    <CareerSelect />
+                  </Suspense>
+                  <Suspense>
+                    <ResetButton />
+                  </Suspense>
+                  <Tooltip content='GitHub'>
+                    <IconButton variant='surface' asChild>
+                      <a href='https://github.com/brianespinosa/career'>
+                        <GitHubLogoIcon />
+                      </a>
+                    </IconButton>
+                  </Tooltip>
                 </Flex>
-              </header>
-            </Container>
-            <Container asChild my='6' mx='4'>
-              <main>{children}</main>
-            </Container>
-          </body>
-        </Theme>
-      </NuqsAdapter>
+              </Flex>
+            </header>
+          </Container>
+          <Container asChild my='6' mx='4'>
+            <main>{children}</main>
+          </Container>
+        </body>
+      </Theme>
     </html>
   );
 }

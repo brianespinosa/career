@@ -1,6 +1,8 @@
 'use client';
 
-import { useQueryState } from 'nuqs';
+import { useParams, useRouter } from 'next/navigation';
+
+import { buildRatingPath, parseRatings } from '@/lib/ratingPath';
 
 export const RATINGS = {
   '1': 'Never',
@@ -14,14 +16,21 @@ export type RatingKey = keyof typeof RATINGS;
 export default function useRatingParam(
   attributeParam: string,
 ): [RatingKey | null, (value: string) => void, typeof RATINGS] {
-  const [rating, setRating] = useQueryState(attributeParam, {
-    // defaultValue: '',
-    clearOnDefault: false,
-  });
+  const params = useParams();
+  const router = useRouter();
 
-  return [
-    rating as RatingKey | null,
-    setRating as (value: string) => void,
-    RATINGS,
-  ];
+  const level = params.level as string;
+  const ratingsSegments = (params.ratings as string[]) ?? [];
+
+  const ratingsMap = parseRatings(level, ratingsSegments);
+  const ratingValue = ratingsMap[attributeParam];
+
+  const rating = ratingValue > 0 ? (String(ratingValue) as RatingKey) : null;
+
+  const setRating = (value: string) => {
+    const newRatings = { ...ratingsMap, [attributeParam]: Number(value) };
+    router.replace(buildRatingPath(level, newRatings));
+  };
+
+  return [rating, setRating, RATINGS];
 }

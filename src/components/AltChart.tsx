@@ -13,8 +13,8 @@ import {
   useMotionValue,
   useMotionValueEvent,
 } from 'motion/react';
-import { useSearchParams } from 'next/navigation';
 import { Fragment, useEffect, useMemo, useState } from 'react';
+import useRatingsMap from '@/hooks/useRatingsMap';
 import { ratingAppearAnimation } from '@/lib/animations';
 import { scrollToAttribute } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';
@@ -61,7 +61,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
     setIsClient(true);
   }, []);
 
-  const searchParams = useSearchParams();
+  const ratingsMap = useRatingsMap();
   const {
     tooltipData,
     tooltipLeft,
@@ -78,12 +78,10 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
 
   const enrichedGroups = Object.values(themeGroups)
     .flat()
-    .map((attribute) => {
-      return {
-        ...attribute,
-        value: Number(searchParams.get(attribute.param)) || 0,
-      };
-    });
+    .map((attribute) => ({
+      ...attribute,
+      value: ratingsMap[attribute.param] ?? 0,
+    }));
 
   const xDomain = useMemo(
     () => enrichedGroups.map(getAttribute),

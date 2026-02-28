@@ -1,18 +1,22 @@
 'use client';
 
-import { useQueryState } from 'nuqs';
-import type { Dispatch, SetStateAction } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 
 import { LEVELS } from '@/lib/levels';
 import type { LevelKeys } from '@/types/levels';
 
-type CareerParamHook = [LevelKeys, Dispatch<SetStateAction<string>>];
+type CareerParamHook = [LevelKeys, (newLevel: string) => void];
 
 export default function useCareerParam(): CareerParamHook {
-  const [career, setCareer] = useQueryState('lvl', {
-    defaultValue: Object.keys(LEVELS)[0],
-    clearOnDefault: false,
-  });
+  const params = useParams();
+  const router = useRouter();
 
-  return [career as LevelKeys, setCareer];
+  const defaultLevel = Object.keys(LEVELS)[0] as LevelKeys;
+  const career = (params.level as LevelKeys) ?? defaultLevel;
+
+  const setCareer = (newLevel: string) => {
+    router.push(`/${newLevel}`);
+  };
+
+  return [career, setCareer];
 }

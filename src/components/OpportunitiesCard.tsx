@@ -3,9 +3,9 @@
 import type { ThemeProps } from '@radix-ui/themes';
 import { Card, Flex, Heading, Link, Text } from '@radix-ui/themes';
 import { AnimatePresence, motion } from 'motion/react';
-import { useSearchParams } from 'next/navigation';
 import type { RatingKey } from '@/hooks/useRatingParam';
 import { RATINGS } from '@/hooks/useRatingParam';
+import useRatingsMap from '@/hooks/useRatingsMap';
 import { cardFadeAnimation } from '@/lib/animations';
 import { scrollToAttribute, toAttributeId } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';
@@ -24,12 +24,12 @@ const toOpacity = (rating: number, min: number, max: number): number => {
 };
 
 const OpportunitiesCard = ({ attributeValues }: OpportunitiesCardProps) => {
-  const searchParams = useSearchParams();
+  const ratingsMap = useRatingsMap();
 
   const rated = attributeValues
     .map((attr) => ({
       ...attr,
-      rating: Number(searchParams.get(attr.param)),
+      rating: ratingsMap[attr.param] ?? 0,
     }))
     .filter(({ rating }) => rating > 0)
     .sort((a, b) => a.rating - b.rating);

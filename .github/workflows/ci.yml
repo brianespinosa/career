@@ -41,6 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
       - uses: ./.github/actions/setup
+      - uses: brianespinosa/next-build-cache@main
       - run: yarn vercel pull --yes --token $VERCEL_TOKEN
       - run: yarn vercel build ${{ github.ref_name == github.event.repository.default_branch && '--prod' || '' }}
       - id: deploy

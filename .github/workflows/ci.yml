@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref_name != github.event.repository.default_branch }}
+
 jobs:
   biome:
     runs-on: ubuntu-latest
@@ -19,12 +23,31 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
       - uses: ./.github/actions/setup
-      - run: yarn tsc --noEmit
+      - run: yarn typecheck
 
   build:
     runs-on: ubuntu-latest
     needs: [biome, typecheck]
+    permissions:
+      contents: read
+      deployments: write
+    environment:
+      name: ${{ github.event_name == 'pull_request' && 'Preview' || 'Production' }}
+      url: ${{ steps.deploy.outputs.url }}
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - uses: actions/checkout@v6.0.2
       - uses: ./.github/actions/setup
-      - run: yarn build
+      - run: yarn vercel pull --yes --token $VERCEL_TOKEN
+      - run: yarn vercel build ${{ github.ref_name == github.event.repository.default_branch && '--prod' || '' }}
+      - id: deploy
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            URL=$(yarn vercel deploy --prebuilt --token $VERCEL_TOKEN)
+          else
+            URL=$(yarn vercel deploy --prebuilt --prod --token $VERCEL_TOKEN)
+          fi
+          echo "url=$URL" >> $GITHUB_OUTPUT

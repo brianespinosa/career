@@ -14,8 +14,19 @@ Config: `.github/workflows/ci.yml`
 
 Runs on push and pull request to `main`. Jobs:
 
-- **biome** and **typecheck** run in parallel, both using the setup composite action
-- **build** runs after both pass
+- **biome** and **typecheck** run in parallel on all events
+- **build** runs after both pass on all events — runs `vercel build --prod`, then conditionally deploys on pushes to `main`
+
+Concurrency is configured to cancel in-progress runs on PRs when new commits are pushed. Runs on `main` are never cancelled.
+
+## Vercel Deployment
+
+The `build` job uses the Vercel CLI (`vercel` devDependency) with three required repository secrets:
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
+
+Project IDs are sourced from `.vercel/project.json` (gitignored). Re-run `vercel link` locally to regenerate if needed.
 
 ## Notes
 

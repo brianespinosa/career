@@ -143,6 +143,8 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                           {group.value ? (
                             <motion.path
                               fill={`var(--${group.color}-6)`}
+                              style={{ cursor: 'pointer' }}
+                              onClick={() => scrollToAttribute(group.name)}
                               initial={{ ...ratingAppearAnimation.initial, d }}
                               animate={{ ...ratingAppearAnimation.animate, d }}
                               exit={{ ...ratingAppearAnimation.exit, d }}

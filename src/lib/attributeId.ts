@@ -5,7 +5,7 @@ export const toAttributeId = (name: string): string =>
     .replace(/^-|-$/g, '');
 
 export const scrollToAttribute = (name: string): void => {
-  document
-    .getElementById(toAttributeId(name))
-    ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const el = document.getElementById(toAttributeId(name));
+  el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el?.focus({ preventScroll: true });
 };

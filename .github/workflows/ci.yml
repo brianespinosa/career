@@ -38,13 +38,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
       - uses: ./.github/actions/setup
-      - run: yarn vercel pull --yes
+      - run: yarn vercel pull --yes --token $VERCEL_TOKEN
       - run: yarn vercel build --prod
       - if: github.ref_name == github.event.repository.default_branch
-        run: yarn vercel deploy --prebuilt --prod
+        run: yarn vercel deploy --prebuilt --prod --token $VERCEL_TOKEN
       - if: github.event_name == 'pull_request'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          DEPLOY_URL=$(yarn vercel deploy --prebuilt)
+          DEPLOY_URL=$(yarn vercel deploy --prebuilt --token $VERCEL_TOKEN)
           gh pr comment ${{ github.event.pull_request.number }} --body "Preview: $DEPLOY_URL"

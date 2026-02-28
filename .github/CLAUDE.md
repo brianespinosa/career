@@ -28,8 +28,19 @@ The `build` job uses the Vercel CLI (`vercel` devDependency) with three required
 
 Project IDs are sourced from `.vercel/project.json` (gitignored). Re-run `vercel link` locally to regenerate if needed.
 
+## Dependabot
+
+Config: `.github/dependabot.yml`
+
+Monitors `npm` dependencies weekly, targeting `main`. Commit messages use `chore(deps):` prefix via the `commit-message` config.
+
+## Dependabot Auto-merge
+
+Config: `.github/workflows/dependabot-auto-merge.yml`
+
+Triggers on `pull_request_target` (runs in base branch context so `GITHUB_TOKEN` has full permissions). Checks `github.actor == 'dependabot[bot]'` and enables auto-merge via squash. `pull_request_target` is safe here because no PR code is checked out or executed.
+
 ## Notes
 
 - Node version is pinned via `.nvmrc` — update there to change it everywhere
 - Corepack must be enabled before running any `yarn` commands — handled in the composite action
-- Dependabot auto-merge workflow will be added in a follow-up (issue #4)

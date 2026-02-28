@@ -3,9 +3,9 @@
 import type { ThemeProps } from '@radix-ui/themes';
 import { Card, Flex, Heading, Link, Text } from '@radix-ui/themes';
 import { AnimatePresence, motion } from 'motion/react';
+import { useRatingsMap } from '@/hooks/RatingsProvider';
 import type { RatingKey } from '@/hooks/useRatingParam';
 import { RATINGS } from '@/hooks/useRatingParam';
-import useRatingsMap from '@/hooks/useRatingsMap';
 import { cardFadeAnimation } from '@/lib/animations';
 import { scrollToAttribute, toAttributeId } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';

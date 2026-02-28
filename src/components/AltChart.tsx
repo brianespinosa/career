@@ -14,7 +14,7 @@ import {
   useMotionValueEvent,
 } from 'motion/react';
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import useRatingsMap from '@/hooks/useRatingsMap';
+import { useRatingsMap } from '@/hooks/RatingsProvider';
 import { ratingAppearAnimation } from '@/lib/animations';
 import { scrollToAttribute } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import CareerThemes from '@/components/CareerThemes';
+import { RatingsProvider } from '@/hooks/RatingsProvider';
 
 export async function generateMetadata({
   params,
@@ -18,5 +19,9 @@ export async function generateMetadata({
 }
 
 export default function LevelPage() {
-  return <CareerThemes />;
+  return (
+    <RatingsProvider>
+      <CareerThemes />
+    </RatingsProvider>
+  );
 }

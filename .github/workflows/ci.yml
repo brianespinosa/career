@@ -30,6 +30,7 @@ jobs:
     needs: [biome, typecheck]
     permissions:
       contents: read
+      deployments: write
       pull-requests: write
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -47,4 +48,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           DEPLOY_URL=$(yarn vercel deploy --prebuilt --token $VERCEL_TOKEN)
+          DEPLOYMENT_ID=$(gh api repos/${{ github.repository }}/deployments \
+            --method POST \
+            -f ref=${{ github.sha }} \
+            -f environment=Preview \
+            -F auto_merge=false \
+            -F transient_environment=true \
+            -F required_contexts='[]' \
+            --jq '.id')
+          gh api repos/${{ github.repository }}/deployments/$DEPLOYMENT_ID/statuses \
+            --method POST \
+            -f state=success \
+            -f environment_url=$DEPLOY_URL
           gh pr comment ${{ github.event.pull_request.number }} --body "Preview: $DEPLOY_URL"

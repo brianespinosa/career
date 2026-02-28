@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh issue:*)",
+      "Bash(npm show:*)",
+      "Bash(yarn check:*)",
+      "Bash(yarn explain:*)",
+      "Bash(yarn install:*)",
+      "Bash(yarn npm:*)",
+      "Bash(yarn up:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.npmjs.com)"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    biome:
+      glob: "*.{js,jsx,ts,tsx,json,css,scss,sass}"
+      run: yarn biome check --write {staged_files}
+      stage_fixed: true
+    typecheck:
+      run: yarn tsc --noEmit

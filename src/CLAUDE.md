@@ -27,10 +27,6 @@ layout.tsx         — header, CareerSelect, reset dialog, GitHub link
 - `RatingSelect.tsx` has two type assertions with `// TODO` comments — types should be tightened in `useRatingParam` so assertions aren't needed at the call site
 - `CareerChart.tsx` is dead code — the radar/spider chart is fully implemented but not imported anywhere; see dead code section below
 
-## Dead Code
-
-`src/components/CareerChart.tsx` — a radar chart implementation that was superseded by `AltChart`. Do not delete without confirming it's no longer needed.
-
 ## SSR Note
 
 `AltChart` uses `useState(false)` + `useEffect(() => setIsClient(true))` to defer rendering until after hydration. This avoids visx/SVG SSR mismatches. Do not remove this pattern without testing hydration.

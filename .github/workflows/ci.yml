@@ -32,6 +32,9 @@ jobs:
       contents: read
       deployments: write
       pull-requests: write
+    environment:
+      name: ${{ github.event_name == 'pull_request' && 'Preview' || 'Production' }}
+      url: ${{ steps.deploy.outputs.url }}
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -41,20 +44,14 @@ jobs:
       - uses: ./.github/actions/setup
       - run: yarn vercel pull --yes --token $VERCEL_TOKEN
       - run: yarn vercel build ${{ github.ref_name == github.event.repository.default_branch && '--prod' || '' }}
-      - if: github.ref_name == github.event.repository.default_branch
-        run: yarn vercel deploy --prebuilt --prod --token $VERCEL_TOKEN
-      - if: github.event_name == 'pull_request'
+      - id: deploy
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          DEPLOY_URL=$(yarn vercel deploy --prebuilt --token $VERCEL_TOKEN)
-          DEPLOYMENT_ID=$(gh api repos/${{ github.repository }}/deployments \
-            --method POST \
-            --input - \
-            --jq '.id' \
-            <<< '{"ref":"${{ github.sha }}","environment":"Preview","auto_merge":false,"transient_environment":true,"required_contexts":[]}')
-          gh api repos/${{ github.repository }}/deployments/$DEPLOYMENT_ID/statuses \
-            --method POST \
-            -f state=success \
-            -f environment_url=$DEPLOY_URL
-          gh pr comment ${{ github.event.pull_request.number }} --body "Preview: $DEPLOY_URL"
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            URL=$(yarn vercel deploy --prebuilt --token $VERCEL_TOKEN)
+            gh pr comment ${{ github.event.pull_request.number }} --body "Preview: $URL"
+          else
+            URL=$(yarn vercel deploy --prebuilt --prod --token $VERCEL_TOKEN)
+          fi
+          echo "url=$URL" >> $GITHUB_OUTPUT

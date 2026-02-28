@@ -8,10 +8,10 @@ import {
   Grid,
   Heading,
   Separator,
-  // Text,
   Theme,
   type ThemeProps,
 } from '@radix-ui/themes';
+import { Suspense } from 'react';
 import ATTRIBUTES from '@/data/attributes.json';
 import THEMES from '@/data/themes.json';
 import useCareerParam from '@/hooks/useCareerParam';
@@ -20,6 +20,7 @@ import type { AttributeKeys, AttributeValues } from '@/types/attributes';
 
 import AltChart from './AltChart';
 import CareerAttribute from './CareerAttribute';
+import OpportunitiesCard from './OpportunitiesCard';
 import PropertyList from './PropertyList';
 
 const CareerThemes = () => {
@@ -58,14 +59,9 @@ const CareerThemes = () => {
           <Heading as='h2'>{name}</Heading>
           <PropertyList properties={properties} minWidth='8rem' />
         </Card>
-        {/* <Card>
-          <Text as='div' size='2' weight='bold'>
-            Opportunities
-          </Text>
-          <Text as='div' size='2' color='gray'>
-            Engineering
-          </Text>
-        </Card> */}
+        <Suspense>
+          <OpportunitiesCard attributeValues={attributeValues} />
+        </Suspense>
       </Flex>
       <Flex direction='column' gap='4'>
         {Object.entries(themeGroups).map(([theme, attributes]) => (

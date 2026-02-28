@@ -10,6 +10,7 @@ import { defaultStyles, TooltipWithBounds, useTooltip } from '@visx/tooltip';
 import { AnimatePresence, motion } from 'motion/react';
 import { useSearchParams } from 'next/navigation';
 import { Fragment, useEffect, useMemo, useState } from 'react';
+import { scrollToAttribute } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';
 
 const TEXT_COLOR = 'var(--color-panel-solid)';
@@ -118,9 +119,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                     outerRadius={outerRadius}
                     innerRadius={innerRadius}
                     fill={`var(--${group.color}-6)`}
-                    onClick={() => {
-                      console.log('TODO: Scroll to', attr);
-                    }}
+                    onClick={() => scrollToAttribute(group.name)}
                     onPointerMove={(event) => {
                       const ownerSVGElement = (event.target as SVGElement)
                         .ownerSVGElement;

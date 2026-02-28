@@ -15,17 +15,16 @@ Data flows: URL params → hooks → components → visx charts.
 layout.tsx         — header, CareerSelect, reset dialog, GitHub link
 └── page.tsx       — renders CareerThemes
     └── CareerThemes — main orchestrator; reads level, groups attributes by theme
-        ├── AltChart      — radial bar chart (primary visualization)
-        ├── PropertyList  — key/value display (Radford level, experience)
+        ├── AltChart          — radial bar chart; arc click scrolls to attribute heading
+        ├── OpportunitiesCard — lists low-rated attributes; hidden until ratings are made
+        ├── PropertyList      — key/value display (Radford level, experience)
         └── CareerAttribute (per attribute)
             └── RatingSelect — individual rating dropdown
 ```
 
-## Known Issues
+## Shared Utilities
 
-- `AltChart.tsx` has a `console.log('TODO: Scroll to', attr)` in the Arc click handler (`AltChart.tsx:122`) — scroll-to-attribute behavior is not yet implemented
-- `RatingSelect.tsx` has two type assertions with `// TODO` comments — types should be tightened in `useRatingParam` so assertions aren't needed at the call site
-- `CareerChart.tsx` is dead code — the radar/spider chart is fully implemented but not imported anywhere; see dead code section below
+- `src/lib/attributeId.ts` — `toAttributeId(name)` converts an attribute name to a kebab-case element ID; used by `CareerAttribute`, `AltChart`, and `OpportunitiesCard` to connect scroll targets to headings
 
 ## SSR Note
 

@@ -56,7 +56,9 @@ const CareerThemes = () => {
               themeGroups={themeGroups as Record<string, AttributeValues[]>}
             />
           </AspectRatio>
-          <Heading as='h2'>{name}</Heading>
+          <Heading as='h2' mt='4'>
+            {name}
+          </Heading>
           <PropertyList properties={properties} minWidth='8rem' />
         </Card>
         <Suspense>

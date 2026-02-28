@@ -10,6 +10,7 @@ import { defaultStyles, TooltipWithBounds, useTooltip } from '@visx/tooltip';
 import { AnimatePresence, motion } from 'motion/react';
 import { useSearchParams } from 'next/navigation';
 import { Fragment, useEffect, useMemo, useState } from 'react';
+import { ratingAppearAnimation } from '@/lib/animations';
 import { scrollToAttribute } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';
 
@@ -142,9 +143,9 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                           {group.value ? (
                             <motion.path
                               fill={`var(--${group.color}-6)`}
-                              initial={{ d: d, opacity: 0, scale: 0 }}
-                              animate={{ d: d, opacity: 1, scale: 1 }}
-                              exit={{ d: d, opacity: 0, scale: 0 }}
+                              initial={{ ...ratingAppearAnimation.initial, d }}
+                              animate={{ ...ratingAppearAnimation.animate, d }}
+                              exit={{ ...ratingAppearAnimation.exit, d }}
                             />
                           ) : null}
                         </AnimatePresence>

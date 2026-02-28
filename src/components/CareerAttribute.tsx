@@ -2,6 +2,7 @@
 
 import { Box, Flex, Heading, Text } from '@radix-ui/themes';
 import ATTRIBUTES from '@/data/attributes.json';
+import { toAttributeId } from '@/lib/attributeId';
 
 import RatingSelect from './RatingSelect';
 
@@ -19,12 +20,7 @@ const CareerAttribute = ({ attribute, description }: CareerAttributeProps) => {
         <RatingSelect attributeParam={param} />
       </Flex>
       <Box>
-        <Heading
-          as='h4'
-          size='4'
-          mb='2'
-          id={name.toLowerCase().split(' ').join('-')}
-        >
+        <Heading as='h4' size='4' mb='2' id={toAttributeId(name)}>
           {name}
         </Heading>
         <Text size='2' color='gray'>

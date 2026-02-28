@@ -2,7 +2,7 @@
 
 import { useQueryState } from 'nuqs';
 
-const RATINGS = {
+export const RATINGS = {
   '1': 'Never',
   '2': 'Rarely',
   '3': 'Sometimes',

@@ -16,7 +16,7 @@ const TEXT_COLOR = 'var(--color-panel-solid)';
 const ATTRIBUTE_LEVELS = 4;
 
 const SIZE = 100;
-const SIMPLE_PI = 3.14;
+const CHART_ARC_RADIANS = 2.03 * Math.PI;
 
 const tooltipStyles = {
   ...defaultStyles,
@@ -27,7 +27,7 @@ const tooltipStyles = {
 
 const getAttribute = (d: AttributeValues) => d.key;
 const getAttributeFrequency = (d: AttributeValues) => Number(d.value) * 100;
-const toDegrees = (x: number) => (x * 180) / SIMPLE_PI;
+const toDegrees = (x: number) => (x * 180) / Math.PI;
 
 interface AltChartProps {
   themeGroups: Record<string, AttributeValues[]>;
@@ -72,7 +72,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
   const xScale = useMemo(
     () =>
       scaleBand<string>({
-        range: [0, 2.03 * SIMPLE_PI],
+        range: [0, CHART_ARC_RADIANS],
         domain: xDomain,
         padding: 0.25,
       }),
@@ -106,8 +106,8 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
 
               // convert polar coordinates to cartesian for drawing labels
               const textRadius = outerRadius - 8;
-              const textX = textRadius * Math.cos(midAngle - SIMPLE_PI / 2);
-              const textY = textRadius * Math.sin(midAngle - SIMPLE_PI / 2);
+              const textX = textRadius * Math.cos(midAngle - Math.PI / 2);
+              const textY = textRadius * Math.sin(midAngle - Math.PI / 2);
 
               return (
                 <Fragment key={`bar-${attr}`}>
@@ -172,7 +172,6 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
         </ScaleSVG>
         {tooltipOpen && tooltipData && (
           <TooltipWithBounds
-            key={Math.random()}
             top={tooltipTop}
             left={tooltipLeft}
             style={tooltipStyles}

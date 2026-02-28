@@ -5,4 +5,4 @@ pre-commit:
       run: yarn biome check --write {staged_files}
       stage_fixed: true
     typecheck:
-      run: yarn tsc --noEmit
+      run: yarn typecheck

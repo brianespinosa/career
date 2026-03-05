@@ -97,6 +97,18 @@ Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`
 2. Create files/directories relative to that root
 3. Run `git status` to confirm files are detected by git
 
+### Architecture Decision Records (ADRs)
+
+ADRs are stored in `docs/adr/` and follow the naming convention `NNN-descriptive-slug.md`.
+
+**Template** (Status / Context / Decision / Consequences). Status values: `Proposed`, `Accepted`, `Deprecated`, `Superseded by ADR-NNN`.
+
+**PR checklist — for every pull request:**
+
+- **New ADR?** — If the PR introduces a significant architectural decision (new dependency, data flow pattern, tooling change, performance trade-off), create an ADR.
+- **Existing ADRs followed?** — Verify the changes comply with accepted ADRs. If a change conflicts, either revise the ADR first or explicitly note the deviation.
+- **Revise an ADR?** — If the constraints that drove a previous decision have changed, revisiting it is valid. Update the ADR's status to `Superseded by ADR-NNN` and write the replacement.
+
 ### Technical Review Standards
 
 Always fully evaluate the technical merits of questions and suggestions against relevant sources of truth and documentation.

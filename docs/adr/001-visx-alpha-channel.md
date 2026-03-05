@@ -26,16 +26,16 @@ We use the alpha channel release of `@visx/visx` (`4.0.1-alpha.0`) for the follo
 
 The following visx APIs are used in this project:
 
-- `@visx/event` — `localPoint`
-- `@visx/group` — `Group`
-- `@visx/point` — `Point`
-- `@visx/responsive` — `ScaleSVG`
-- `@visx/scale` — `scaleLinear`, `scaleBand`, `scaleRadial`
-- `@visx/shape` — `Line`, `LineRadial`, `Arc`
-- `@visx/text` — `Text`
-- `@visx/tooltip` — `TooltipWithBounds`, `useTooltip`, `defaultStyles`
+- `@visx/event` — `localPoint` (`RatingsChart.tsx`)
+- `@visx/group` — `Group` (`RatingsChart.tsx`)
+- `@visx/responsive` — `ScaleSVG` (`RatingsChart.tsx`)
+- `@visx/scale` — `scaleBand`, `scaleRadial` (`src/lib/chartGeometry.ts`)
+- `@visx/shape` — `Arc` (`RatingsChart.tsx`)
+- `@visx/tooltip` — `TooltipWithBounds`, `useTooltip`, `defaultStyles` (`RatingsChart.tsx`)
 
 None of these have API-level breaking changes between 3.x and 4.0.
+
+Note: `d3-shape` (`arc`) is also used directly in `src/lib/chartGeometry.ts` as an explicit dependency (see ADR 004). It was previously a transitive dependency of `@visx/visx` only.
 
 ## Consequences
 

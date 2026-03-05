@@ -17,11 +17,10 @@ import THEMES from '@/data/themes.json';
 import useCareerParam from '@/hooks/useCareerParam';
 import { LEVELS } from '@/lib/levels';
 import type { AttributeKeys, AttributeValues } from '@/types/attributes';
-
-import AltChart from './AltChart';
 import CareerAttribute from './CareerAttribute';
 import OpportunitiesCard from './OpportunitiesCard';
 import PropertyList from './PropertyList';
+import RatingsChart from './RatingsChart';
 
 const CareerThemes = () => {
   const [career] = useCareerParam();
@@ -52,7 +51,7 @@ const CareerThemes = () => {
       <Flex id='role-visualization' direction='column' gap='4'>
         <Card>
           <AspectRatio>
-            <AltChart
+            <RatingsChart
               themeGroups={themeGroups as Record<string, AttributeValues[]>}
             />
           </AspectRatio>

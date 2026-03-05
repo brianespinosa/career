@@ -44,11 +44,11 @@ const tooltipStyles = {
 
 const toDegrees = (x: number) => (x * 180) / Math.PI;
 
-interface AltChartProps {
+interface RatingsChartProps {
   themeGroups: Record<string, AttributeValues[]>;
 }
 
-const AltChart = ({ themeGroups }: AltChartProps) => {
+const RatingsChart = ({ themeGroups }: RatingsChartProps) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -191,4 +191,4 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
   );
 };
 
-export default AltChart;
+export default RatingsChart;

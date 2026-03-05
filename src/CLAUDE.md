@@ -19,7 +19,7 @@ layout.tsx         — header, CareerSelect, ResetButton, GitHub link; wraps bod
 ├── [level]/page.tsx           — renders CareerThemes
 └── [level]/[encoded]/page.tsx — renders CareerThemes
     └── CareerThemes — main orchestrator; reads level, groups attributes by theme
-        ├── AltChart          — radial bar chart; arc click scrolls to attribute heading
+        ├── RatingsChart          — radial bar chart; arc click scrolls to attribute heading
         ├── OpportunitiesCard — lists low-rated attributes; hidden until ratings are made
         ├── PropertyList      — key/value display (Radford level, experience)
         └── CareerAttribute (per attribute)
@@ -28,7 +28,9 @@ layout.tsx         — header, CareerSelect, ResetButton, GitHub link; wraps bod
 
 ## Shared Utilities
 
-- `src/lib/attributeId.ts` — `toAttributeId(name)` converts an attribute name to a kebab-case element ID; used by `CareerAttribute`, `AltChart`, and `OpportunitiesCard` to connect scroll targets to headings
+- `src/lib/attributeId.ts` — `toAttributeId(name)` converts an attribute name to a kebab-case element ID; used by `CareerAttribute`, `RatingsChart`, and `OpportunitiesCard` to connect scroll targets to headings
+- `src/lib/chartGeometry.ts` — pure, server-safe arc geometry math (`computeChartGeometry`); shared between `RatingsChart` (client) and the OG image route (server). No browser APIs — safe to import from both contexts
+- `src/lib/siteConfig.ts` — single source of truth for `SITE_TITLE`; used by `layout.tsx` and `ogChart.tsx`
 
 ## Styling
 
@@ -40,4 +42,4 @@ This project uses Ariakit for accessibility. Evaluate all changes and additions 
 
 ## SSR Note
 
-`AltChart` uses `useState(false)` + `useEffect(() => setIsClient(true))` to defer rendering until after hydration. This avoids visx/SVG SSR mismatches. Do not remove this pattern without testing hydration.
+`RatingsChart` uses `useState(false)` + `useEffect(() => setIsClient(true))` to defer rendering until after hydration. This avoids visx/SVG SSR mismatches. Do not remove this pattern without testing hydration.

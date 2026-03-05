@@ -16,16 +16,29 @@ export function buildArcs(
 ): ArcGeometry[] {
   const { attributes: levelAttributes } = LEVELS[level];
   const enriched = Object.values(ATTRIBUTES)
-    .map((attribute) => ({
-      key: attribute.key,
-      name: attribute.name,
-      theme: attribute.theme,
-      colorName: THEMES[attribute.theme as keyof typeof THEMES].color,
-      value:
-        attribute.key in levelAttributes ? (ratings[attribute.param] ?? 0) : -1,
-    }))
+    .map((attribute) => {
+      const themeEntry = THEMES[attribute.theme as keyof typeof THEMES];
+      if (!themeEntry) {
+        console.error(
+          `[buildArcs] Unknown theme "${attribute.theme}" on attribute "${attribute.key}". Expected one of: ${Object.keys(THEMES).join(', ')}.`,
+        );
+      }
+      return {
+        key: attribute.key,
+        name: attribute.name,
+        theme: attribute.theme,
+        colorName: themeEntry?.color ?? 'red',
+        value:
+          attribute.key in levelAttributes
+            ? (ratings[attribute.param] ?? 0)
+            : -1,
+      };
+    })
     .filter((a) => a.value >= 0);
-  // Match the theme-grouped ordering the client produces via Object.groupBy
+  // Arc positions are index-driven, so this order must match what RatingsChart
+  // passes to computeChartGeometry. Both derive order from
+  // Object.groupBy(attributes, (a) => a.theme) on the same ATTRIBUTES dataset.
+  // If RatingsChart's ordering strategy changes, update buildArcs to match.
   const grouped = Object.groupBy(enriched, (a) => a.theme);
   const ordered = Object.values(grouped)
     .flat()
@@ -33,6 +46,8 @@ export function buildArcs(
   return computeChartGeometry({ attributes: ordered });
 }
 
+// Inline styles are required throughout this component — next/og uses Satori
+// under the hood, which cannot resolve CSS classes or Radix component props.
 export function OgLayout({
   levelName,
   arcs,

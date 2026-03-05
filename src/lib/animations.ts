@@ -1,6 +1,6 @@
 // Shared animation configs for motion components
 
-// Used by AltChart arc segments and OpportunitiesCard list items
+// Used by RatingsChart arc segments and OpportunitiesCard list items
 export const ratingAppearAnimation = {
   initial: { opacity: 0, scale: 0 },
   animate: { opacity: 1, scale: 1 },

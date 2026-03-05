@@ -3,7 +3,6 @@
 import { localPoint } from '@visx/event';
 import { Group } from '@visx/group';
 import { ScaleSVG } from '@visx/responsive';
-import { scaleBand, scaleRadial } from '@visx/scale';
 import { Arc } from '@visx/shape';
 import { defaultStyles, TooltipWithBounds, useTooltip } from '@visx/tooltip';
 import {
@@ -17,6 +16,7 @@ import { Fragment, useContext, useEffect, useMemo, useState } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
 import { ratingAppearAnimation } from '@/lib/animations';
 import { scrollToAttribute } from '@/lib/attributeId';
+import { CHART_SIZE, computeChartGeometry } from '@/lib/chartGeometry';
 import type { AttributeValues } from '@/types/attributes';
 
 const TEXT_COLOR = 'var(--color-panel-solid)';
@@ -34,10 +34,6 @@ const AnimatedNumber = ({ value }: { value: number }) => {
 
   return <>{display || ''}</>;
 };
-const ATTRIBUTE_LEVELS = 4;
-
-const SIZE = 100;
-const CHART_ARC_RADIANS = 2.03 * Math.PI;
 
 const tooltipStyles = {
   ...defaultStyles,
@@ -46,15 +42,13 @@ const tooltipStyles = {
   color: 'var(--gray-12)',
 };
 
-const getAttribute = (d: AttributeValues) => d.key;
-const getAttributeFrequency = (d: AttributeValues) => Number(d.value) * 100;
 const toDegrees = (x: number) => (x * 180) / Math.PI;
 
-interface AltChartProps {
+interface RatingsChartProps {
   themeGroups: Record<string, AttributeValues[]>;
 }
 
-const AltChart = ({ themeGroups }: AltChartProps) => {
+const RatingsChart = ({ themeGroups }: RatingsChartProps) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -71,75 +65,37 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
     hideTooltip,
   } = useTooltip();
 
-  // bounds
-  const radiusMax = SIZE / 2;
-
-  const innerRadius = radiusMax / 5;
-
-  const enrichedGroups = Object.values(themeGroups)
-    .flat()
-    .map((attribute) => {
-      return {
-        ...attribute,
-        value: ratings[attribute.param] ?? 0,
-      };
-    });
-
-  const xDomain = useMemo(
-    () => enrichedGroups.map(getAttribute),
-    [enrichedGroups],
-  );
-
-  const xScale = useMemo(
+  const geometries = useMemo(
     () =>
-      scaleBand<string>({
-        range: [0, CHART_ARC_RADIANS],
-        domain: xDomain,
-        padding: 0.25,
+      computeChartGeometry({
+        attributes: Object.values(themeGroups)
+          .flat()
+          .map((g) => ({
+            key: g.key,
+            name: g.name,
+            colorName: g.color,
+            value: ratings[g.param] ?? 0,
+          })),
       }),
-    [xDomain],
-  );
-
-  const yScale = useMemo(
-    () =>
-      scaleRadial<number>({
-        range: [innerRadius, radiusMax],
-        domain: [0, ATTRIBUTE_LEVELS * 100],
-      }),
-    [innerRadius, radiusMax],
+    [themeGroups, ratings],
   );
 
   return (
     isClient && (
       <>
-        <ScaleSVG width={SIZE} height={SIZE}>
-          <Group top={SIZE / 2} left={SIZE / 2}>
-            {enrichedGroups.map((group) => {
-              const attr = getAttribute(group);
-              const startAngle = xScale(attr) || 0;
-              const midAngle = startAngle + xScale.bandwidth() / 2;
-              const endAngle = startAngle + xScale.bandwidth();
-
-              const attributeFrequency = getAttributeFrequency(group);
-              const attributeNumber = attributeFrequency / 100;
-
-              const outerRadius = yScale(attributeFrequency) ?? 0;
-
-              // convert polar coordinates to cartesian for drawing labels
-              const textRadius = outerRadius - 8;
-              const textX = textRadius * Math.cos(midAngle - Math.PI / 2);
-              const textY = textRadius * Math.sin(midAngle - Math.PI / 2);
-
+        <ScaleSVG width={CHART_SIZE} height={CHART_SIZE}>
+          <Group top={CHART_SIZE / 2} left={CHART_SIZE / 2}>
+            {geometries.map((geo) => {
               return (
-                <Fragment key={`bar-${attr}`}>
+                <Fragment key={`bar-${geo.key}`}>
                   <Arc
                     cornerRadius={1}
-                    startAngle={startAngle}
-                    endAngle={endAngle}
-                    outerRadius={outerRadius}
-                    innerRadius={innerRadius}
-                    fill={`var(--${group.color}-6)`}
-                    onClick={() => scrollToAttribute(group.name)}
+                    startAngle={geo.startAngle}
+                    endAngle={geo.endAngle}
+                    outerRadius={geo.outerRadius}
+                    innerRadius={geo.innerRadius}
+                    fill={`var(--${geo.colorName}-6)`}
+                    onClick={() => scrollToAttribute(geo.name)}
                     onPointerMove={(event) => {
                       const ownerSVGElement = (event.target as SVGElement)
                         .ownerSVGElement;
@@ -148,7 +104,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                       }
                       const coords = localPoint(ownerSVGElement, event);
                       showTooltip({
-                        tooltipData: group.name,
+                        tooltipData: geo.name,
                         tooltipTop: (coords?.y ?? 0) + 10,
                         tooltipLeft: (coords?.x ?? 0) + 10,
                       });
@@ -159,11 +115,11 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                       const d = path('color') || '';
                       return (
                         <AnimatePresence>
-                          {group.value ? (
+                          {geo.rating ? (
                             <motion.path
-                              fill={`var(--${group.color}-6)`}
+                              fill={`var(--${geo.colorName}-6)`}
                               style={{ cursor: 'pointer' }}
-                              onClick={() => scrollToAttribute(group.name)}
+                              onClick={() => scrollToAttribute(geo.name)}
                               whileHover={{ filter: 'brightness(1.3)' }}
                               whileTap={{ filter: 'brightness(0.85)' }}
                               initial={{ ...ratingAppearAnimation.initial, d }}
@@ -180,27 +136,27 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                     }}
                   </Arc>
                   <AnimatePresence>
-                    {group.value ? (
+                    {geo.rating ? (
                       <motion.g
-                        key={`text-${attr}`}
+                        key={`text-${geo.key}`}
                         style={{
                           pointerEvents: 'none',
-                          rotate: toDegrees(midAngle),
+                          rotate: toDegrees(geo.midAngle),
                         }}
                         initial={{
                           ...ratingAppearAnimation.initial,
-                          x: textX,
-                          y: textY,
+                          x: geo.textX,
+                          y: geo.textY,
                         }}
                         animate={{
                           ...ratingAppearAnimation.animate,
-                          x: textX,
-                          y: textY,
+                          x: geo.textX,
+                          y: geo.textY,
                         }}
                         exit={{
                           ...ratingAppearAnimation.exit,
-                          x: textX,
-                          y: textY,
+                          x: geo.textX,
+                          y: geo.textY,
                         }}
                         transition={{ duration: 0.3, ease: 'easeOut' }}
                       >
@@ -211,7 +167,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
                           fontWeight='bold'
                           fill={TEXT_COLOR}
                         >
-                          <AnimatedNumber value={attributeNumber} />
+                          <AnimatedNumber value={geo.rating} />
                         </text>
                       </motion.g>
                     ) : null}
@@ -235,4 +191,4 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
   );
 };
 
-export default AltChart;
+export default RatingsChart;

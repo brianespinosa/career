@@ -13,11 +13,12 @@ import type { Metadata } from 'next';
 
 import HeaderControls from '@/components/HeaderControls';
 import RatingsProvider from '@/hooks/RatingsProvider';
+import { SITE_TITLE } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Career Ladder',
-    default: 'Career Ladder',
+    template: `%s | ${SITE_TITLE}`,
+    default: SITE_TITLE,
   },
   metadataBase: new URL('https://career.bje.co/'),
 };
@@ -45,7 +46,7 @@ export default function RootLayout({
               <header>
                 <Flex align='center'>
                   <Heading as='h1' size='7' my='4' trim='both'>
-                    Career Ladder
+                    {SITE_TITLE}
                   </Heading>
                   <Flex ml='auto' gap='2'>
                     <HeaderControls />

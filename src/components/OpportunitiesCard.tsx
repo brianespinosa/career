@@ -54,7 +54,7 @@ const OpportunitiesCard = ({ attributeValues }: OpportunitiesCardProps) => {
             Opportunities
           </Heading>
           <Flex direction='column' gap='4' p='0' m='0' asChild>
-            <ul>
+            <ul className='list-none'>
               <AnimatePresence>
                 {visible.map(({ key, name, color, rating }) => (
                   <motion.li

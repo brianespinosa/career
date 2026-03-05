@@ -1,7 +1,7 @@
 'use client';
 
 import { Select } from '@radix-ui/themes';
-import useRatingParam from '@/hooks/useRatingParam';
+import useRatingParam, { type RatingKey } from '@/hooks/useRatingParam';
 
 interface RatingSelectProps {
   attributeParam: string;
@@ -11,7 +11,11 @@ const RatingSelect = ({ attributeParam }: RatingSelectProps) => {
   const [rating, setRating, RATINGS] = useRatingParam(attributeParam);
 
   return (
-    <Select.Root size='2' value={rating ?? undefined} onValueChange={setRating}>
+    <Select.Root
+      size='2'
+      value={rating ?? undefined}
+      onValueChange={(v) => setRating(v as RatingKey)}
+    >
       <Select.Trigger
         placeholder='Pick one'
         variant={rating ? 'soft' : 'surface'}

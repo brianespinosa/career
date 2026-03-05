@@ -1,11 +1,5 @@
-import type { Metadata } from 'next';
-
-import CareerThemes from '@/components/CareerThemes';
-
-export const metadata: Metadata = {
-  title: 'Career Ladder',
-};
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return <CareerThemes />;
+  redirect('/P1');
 }

@@ -1,6 +1,8 @@
 'use client';
 
-import { useQueryState } from 'nuqs';
+import { useContext } from 'react';
+
+import { RatingsContext } from '@/hooks/RatingsProvider';
 
 export const RATINGS = {
   '1': 'Never',
@@ -13,15 +15,14 @@ export type RatingKey = keyof typeof RATINGS;
 
 export default function useRatingParam(
   attributeParam: string,
-): [RatingKey | null, (value: string) => void, typeof RATINGS] {
-  const [rating, setRating] = useQueryState(attributeParam, {
-    // defaultValue: '',
-    clearOnDefault: false,
-  });
+): [RatingKey | null, (value: RatingKey) => void, typeof RATINGS] {
+  const { ratings, setRating } = useContext(RatingsContext);
+  const value = ratings[attributeParam];
+  const ratingKey = value ? (value.toString() as RatingKey) : null;
 
   return [
-    rating as RatingKey | null,
-    setRating as (value: string) => void,
+    ratingKey,
+    (v: RatingKey) => setRating(attributeParam, Number(v)),
     RATINGS,
   ];
 }

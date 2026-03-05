@@ -13,8 +13,8 @@ import {
   useMotionValue,
   useMotionValueEvent,
 } from 'motion/react';
-import { useSearchParams } from 'next/navigation';
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Fragment, useContext, useEffect, useMemo, useState } from 'react';
+import { RatingsContext } from '@/hooks/RatingsProvider';
 import { ratingAppearAnimation } from '@/lib/animations';
 import { scrollToAttribute } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';
@@ -61,7 +61,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
     setIsClient(true);
   }, []);
 
-  const searchParams = useSearchParams();
+  const { ratings } = useContext(RatingsContext);
   const {
     tooltipData,
     tooltipLeft,
@@ -81,7 +81,7 @@ const AltChart = ({ themeGroups }: AltChartProps) => {
     .map((attribute) => {
       return {
         ...attribute,
-        value: Number(searchParams.get(attribute.param)) || 0,
+        value: ratings[attribute.param] ?? 0,
       };
     });
 

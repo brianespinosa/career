@@ -1,9 +1,7 @@
 import './global.scss';
 
-import { GitHubLogoIcon, ResetIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import {
-  AlertDialog,
-  Button,
   Container,
   Flex,
   Heading,
@@ -12,10 +10,10 @@ import {
   Tooltip,
 } from '@radix-ui/themes';
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
-import { Suspense } from 'react';
+
 import CareerSelect from '@/components/CareerSelect';
+import ResetButton from '@/components/ResetButton';
+import RatingsProvider from '@/hooks/RatingsProvider';
 
 export const metadata: Metadata = {
   title: {
@@ -25,23 +23,25 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://career.bje.co/'),
 };
 
+interface Props {
+  children: React.ReactNode;
+}
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<Props>): React.ReactNode {
   return (
     <html lang='en' suppressHydrationWarning>
       <meta name='robots' content='noindex,nofollow' />
-      <NuqsAdapter>
-        <Theme
-          appearance='dark'
-          accentColor='pink'
-          grayColor='slate'
-          radius='small'
-          asChild
-        >
-          <body>
+      <Theme
+        appearance='dark'
+        accentColor='pink'
+        grayColor='slate'
+        radius='small'
+        asChild
+      >
+        <body>
+          <RatingsProvider>
             <Container asChild my='6' mx='4'>
               <header>
                 <Flex align='center'>
@@ -49,39 +49,8 @@ export default function RootLayout({
                     Career Ladder
                   </Heading>
                   <Flex ml='auto' gap='2'>
-                    <Suspense>
-                      <CareerSelect />
-                    </Suspense>
-                    <AlertDialog.Root>
-                      <Tooltip content='Reset'>
-                        <AlertDialog.Trigger>
-                          <IconButton variant='surface'>
-                            <ResetIcon />
-                          </IconButton>
-                        </AlertDialog.Trigger>
-                      </Tooltip>
-                      <AlertDialog.Content maxWidth='450px'>
-                        <AlertDialog.Title>Reset Ratings</AlertDialog.Title>
-                        <AlertDialog.Description size='2'>
-                          Are you sure? Your ratings and career level will be
-                          removed but your current career rating will remain in
-                          browser history.
-                        </AlertDialog.Description>
-
-                        <Flex gap='3' mt='4' justify='end'>
-                          <AlertDialog.Cancel>
-                            <Button variant='surface' color='gray'>
-                              Cancel
-                            </Button>
-                          </AlertDialog.Cancel>
-                          <AlertDialog.Action>
-                            <Button asChild>
-                              <Link href='/'>Reset</Link>
-                            </Button>
-                          </AlertDialog.Action>
-                        </Flex>
-                      </AlertDialog.Content>
-                    </AlertDialog.Root>
+                    <CareerSelect />
+                    <ResetButton />
                     <Tooltip content='GitHub'>
                       <IconButton variant='surface' asChild>
                         <a href='https://github.com/brianespinosa/career'>
@@ -96,9 +65,9 @@ export default function RootLayout({
             <Container asChild my='6' mx='4'>
               <main>{children}</main>
             </Container>
-          </body>
-        </Theme>
-      </NuqsAdapter>
+          </RatingsProvider>
+        </body>
+      </Theme>
     </html>
   );
 }

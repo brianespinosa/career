@@ -2,18 +2,22 @@
 
 ## Architecture
 
-State lives entirely in URL query params via `nuqs`. No other state management.
+State is path-based. No external state library.
 
-- `useCareerParam` — manages the `lvl` param (selected career level)
-- `useRatingParam` — manages per-attribute rating params (e.g. `acc`, `ctd`)
+- URL scheme: `/` → redirects to `/P1`; `/{level}` → level, no ratings; `/{level}/{encoded}` → level with base-36 encoded ratings
+- `RatingsProvider` (`src/hooks/RatingsProvider.tsx`) — React context; initializes from URL synchronously on first render (lazy `useState` initializer, not `useEffect`), re-syncs on navigation; `setRating` calls `window.history.replaceState` (no remount)
+- `useCareerParam` — reads `useParams().level`; `setLevel` calls `router.push`
+- `useRatingParam` — reads/writes via `RatingsContext`
+- `src/lib/ratingsEncoding.ts` — pure encode/decode utilities (base-5 with sentinel → base-36)
 
-Data flows: URL params → hooks → components → visx charts.
+Data flows: URL path → RatingsProvider context → hooks → components → visx charts.
 
 ## Component Tree
 
 ```
-layout.tsx         — header, CareerSelect, reset dialog, GitHub link
-└── page.tsx       — renders CareerThemes
+layout.tsx         — header, CareerSelect, ResetButton, GitHub link; wraps body in RatingsProvider
+├── [level]/page.tsx           — renders CareerThemes
+└── [level]/[encoded]/page.tsx — renders CareerThemes
     └── CareerThemes — main orchestrator; reads level, groups attributes by theme
         ├── AltChart          — radial bar chart; arc click scrolls to attribute heading
         ├── OpportunitiesCard — lists low-rated attributes; hidden until ratings are made

@@ -5,7 +5,7 @@ import EM from '@/data/em.json';
 import IC from '@/data/ic.json';
 import useCareerParam from '@/hooks/useCareerParam';
 import { LEVELS } from '@/lib/levels';
-import type { LevelDetails, LevelRecord } from '@/types/levels';
+import type { LevelDetails, LevelKeys, LevelRecord } from '@/types/levels';
 
 const getLabel = ({ name, key }: LevelDetails) => `[${key}] ${name}`;
 
@@ -22,7 +22,10 @@ const CareerSelect = () => {
   const selectedLevelObj = LEVELS[career];
 
   return (
-    <Select.Root value={career} onValueChange={setCareer}>
+    <Select.Root
+      value={career}
+      onValueChange={(v) => setCareer(v as LevelKeys)}
+    >
       <Select.Trigger variant='soft'>
         {getLabel(selectedLevelObj)}
       </Select.Trigger>

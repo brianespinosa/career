@@ -11,8 +11,7 @@ import {
 } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 
-import CareerSelect from '@/components/CareerSelect';
-import ResetButton from '@/components/ResetButton';
+import HeaderControls from '@/components/HeaderControls';
 import RatingsProvider from '@/hooks/RatingsProvider';
 
 export const metadata: Metadata = {
@@ -49,8 +48,7 @@ export default function RootLayout({
                     Career Ladder
                   </Heading>
                   <Flex ml='auto' gap='2'>
-                    <CareerSelect />
-                    <ResetButton />
+                    <HeaderControls />
                     <Tooltip content='GitHub'>
                       <IconButton variant='surface' asChild>
                         <a href='https://github.com/brianespinosa/career'>

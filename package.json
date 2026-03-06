@@ -1,6 +1,7 @@
 {
   "name": "career",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
     "build": "next build",
     "check": "biome check --write .",
@@ -10,6 +11,21 @@
     "ic": "mlr --c2j --jlistwrap cat data/ic.csv > data/ic.json",
     "start": "next start",
     "typecheck": "tsc --noEmit"
+  },
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      "Chrome >= 90",
+      "Edge >= 90",
+      "Firefox >= 90",
+      "Safari >= 15",
+      "iOS >= 15",
+      "not dead"
+    ]
   },
   "dependencies": {
     "@radix-ui/colors": "3.0.0",
@@ -37,21 +53,5 @@
     "typescript": "5.9.3",
     "vercel": "50.25.4"
   },
-  "private": true,
-  "packageManager": "yarn@4.13.0",
-  "browserslist": {
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ],
-    "production": [
-      "Chrome >= 90",
-      "Edge >= 90",
-      "Firefox >= 90",
-      "Safari >= 15",
-      "iOS >= 15",
-      "not dead"
-    ]
-  }
+  "packageManager": "yarn@4.13.0"
 }

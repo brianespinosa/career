@@ -17,7 +17,10 @@ const CareerAttribute = ({ attribute, description }: CareerAttributeProps) => {
   return (
     <Flex gap='4' py='3' align='center' justify='start'>
       <Flex minWidth='7rem' justify='center'>
-        <RatingSelect attributeParam={param} />
+        <RatingSelect
+          attributeParam={param}
+          attributeId={toAttributeId(name)}
+        />
       </Flex>
       <Box>
         <Heading as='h4' size='4' mb='2' id={toAttributeId(name)}>

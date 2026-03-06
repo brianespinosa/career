@@ -40,6 +40,6 @@ This project uses Radix for component styling. There is almost never a scenario 
 
 This project uses Ariakit for accessibility. Evaluate all changes and additions against current accessibility guidelines. Always use semantically correct HTML tags.
 
-## SSR Note
+## SSR / Code Splitting Note
 
-`RatingsChart` uses `useState(false)` + `useEffect(() => setIsClient(true))` to defer rendering until after hydration. This avoids visx/SVG SSR mismatches. Do not remove this pattern without testing hydration.
+`RatingsChart` and `OpportunitiesCard` are loaded via `next/dynamic` with `ssr: false` in `CareerThemes.tsx`. This prevents their heavy dependencies (visx, motion/react) from being included in the initial bundle and eliminates visx/SVG SSR mismatches entirely. The old `isClient` guard (`useState(false)` + `useEffect`) has been removed — `next/dynamic` with `ssr: false` is the correct approach for client-only components with large dependency footprints. See ADR-007.

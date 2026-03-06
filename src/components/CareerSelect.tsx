@@ -26,7 +26,7 @@ const CareerSelect = () => {
       value={career}
       onValueChange={(v) => setCareer(v as LevelKeys)}
     >
-      <Select.Trigger variant='soft'>
+      <Select.Trigger variant='soft' aria-label='Career level'>
         {getLabel(selectedLevelObj)}
       </Select.Trigger>
       <Select.Content position='popper'>

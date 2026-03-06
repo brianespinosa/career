@@ -18,13 +18,16 @@ The dominant chunk was the Radix UI Themes stylesheet, loaded via `@import url('
 
 Replace the monolithic `@radix-ui/themes/styles.css` import with targeted imports from `@radix-ui/themes/src/components/` for only the components this project actually uses:
 
-- `tokens.css` — CSS variables (required for all theming)
-- `reset.css`, `animations.css` — base styles
-- `layout.css` — covers `Box`, `Flex`, `Grid`, `Section`, `Container`
-- `skeleton.css` — must precede other components (lower border-radius specificity)
-- `text.css` — must precede other components (commonly extended)
-- Individual files for: `AlertDialog`, `Button`, `Card`, `DataList`, `Heading`, `IconButton`, `Link`, `Select`, `Separator`, `Tooltip`
+- `tokens.css` (dist) — CSS variables for theming
+- `src/components/reset.css`, `src/components/animations.css` — base styles
+- `src/components/layout.css` — covers `Box`, `Flex`, `Grid`, `Section`, `Container`
+- `src/components/skeleton.css` — must precede other components (lower border-radius specificity)
+- `src/components/text.css` — must precede other components (commonly extended)
+- Individual `src/components/` files for: `AlertDialog`, `Button`, `Card`, `DataList`, `Heading`, `IconButton`, `Link`, `Select`, `Separator`, `Tooltip`
+- `utilities.css` (dist) — all responsive prop utility classes (`.rt-r-m-*`, `.rt-r-p-*`, `.rt-r-display-*`, etc.)
 - Inline replication of the root `Theme` stacking-context rule from `src/components/index.css`
+
+`utilities.css` must use the pre-built dist file. The source equivalent (`src/styles/utilities/`) uses `@custom-media` syntax that requires a PostCSS plugin and cannot be imported directly by Next.js. Since `utilities.css` covers all Radix components equally, there is no per-component targeting available for this layer.
 
 **Approaches considered and rejected:**
 
@@ -32,7 +35,7 @@ Replace the monolithic `@radix-ui/themes/styles.css` import with targeted import
 - **Non-blocking load (preload/print trick)** — defers parsing but the full file still downloads; doesn't reduce transfer size.
 - **Tailwind migration** — disproportionate scope; ruled out in ADR-005.
 
-**Result:** Total uncompressed CSS reduced from 686 KB to 208 KB (~70% reduction).
+**Result:** Total uncompressed CSS reduced from 686 KB to 386 KB (~44% reduction). The `utilities.css` layer cannot be targeted per-component and contributes the bulk of the remaining CSS.
 
 ## Consequences
 

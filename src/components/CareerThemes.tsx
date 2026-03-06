@@ -8,9 +8,11 @@ import {
   Grid,
   Heading,
   Separator,
+  Skeleton,
   Theme,
   type ThemeProps,
 } from '@radix-ui/themes';
+import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import ATTRIBUTES from '@/data/attributes.json';
 import THEMES from '@/data/themes.json';
@@ -18,9 +20,12 @@ import useCareerParam from '@/hooks/useCareerParam';
 import { LEVELS } from '@/lib/levels';
 import type { AttributeKeys, AttributeValues } from '@/types/attributes';
 import CareerAttribute from './CareerAttribute';
-import OpportunitiesCard from './OpportunitiesCard';
 import PropertyList from './PropertyList';
-import RatingsChart from './RatingsChart';
+
+const RatingsChart = dynamic(() => import('./RatingsChart'), { ssr: false });
+const OpportunitiesCard = dynamic(() => import('./OpportunitiesCard'), {
+  ssr: false,
+});
 
 const CareerThemes = () => {
   const [career] = useCareerParam();
@@ -50,11 +55,19 @@ const CareerThemes = () => {
     >
       <Flex id='role-visualization' direction='column' gap='4'>
         <Card>
-          <AspectRatio>
-            <RatingsChart
-              themeGroups={themeGroups as Record<string, AttributeValues[]>}
-            />
-          </AspectRatio>
+          <Suspense
+            fallback={
+              <AspectRatio>
+                <Skeleton />
+              </AspectRatio>
+            }
+          >
+            <AspectRatio>
+              <RatingsChart
+                themeGroups={themeGroups as Record<string, AttributeValues[]>}
+              />
+            </AspectRatio>
+          </Suspense>
           <Heading as='h2' mt='4'>
             {name}
           </Heading>

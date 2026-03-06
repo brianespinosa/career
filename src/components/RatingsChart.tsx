@@ -49,12 +49,6 @@ interface RatingsChartProps {
 }
 
 const RatingsChart = ({ themeGroups }: RatingsChartProps) => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   const { ratings } = useContext(RatingsContext);
   const {
     tooltipData,
@@ -81,113 +75,111 @@ const RatingsChart = ({ themeGroups }: RatingsChartProps) => {
   );
 
   return (
-    isClient && (
-      <>
-        <ScaleSVG width={CHART_SIZE} height={CHART_SIZE}>
-          <Group top={CHART_SIZE / 2} left={CHART_SIZE / 2}>
-            {geometries.map((geo) => {
-              return (
-                <Fragment key={`bar-${geo.key}`}>
-                  <Arc
-                    cornerRadius={1}
-                    startAngle={geo.startAngle}
-                    endAngle={geo.endAngle}
-                    outerRadius={geo.outerRadius}
-                    innerRadius={geo.innerRadius}
-                    fill={`var(--${geo.colorName}-6)`}
-                    onClick={() => scrollToAttribute(geo.name)}
-                    onPointerMove={(event) => {
-                      const ownerSVGElement = (event.target as SVGElement)
-                        .ownerSVGElement;
-                      if (!ownerSVGElement) {
-                        return; // Exit early if ownerSVGElement is null
-                      }
-                      const coords = localPoint(ownerSVGElement, event);
-                      showTooltip({
-                        tooltipData: geo.name,
-                        tooltipTop: (coords?.y ?? 0) + 10,
-                        tooltipLeft: (coords?.x ?? 0) + 10,
-                      });
-                    }}
-                    onMouseOut={hideTooltip}
-                  >
-                    {({ path }) => {
-                      const d = path('color') || '';
-                      return (
-                        <AnimatePresence>
-                          {geo.rating ? (
-                            <motion.path
-                              fill={`var(--${geo.colorName}-6)`}
-                              style={{ cursor: 'pointer' }}
-                              onClick={() => scrollToAttribute(geo.name)}
-                              whileHover={{ filter: 'brightness(1.3)' }}
-                              whileTap={{ filter: 'brightness(0.85)' }}
-                              initial={{ ...ratingAppearAnimation.initial, d }}
-                              animate={{
-                                ...ratingAppearAnimation.animate,
-                                d,
-                                filter: 'brightness(1)',
-                              }}
-                              exit={{ ...ratingAppearAnimation.exit, d }}
-                            />
-                          ) : null}
-                        </AnimatePresence>
-                      );
-                    }}
-                  </Arc>
-                  <AnimatePresence>
-                    {geo.rating ? (
-                      <motion.g
-                        key={`text-${geo.key}`}
-                        style={{
-                          pointerEvents: 'none',
-                          rotate: toDegrees(geo.midAngle),
-                        }}
-                        initial={{
-                          ...ratingAppearAnimation.initial,
-                          x: geo.textX,
-                          y: geo.textY,
-                        }}
-                        animate={{
-                          ...ratingAppearAnimation.animate,
-                          x: geo.textX,
-                          y: geo.textY,
-                        }}
-                        exit={{
-                          ...ratingAppearAnimation.exit,
-                          x: geo.textX,
-                          y: geo.textY,
-                        }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
+    <>
+      <ScaleSVG width={CHART_SIZE} height={CHART_SIZE}>
+        <Group top={CHART_SIZE / 2} left={CHART_SIZE / 2}>
+          {geometries.map((geo) => {
+            return (
+              <Fragment key={`bar-${geo.key}`}>
+                <Arc
+                  cornerRadius={1}
+                  startAngle={geo.startAngle}
+                  endAngle={geo.endAngle}
+                  outerRadius={geo.outerRadius}
+                  innerRadius={geo.innerRadius}
+                  fill={`var(--${geo.colorName}-6)`}
+                  onClick={() => scrollToAttribute(geo.name)}
+                  onPointerMove={(event) => {
+                    const ownerSVGElement = (event.target as SVGElement)
+                      .ownerSVGElement;
+                    if (!ownerSVGElement) {
+                      return; // Exit early if ownerSVGElement is null
+                    }
+                    const coords = localPoint(ownerSVGElement, event);
+                    showTooltip({
+                      tooltipData: geo.name,
+                      tooltipTop: (coords?.y ?? 0) + 10,
+                      tooltipLeft: (coords?.x ?? 0) + 10,
+                    });
+                  }}
+                  onMouseOut={hideTooltip}
+                >
+                  {({ path }) => {
+                    const d = path('color') || '';
+                    return (
+                      <AnimatePresence>
+                        {geo.rating ? (
+                          <motion.path
+                            fill={`var(--${geo.colorName}-6)`}
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => scrollToAttribute(geo.name)}
+                            whileHover={{ filter: 'brightness(1.3)' }}
+                            whileTap={{ filter: 'brightness(0.85)' }}
+                            initial={{ ...ratingAppearAnimation.initial, d }}
+                            animate={{
+                              ...ratingAppearAnimation.animate,
+                              d,
+                              filter: 'brightness(1)',
+                            }}
+                            exit={{ ...ratingAppearAnimation.exit, d }}
+                          />
+                        ) : null}
+                      </AnimatePresence>
+                    );
+                  }}
+                </Arc>
+                <AnimatePresence>
+                  {geo.rating ? (
+                    <motion.g
+                      key={`text-${geo.key}`}
+                      style={{
+                        pointerEvents: 'none',
+                        rotate: toDegrees(geo.midAngle),
+                      }}
+                      initial={{
+                        ...ratingAppearAnimation.initial,
+                        x: geo.textX,
+                        y: geo.textY,
+                      }}
+                      animate={{
+                        ...ratingAppearAnimation.animate,
+                        x: geo.textX,
+                        y: geo.textY,
+                      }}
+                      exit={{
+                        ...ratingAppearAnimation.exit,
+                        x: geo.textX,
+                        y: geo.textY,
+                      }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                    >
+                      <text
+                        dominantBaseline='central'
+                        textAnchor='middle'
+                        fontSize='5'
+                        fontWeight='bold'
+                        fill={TEXT_COLOR}
                       >
-                        <text
-                          dominantBaseline='central'
-                          textAnchor='middle'
-                          fontSize='5'
-                          fontWeight='bold'
-                          fill={TEXT_COLOR}
-                        >
-                          <AnimatedNumber value={geo.rating} />
-                        </text>
-                      </motion.g>
-                    ) : null}
-                  </AnimatePresence>
-                </Fragment>
-              );
-            })}
-          </Group>
-        </ScaleSVG>
-        {tooltipOpen && tooltipData && (
-          <TooltipWithBounds
-            top={tooltipTop}
-            left={tooltipLeft}
-            style={tooltipStyles}
-          >
-            {String(tooltipData)}
-          </TooltipWithBounds>
-        )}
-      </>
-    )
+                        <AnimatedNumber value={geo.rating} />
+                      </text>
+                    </motion.g>
+                  ) : null}
+                </AnimatePresence>
+              </Fragment>
+            );
+          })}
+        </Group>
+      </ScaleSVG>
+      {tooltipOpen && tooltipData && (
+        <TooltipWithBounds
+          top={tooltipTop}
+          left={tooltipLeft}
+          style={tooltipStyles}
+        >
+          {String(tooltipData)}
+        </TooltipWithBounds>
+      )}
+    </>
   );
 };
 

@@ -51,7 +51,7 @@ export default function RootLayout({
                   <Flex ml='auto' gap='2'>
                     <HeaderControls />
                     <Tooltip content='GitHub'>
-                      <IconButton variant='surface' asChild>
+                      <IconButton variant='surface' asChild aria-label='GitHub'>
                         <a href='https://github.com/brianespinosa/career'>
                           <GitHubLogoIcon />
                         </a>

@@ -5,9 +5,10 @@ import useRatingParam, { type RatingKey } from '@/hooks/useRatingParam';
 
 interface RatingSelectProps {
   attributeParam: string;
+  attributeId: string;
 }
 
-const RatingSelect = ({ attributeParam }: RatingSelectProps) => {
+const RatingSelect = ({ attributeParam, attributeId }: RatingSelectProps) => {
   const [rating, setRating, RATINGS] = useRatingParam(attributeParam);
 
   return (
@@ -19,6 +20,7 @@ const RatingSelect = ({ attributeParam }: RatingSelectProps) => {
       <Select.Trigger
         placeholder='Pick one'
         variant={rating ? 'soft' : 'surface'}
+        aria-labelledby={attributeId}
       >
         {(rating && RATINGS[rating]) ?? 'Pick one'}
       </Select.Trigger>

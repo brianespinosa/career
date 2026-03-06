@@ -33,7 +33,12 @@
 @import url('@radix-ui/themes/src/components/separator.css');
 @import url('@radix-ui/themes/src/components/tooltip.css');
 
-// 7. Root Theme stacking context (replaces the rule at the bottom of
+// 7. Responsive utility classes for all Radix props (m, p, display, align, gap, etc.)
+//    Must use the pre-built dist file — src/styles/utilities/ uses @custom-media syntax
+//    that requires PostCSS and cannot be imported directly by Next.js.
+@import url('@radix-ui/themes/utilities.css');
+
+// 8. Root Theme stacking context (replaces the rule at the bottom of
 //    @radix-ui/themes/src/components/index.css, which is not imported directly)
 .radix-themes:where([data-is-root-theme='true']) {
   position: relative;

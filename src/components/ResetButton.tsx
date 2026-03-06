@@ -9,11 +9,15 @@ import {
   Tooltip,
 } from '@radix-ui/themes';
 import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import { RatingsContext } from '@/hooks/RatingsProvider';
 import useCareerParam from '@/hooks/useCareerParam';
 
 export default function ResetButton(): React.ReactNode {
   const [level] = useCareerParam();
+  const { ratings } = useContext(RatingsContext);
   const router = useRouter();
+  const disabled = Object.keys(ratings).length === 0;
 
   async function handleReset(): Promise<void> {
     try {
@@ -26,8 +30,8 @@ export default function ResetButton(): React.ReactNode {
   return (
     <AlertDialog.Root>
       <Tooltip content='Reset'>
-        <AlertDialog.Trigger>
-          <IconButton variant='surface' aria-label='Reset'>
+        <AlertDialog.Trigger disabled={disabled}>
+          <IconButton variant='surface' aria-label='Reset' disabled={disabled}>
             <ResetIcon />
           </IconButton>
         </AlertDialog.Trigger>

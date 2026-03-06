@@ -9,12 +9,16 @@ import type { LevelKeys } from '@/types/levels';
 interface RatingsContextType {
   ratings: Record<string, number>;
   setRating: (param: string, value: number) => void;
+  clearRatings: () => void;
 }
 
 export const RatingsContext = createContext<RatingsContextType>({
   ratings: {},
   setRating: () => {
     throw new Error('setRating called outside RatingsProvider');
+  },
+  clearRatings: () => {
+    throw new Error('clearRatings called outside RatingsProvider');
   },
 });
 
@@ -100,8 +104,22 @@ export default function RatingsProvider({ children }: Props): React.ReactNode {
     setRatings(next);
   }
 
+  function clearRatings(): void {
+    const { level } = parsePathname(window.location.pathname);
+    try {
+      window.history.replaceState(
+        window.history.state,
+        '',
+        level ? `/${level}` : '/',
+      );
+    } catch (err) {
+      console.error('[RatingsProvider] replaceState failed during reset.', err);
+    }
+    setRatings({});
+  }
+
   return (
-    <RatingsContext.Provider value={{ ratings, setRating }}>
+    <RatingsContext.Provider value={{ ratings, setRating, clearRatings }}>
       {children}
     </RatingsContext.Provider>
   );

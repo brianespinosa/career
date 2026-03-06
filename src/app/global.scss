@@ -1,5 +1,49 @@
 @import url('normalize.css');
-@import url('@radix-ui/themes/styles.css');
+
+// Targeted Radix UI Themes imports — only components used in this project.
+// Replaces the monolithic @radix-ui/themes/styles.css to eliminate render-blocking CSS.
+// See ADR-008. Trade-off: these are src/ files, not version-contracted dist/ files.
+// If Radix breaks these in a future version, migrate to Radix primitives + custom styles.
+
+// 1. Design tokens (CSS variables — required for all theming)
+@import url('@radix-ui/themes/tokens.css');
+
+// 2. Base styles (order matters — reset and animations before components)
+@import url('@radix-ui/themes/src/components/reset.css');
+@import url('@radix-ui/themes/src/components/animations.css');
+
+// 3. Layout components (box, flex, grid, section, container)
+@import url('@radix-ui/themes/src/components/layout.css');
+
+// 4. Skeleton before other components (lower border-radius specificity required)
+@import url('@radix-ui/themes/src/components/skeleton.css');
+
+// 5. Text before other components (commonly extended by other component styles)
+@import url('@radix-ui/themes/src/components/text.css');
+
+// 6. Remaining components used in this project (alphabetical)
+@import url('@radix-ui/themes/src/components/alert-dialog.css');
+@import url('@radix-ui/themes/src/components/button.css');
+@import url('@radix-ui/themes/src/components/card.css');
+@import url('@radix-ui/themes/src/components/data-list.css');
+@import url('@radix-ui/themes/src/components/heading.css');
+@import url('@radix-ui/themes/src/components/icon-button.css');
+@import url('@radix-ui/themes/src/components/link.css');
+@import url('@radix-ui/themes/src/components/select.css');
+@import url('@radix-ui/themes/src/components/separator.css');
+@import url('@radix-ui/themes/src/components/tooltip.css');
+
+// 7. Root Theme stacking context (replaces the rule at the bottom of
+//    @radix-ui/themes/src/components/index.css, which is not imported directly)
+.radix-themes:where([data-is-root-theme='true']) {
+  position: relative;
+  z-index: 0;
+  min-height: 100vh;
+
+  @supports (min-height: 100dvh) {
+    min-height: 100dvh;
+  }
+}
 
 .list-none {
   list-style: none;

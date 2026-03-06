@@ -33,3 +33,4 @@ We use Radix UI Themes (`@radix-ui/themes`) as the primary styling system:
 - Radix component API changes are a migration concern; pin the major version in `package.json`
 - The Satori constraint (OG image rendering cannot use CSS vars) means any new colors used in OG layouts must be sourced from `@radix-ui/colors` directly, not from CSS custom properties
 - `style` props should remain absent from application components; reaching for a `style` prop is a signal to look for the equivalent Radix prop first
+- The monolithic `styles.css` import was replaced with targeted per-component imports to eliminate render-blocking CSS — see ADR-008

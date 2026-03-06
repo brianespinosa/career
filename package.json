@@ -3,14 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build": "next build",
+    "check": "biome check --write .",
     "data-types": "./json-d-ts.sh",
+    "dev": "next dev",
     "em": "mlr --c2j --jlistwrap cat data/em.csv > data/em.json",
     "ic": "mlr --c2j --jlistwrap cat data/ic.csv > data/ic.json",
-    "dev": "next dev",
-    "build": "next build",
     "start": "next start",
-    "check": "biome check --write .",
     "typecheck": "tsc --noEmit"
+  },
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      "Chrome >= 90",
+      "Edge >= 90",
+      "Firefox >= 90",
+      "Safari >= 15",
+      "iOS >= 15",
+      "not dead"
+    ]
   },
   "dependencies": {
     "@radix-ui/colors": "3.0.0",

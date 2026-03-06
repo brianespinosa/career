@@ -27,7 +27,7 @@ export default function ResetButton(): React.ReactNode {
     <AlertDialog.Root>
       <Tooltip content='Reset'>
         <AlertDialog.Trigger>
-          <IconButton variant='surface'>
+          <IconButton variant='surface' aria-label='Reset'>
             <ResetIcon />
           </IconButton>
         </AlertDialog.Trigger>

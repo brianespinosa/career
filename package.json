@@ -1,15 +1,14 @@
 {
   "name": "career",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
+    "build": "next build",
+    "check": "biome check --write .",
     "data-types": "./json-d-ts.sh",
+    "dev": "next dev",
     "em": "mlr --c2j --jlistwrap cat data/em.csv > data/em.json",
     "ic": "mlr --c2j --jlistwrap cat data/ic.csv > data/ic.json",
-    "dev": "next dev",
-    "build": "next build",
     "start": "next start",
-    "check": "biome check --write .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -38,8 +37,14 @@
     "typescript": "5.9.3",
     "vercel": "50.25.4"
   },
+  "private": true,
   "packageManager": "yarn@4.13.0",
   "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
     "production": [
       "Chrome >= 90",
       "Edge >= 90",
@@ -47,11 +52,6 @@
       "Safari >= 15",
       "iOS >= 15",
       "not dead"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
     ]
   }
 }

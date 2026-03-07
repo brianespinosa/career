@@ -61,7 +61,13 @@ jobs:
     if: github.event_name == 'pull_request'
     strategy:
       matrix:
-        path: ['/', '/P1', '/P1/3ckmgrhn']
+        include:
+          - path: /
+            name: root
+          - path: /P1
+            name: P1
+          - path: /P1/3ckmgrhn
+            name: P1-3ckmgrhn
     steps:
       - uses: actions/checkout@v6.0.2
       - uses: treosh/lighthouse-ci-action@12.6.1
@@ -69,4 +75,5 @@ jobs:
           urls: "${{ needs.build.outputs.url }}${{ matrix.path }}?x-vercel-protection-bypass=${{ secrets.VERCEL_BYPASS_SECRET }}"
           runs: 2
           uploadArtifacts: true
+          artifactName: "lighthouse-${{ matrix.name }}"
           configPath: ./lighthouserc.json

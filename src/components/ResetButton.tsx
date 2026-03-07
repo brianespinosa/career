@@ -8,26 +8,18 @@ import {
   IconButton,
   Tooltip,
 } from '@radix-ui/themes';
-import { useRouter } from 'next/navigation';
-import useCareerParam from '@/hooks/useCareerParam';
+import { useContext } from 'react';
+import { RatingsContext } from '@/hooks/RatingsProvider';
 
 export default function ResetButton(): React.ReactNode {
-  const [level] = useCareerParam();
-  const router = useRouter();
-
-  async function handleReset(): Promise<void> {
-    try {
-      await router.replace(`/${level}`);
-    } catch (err) {
-      console.error('[ResetButton] Navigation failed after reset.', err);
-    }
-  }
+  const { ratings, clearRatings } = useContext(RatingsContext);
+  const disabled = Object.keys(ratings).length === 0;
 
   return (
     <AlertDialog.Root>
       <Tooltip content='Reset'>
-        <AlertDialog.Trigger>
-          <IconButton variant='surface' aria-label='Reset'>
+        <AlertDialog.Trigger disabled={disabled}>
+          <IconButton variant='surface' aria-label='Reset' disabled={disabled}>
             <ResetIcon />
           </IconButton>
         </AlertDialog.Trigger>
@@ -45,7 +37,7 @@ export default function ResetButton(): React.ReactNode {
               Cancel
             </Button>
           </AlertDialog.Cancel>
-          <AlertDialog.Action onClick={handleReset}>
+          <AlertDialog.Action onClick={clearRatings}>
             <Button>Reset</Button>
           </AlertDialog.Action>
         </Flex>

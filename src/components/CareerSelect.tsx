@@ -19,16 +19,16 @@ const renderOptions = (obj: LevelRecord) =>
 const CareerSelect = () => {
   const [career, setCareer] = useCareerParam();
 
-  const selectedLevelObj = LEVELS[career];
-
   return (
     <Select.Root
-      value={career}
+      value={career ?? undefined}
       onValueChange={(v) => setCareer(v as LevelKeys)}
     >
-      <Select.Trigger variant='soft' aria-label='Career level'>
-        {getLabel(selectedLevelObj)}
-      </Select.Trigger>
+      <Select.Trigger
+        variant='soft'
+        aria-label='Career level'
+        placeholder='Select role...'
+      />
       <Select.Content position='popper'>
         <Select.Group>
           <Select.Label>IC</Select.Label>

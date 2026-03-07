@@ -1,6 +1,11 @@
 // Known stable encoded URL used in Lighthouse CI and Playwright e2e tests.
 // Decoded via: parseInt('3ckmgrhn', 36).toString(5).slice(1) = '3300010000000030'
 // P1 attribute params in order: acc, ctd, ddp, ds, dm, dir, rslt, imp, comp, pi, pa, pln, req, rsk, inf, tbld
+//
+// WARNING: These constants are manually derived. Any change to
+// src/lib/ratingsEncoding.ts or the param order in data/attributes.json
+// requires regenerating P1_ENCODED and all constants below using the
+// updated decodeRatings function.
 export const P1_ENCODED = '3ckmgrhn';
 
 // Attributes with rating > 0 in the encoded URL above.

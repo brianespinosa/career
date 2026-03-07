@@ -25,6 +25,7 @@ test.describe('OpportunitiesCard', () => {
 
     await expect(app.opportunitiesTab).toBeVisible();
 
+    expect(P1_OPPORTUNITIES.length).toBeGreaterThan(0);
     for (const { name, ratingLabel } of P1_OPPORTUNITIES) {
       const link = page.getByRole('link', { name: new RegExp(name) });
       await expect(link).toBeVisible();

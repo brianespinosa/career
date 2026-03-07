@@ -14,7 +14,7 @@ Unit tests with mocks are insufficient for several key behaviors:
 - **Radix UI portals** — `Select.Content` and `AlertDialog.Content` mount outside the component tree; testing their behavior requires a real DOM.
 - **`history.replaceState`** — `setRating` and `clearRatings` update the URL without triggering a Next.js navigation; only real browser URL checks can verify this.
 
-Six frameworks were evaluated: Playwright, Cypress, Vitest browser mode, WebdriverIO, TestCafe, and Puppeteer.
+Six frameworks were evaluated. WebdriverIO, TestCafe, and Puppeteer were eliminated early: WebdriverIO adds significant configuration overhead with no meaningful advantage over Playwright for this use case; TestCafe is no longer actively maintained; Puppeteer lacks a built-in test runner and assertion library, requiring additional dependencies that Playwright bundles. The remaining three were evaluated in detail:
 
 | Criterion | Playwright | Cypress | Vitest browser mode |
 |---|---|---|---|

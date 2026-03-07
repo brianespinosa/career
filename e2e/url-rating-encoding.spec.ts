@@ -9,8 +9,9 @@ test.describe('url-based rating encoding', () => {
     const app = new AppPage(page);
     await page.goto(`/P1/${P1_ENCODED}`);
 
-    // OpportunitiesCard only appears after client hydration — use it as a
-    // hydration signal before asserting on rating values.
+    // OpportunitiesCard only mounts after the dynamic import resolves AND
+    // rated.length > 0 — waiting for it confirms both client hydration and
+    // correct URL decoding before asserting on individual rating values.
     await expect(app.opportunitiesTab).toBeVisible();
 
     await expect(
@@ -18,7 +19,26 @@ test.describe('url-based rating encoding', () => {
     ).toContainText(P1_ENCODED_RATINGS.acc.label);
 
     await expect(
+      page.getByRole('combobox', { name: P1_ENCODED_RATINGS.ctd.name }),
+    ).toContainText(P1_ENCODED_RATINGS.ctd.label);
+
+    await expect(
       page.getByRole('combobox', { name: P1_ENCODED_RATINGS.dir.name }),
     ).toContainText(P1_ENCODED_RATINGS.dir.label);
+
+    await expect(
+      page.getByRole('combobox', { name: P1_ENCODED_RATINGS.inf.name }),
+    ).toContainText(P1_ENCODED_RATINGS.inf.label);
+  });
+
+  test('selecting a rating updates the URL with an encoded segment', async ({
+    page,
+  }) => {
+    await page.goto('/P1');
+
+    await page.getByRole('combobox', { name: 'Accountability' }).click();
+    await page.getByRole('option', { name: 'Sometimes' }).click();
+
+    await expect(page).toHaveURL(/\/P1\/.+/);
   });
 });

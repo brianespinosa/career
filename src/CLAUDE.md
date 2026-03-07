@@ -21,7 +21,7 @@ layout.tsx         — header, CareerSelect, ResetButton, GitHub link; wraps bod
     └── CareerThemes — main orchestrator; reads level, groups attributes by theme
         ├── RatingsChart          — radial bar chart; arc click scrolls to attribute heading
         ├── OpportunitiesCard — two-tab card (Opportunities + Goal Prompt); hidden until ratings are made; receives levelKey/levelName from CareerThemes
-        │   └── SmartGoalsPrompt — read-only textarea with interpolated LLM prompt and copy button; disabled when no opportunity attributes exist
+        │   └── SmartGoalsPrompt — read-only textarea with interpolated LLM prompt and copy button; always rendered when OpportunitiesCard is visible
         ├── PropertyList      — key/value display (Radford level, experience)
         └── CareerAttribute (per attribute)
             └── RatingSelect — individual rating dropdown

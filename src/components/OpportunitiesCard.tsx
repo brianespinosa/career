@@ -53,8 +53,6 @@ const OpportunitiesCard = ({
   const minRating = visible.length > 0 ? visible[0].rating : 0;
   const maxRating = visible.length > 0 ? visible[visible.length - 1].rating : 0;
 
-  const isIC = levelKey.startsWith('P');
-
   const themeGroups = Object.entries(
     Object.groupBy(visible, (attr) => attr.theme),
   ).map(([theme, attrs]) => ({
@@ -117,7 +115,6 @@ const OpportunitiesCard = ({
               <SmartGoalsPrompt
                 levelKey={levelKey}
                 levelName={levelName}
-                isIC={isIC}
                 themeGroups={themeGroups}
               />
             </Tabs.Content>

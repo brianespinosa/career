@@ -9,7 +9,7 @@ import {
   TextArea,
   Tooltip,
 } from '@radix-ui/themes';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Attribute = {
   name: string;
@@ -24,16 +24,15 @@ type ThemeGroup = {
 interface SmartGoalsPromptProps {
   levelKey: string;
   levelName: string;
-  isIC: boolean;
   themeGroups: ThemeGroup[];
 }
 
 const buildPrompt = (
   levelKey: string,
   levelName: string,
-  isIC: boolean,
   themeGroups: ThemeGroup[],
 ): string => {
+  const isIC = levelKey.startsWith('P');
   const track = isIC ? 'Software Engineer (IC)' : 'Engineering Manager (EM)';
   const themeList = themeGroups
     .map(({ theme, attributes }) => {
@@ -73,24 +72,53 @@ Ask which goal(s) resonate most. Offer to fine-tune wording, adjust scope, or ma
 Pay close attention to the combined effort of the full goal set. A goal that is attainable in isolation may become unattainable alongside 3–4 others. As the set grows or becomes more ambitious, evaluate whether the total effort is realistic for a single quarter. If the cumulative load looks too great, say so directly and suggest reducing scope, deferring a goal, or simplifying one or more to bring the set back into reach.
 
 ## Final output
-Once the engineer is satisfied, produce a clean list of agreed SMART goals formatted with their theme label. Do not output this until the engineer confirms they are done.
+Once the engineer is satisfied, produce a clean list of agreed SMART goals formatted with their theme label. Do not output this until the engineer confirms they are done.`.trim();
+};
 
-`;
+type CopyState = 'idle' | 'copied' | 'error';
+
+const COPY_TOOLTIP: Record<CopyState, string> = {
+  idle: 'Copy prompt',
+  copied: 'Copied!',
+  error: 'Copy failed — select text manually',
 };
 
 const SmartGoalsPrompt = ({
   levelKey,
   levelName,
-  isIC,
   themeGroups,
 }: SmartGoalsPromptProps) => {
-  const [copied, setCopied] = useState(false);
-  const prompt = buildPrompt(levelKey, levelName, isIC, themeGroups).trim();
+  const [copyState, setCopyState] = useState<CopyState>('idle');
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const prompt = buildPrompt(levelKey, levelName, themeGroups);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(prompt);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
+
+    if (!navigator.clipboard) {
+      console.error(
+        '[SmartGoalsPrompt] navigator.clipboard unavailable — insecure context or unsupported browser.',
+      );
+      setCopyState('error');
+      timeoutRef.current = setTimeout(() => setCopyState('idle'), 3000);
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setCopyState('copied');
+      timeoutRef.current = setTimeout(() => setCopyState('idle'), 2000);
+    } catch (err) {
+      console.error('[SmartGoalsPrompt] Failed to write to clipboard.', err);
+      setCopyState('error');
+      timeoutRef.current = setTimeout(() => setCopyState('idle'), 3000);
+    }
   };
 
   return (
@@ -106,11 +134,11 @@ const SmartGoalsPrompt = ({
             </Callout.Text>
           </Callout.Root>
         </Box>
-        <Tooltip content={copied ? 'Copied!' : 'Copy prompt'}>
+        <Tooltip content={COPY_TOOLTIP[copyState]}>
           <IconButton
             variant='surface'
             size='2'
-            aria-label='Copy prompt to clipboard'
+            aria-label={COPY_TOOLTIP[copyState]}
             onClick={handleCopy}
           >
             <CopyIcon />

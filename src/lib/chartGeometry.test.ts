@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   CHART_SIZE,
   computeChartGeometry,
@@ -66,11 +66,16 @@ describe('computeChartGeometry', () => {
     });
   });
 
-  it('returns the fallback hex for an unknown colorName', () => {
+  it('returns the fallback hex for an unknown colorName and logs an error', () => {
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     const [result] = computeChartGeometry({
       attributes: [makeAttr('a', 1, 'purple')],
     });
     expect(result.hexColor).toBe('#888888');
+    expect(consoleSpy).toHaveBeenCalledWith(
+      expect.stringContaining('No hex color mapping for colorName "purple"'),
+    );
+    consoleSpy.mockRestore();
   });
 
   it('endAngle is greater than startAngle for each arc', () => {

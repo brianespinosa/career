@@ -31,16 +31,17 @@ Jest was ruled out: it is CJS-first, and ESM + TypeScript both require additiona
 - `@testing-library/react` — component rendering and queries
 - `@testing-library/user-event` — realistic event simulation
 - `@testing-library/jest-dom` — readable DOM matchers via `expect.extend`
+- `@testing-library/dom` — explicit peer dependency; installed directly to satisfy Yarn 4 peer resolution
 
 ### Next.js mocking strategy
 
-Unit tests stub `next/navigation` with simple vi.mock replacements (`useSearchParams`, `useRouter`, `usePathname`, `useParams`). No framework internals beyond these lightweight stubs are mocked at the unit level.
+Unit tests stub `next/navigation` with simple vi.mock replacements (`useRouter`, `usePathname`, `useParams`). No framework internals beyond these lightweight stubs are mocked at the unit level.
 
 Components loaded via `next/dynamic` with `ssr: false` (`RatingsChart`, `OpportunitiesCard`) are not unit tested — their behavior is covered by the e2e suite, which runs against a real deployment. Forcing these into unit tests would require mocking `next/dynamic` and the chart library internals, which violates the testing pyramid principle documented in `src/CLAUDE.md`.
 
 ## Consequences
 
 - Unit tests are colocated with source files (e.g. `ratingsEncoding.test.ts` next to `ratingsEncoding.ts`)
-- A `test` job runs in CI in parallel with `biome` and `typecheck`; the `build` job depends on it
+- A `test` job runs in CI in parallel with `biome` and `typecheck`; the `build` job requires all three to pass before it runs
 - The unit layer covers pure lib utilities, hooks, and components that need only simple mocks
 - Behavior requiring complex mocking or multi-component URL-driven flows stays in e2e

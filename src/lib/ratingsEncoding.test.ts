@@ -46,10 +46,18 @@ describe('encodeRatings / decodeRatings round-trip', () => {
 
   it('clamps out-of-range values to [0, 4] on encode', () => {
     const params = getAttributeParamsForLevel('P1');
-    const ratings = Object.fromEntries(params.map((p) => [p, 10]));
-    const encoded = encodeRatings(ratings, 'P1');
-    const decoded = decodeRatings(encoded, 'P1');
-    decoded[params[0]] && expect(decoded[params[0]]).toBeLessThanOrEqual(4);
+
+    const highRatings = Object.fromEntries(params.map((p) => [p, 10]));
+    const highDecoded = decodeRatings(encodeRatings(highRatings, 'P1'), 'P1');
+    for (const v of Object.values(highDecoded)) {
+      expect(v).toBeLessThanOrEqual(4);
+    }
+
+    const lowRatings = Object.fromEntries(params.map((p) => [p, -5]));
+    const lowDecoded = decodeRatings(encodeRatings(lowRatings, 'P1'), 'P1');
+    for (const v of Object.values(lowDecoded)) {
+      expect(v).toBeGreaterThanOrEqual(0);
+    }
   });
 
   it('returns all-zero ratings for an invalid encoded string', () => {

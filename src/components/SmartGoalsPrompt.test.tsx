@@ -22,9 +22,12 @@ const renderPrompt = (props = defaultProps) =>
     </Theme>,
   );
 
+let writeText: ReturnType<typeof vi.fn>;
+
 beforeEach(() => {
+  writeText = vi.fn().mockResolvedValue(undefined);
   Object.defineProperty(navigator, 'clipboard', {
-    value: { writeText: vi.fn().mockResolvedValue(undefined) },
+    value: { writeText },
     writable: true,
     configurable: true,
   });

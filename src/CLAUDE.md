@@ -51,7 +51,7 @@ Follow the testing pyramid: unit tests at the bottom (many, fast, isolated), e2e
 - Do NOT unit test behavior already covered by e2e, and do NOT reach for complex mocking to make something testable at this level
 
 **Push to e2e instead** when a test would require:
-- Mocking `next/dynamic`, `next/router`, or other framework internals beyond simple stubs
+- Mocking `next/dynamic`, `next/navigation` internals beyond simple stubs, or other framework internals
 - Simulating multi-component interaction or URL-driven state flows
 - Verifying anything that only makes sense in a real browser environment
 

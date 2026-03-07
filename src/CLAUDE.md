@@ -30,7 +30,7 @@ layout.tsx         — header, CareerSelect, ResetButton, GitHub link; wraps bod
 
 - `src/lib/attributeId.ts` — `toAttributeId(name)` converts an attribute name to a kebab-case element ID; used by `CareerAttribute`, `RatingsChart`, and `OpportunitiesCard` to connect scroll targets to headings
 - `src/lib/chartGeometry.ts` — pure, server-safe arc geometry math (`computeChartGeometry`); shared between `RatingsChart` (client) and the OG image route (server). No browser APIs — safe to import from both contexts
-- `src/lib/siteConfig.ts` — single source of truth for `SITE_TITLE`; used by `layout.tsx` and `ogChart.tsx`
+- `src/lib/siteConfig.ts` — single source of truth for `SITE_TITLE`, `SITE_DESCRIPTION`, and `formatRatingDate`; used by `layout.tsx`, `ogChart.tsx`, and OG image routes
 
 ## Styling
 

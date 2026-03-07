@@ -10,6 +10,8 @@ import { LEVELS } from '@/lib/levels';
 import { SITE_TITLE } from '@/lib/siteConfig';
 import type { LevelKeys } from '@/types/levels';
 
+export const OG_SIZE = { width: 1200, height: 630 } as const;
+
 export function buildArcs(
   level: LevelKeys,
   ratings: Record<string, number>,
@@ -35,10 +37,11 @@ export function buildArcs(
       };
     })
     .filter((a) => a.value >= 0);
-  // Arc positions are index-driven, so this order must match what RatingsChart
-  // passes to computeChartGeometry. Both derive order from
-  // Object.groupBy(attributes, (a) => a.theme) on the same ATTRIBUTES dataset.
-  // If RatingsChart's ordering strategy changes, update buildArcs to match.
+  // Arc positions are index-driven, so this order must match the order RatingsChart
+  // receives from CareerThemes. CareerThemes groups attributes via
+  // Object.groupBy(attributeValues, (attr) => attr.theme) and passes the result
+  // as themeGroups; RatingsChart flattens it with Object.values(themeGroups).flat().
+  // If either the grouping or flattening strategy changes, update buildArcs to match.
   const grouped = Object.groupBy(enriched, (a) => a.theme);
   const ordered = Object.values(grouped)
     .flat()
@@ -46,8 +49,37 @@ export function buildArcs(
   return computeChartGeometry({ attributes: ordered });
 }
 
-// Inline styles are required throughout this component — next/og uses Satori
-// under the hood, which cannot resolve CSS classes or Radix component props.
+// Inline styles on plain HTML elements are required throughout these components —
+// next/og uses Satori under the hood, which only supports a subset of inline CSS
+// and cannot render components that rely on CSS classes, CSS variables, or Radix
+// primitives.
+export function OgSimpleLayout() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        width: `${OG_SIZE.width}px`,
+        height: `${OG_SIZE.height}px`,
+        background: slateDark.slate2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'sans-serif',
+      }}
+    >
+      <div
+        style={{
+          fontSize: '72px',
+          fontWeight: 700,
+          color: slateDark.slate12,
+          textAlign: 'center',
+        }}
+      >
+        {SITE_TITLE}
+      </div>
+    </div>
+  );
+}
+
 export function OgLayout({
   levelName,
   arcs,
@@ -63,8 +95,8 @@ export function OgLayout({
     <div
       style={{
         display: 'flex',
-        width: '1200px',
-        height: '630px',
+        width: `${OG_SIZE.width}px`,
+        height: `${OG_SIZE.height}px`,
         background: slateDark.slate2,
         alignItems: 'center',
         padding: '60px',

@@ -13,13 +13,14 @@ import type { Metadata } from 'next';
 
 import HeaderControls from '@/components/HeaderControls';
 import RatingsProvider from '@/hooks/RatingsProvider';
-import { SITE_TITLE } from '@/lib/siteConfig';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: {
     template: `%s | ${SITE_TITLE}`,
     default: SITE_TITLE,
   },
+  description: SITE_DESCRIPTION,
   metadataBase: new URL('https://career.bje.co/'),
 };
 

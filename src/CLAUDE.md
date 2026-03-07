@@ -41,6 +41,22 @@ This project uses Radix for component styling. There is almost never a scenario 
 
 This project uses Ariakit for accessibility. Evaluate all changes and additions against current accessibility guidelines. Always use semantically correct HTML tags.
 
+## Testing Philosophy
+
+Follow the testing pyramid: unit tests at the bottom (many, fast, isolated), e2e at the top (few, slow, integration).
+
+**Unit tests** (colocated with source, e.g. `ratingsEncoding.test.ts` next to `ratingsEncoding.ts`):
+- Pure functions in `src/lib/` — highest value, no mocking needed
+- Hooks and components that require only simple mocks (e.g. `next/navigation` stubs)
+- Do NOT unit test behavior already covered by e2e, and do NOT reach for complex mocking to make something testable at this level
+
+**Push to e2e instead** when a test would require:
+- Mocking `next/dynamic`, `next/router`, or other framework internals beyond simple stubs
+- Simulating multi-component interaction or URL-driven state flows
+- Verifying anything that only makes sense in a real browser environment
+
+If a unit test is hard to write without heavy mocking, that is a signal the behavior belongs in e2e — fix the level, not the mock.
+
 ## SSR / Code Splitting Note
 
 `RatingsChart` and `OpportunitiesCard` are loaded via `next/dynamic` with `ssr: false` in `CareerThemes.tsx`. This prevents their heavy dependencies (visx, motion/react) from being included in the initial bundle and eliminates visx/SVG SSR mismatches entirely. The old `isClient` guard (`useState(false)` + `useEffect`) has been removed — `next/dynamic` with `ssr: false` is the correct approach for client-only components with large dependency footprints. See ADR-007.

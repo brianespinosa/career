@@ -65,6 +65,7 @@
     "vite": "7.3.1",
     "vitest": "4.0.18"
   },
+  "packageManager": "yarn@4.13.0",
   "knip": {
     "ignoreDependencies": [
       "@react-spring/web",
@@ -72,8 +73,8 @@
       "normalize.css"
     ],
     "ignoreBinaries": [
-      "mlr"
+      "mlr",
+      "sort-package-json"
     ]
-  },
-  "packageManager": "yarn@4.13.0"
+  }
 }

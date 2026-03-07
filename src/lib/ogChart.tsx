@@ -46,8 +46,35 @@ export function buildArcs(
   return computeChartGeometry({ attributes: ordered });
 }
 
-// Inline styles are required throughout this component — next/og uses Satori
+// Inline styles are required throughout these components — next/og uses Satori
 // under the hood, which cannot resolve CSS classes or Radix component props.
+export function OgSimpleLayout() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        width: '1200px',
+        height: '630px',
+        background: slateDark.slate2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'sans-serif',
+      }}
+    >
+      <div
+        style={{
+          fontSize: '72px',
+          fontWeight: 700,
+          color: slateDark.slate12,
+          textAlign: 'center',
+        }}
+      >
+        {SITE_TITLE}
+      </div>
+    </div>
+  );
+}
+
 export function OgLayout({
   levelName,
   arcs,

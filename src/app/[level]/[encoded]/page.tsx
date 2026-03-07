@@ -11,7 +11,22 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { level } = await params;
   if (!(level in LEVELS)) return {};
-  return { title: LEVELS[level as LevelKeys].name };
+  const levelData = LEVELS[level as LevelKeys];
+  const date = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  return {
+    title: levelData.name,
+    description: `Self-assessment ratings for [${level}] ${levelData.name} on the engineering career ladder.`,
+    other: {
+      'twitter:label1': 'Level',
+      'twitter:data1': `[${level}] ${levelData.name}`,
+      'twitter:label2': 'Rating Date',
+      'twitter:data2': date,
+    },
+  };
 }
 
 export default async function EncodedPage({ params }: Props) {

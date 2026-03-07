@@ -70,10 +70,27 @@ jobs:
             name: P1-3ckmgrhn
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: treosh/lighthouse-ci-action@12.6.1
+      - id: lighthouse
+        uses: treosh/lighthouse-ci-action@12.6.1
         with:
           urls: "${{ needs.build.outputs.url }}${{ matrix.path }}?x-vercel-protection-bypass=${{ secrets.VERCEL_BYPASS_SECRET }}"
           runs: 2
           uploadArtifacts: true
           artifactName: "lighthouse-${{ matrix.name }}"
           configPath: ./lighthouserc.json
+      - name: Job summary
+        if: always()
+        env:
+          RESULTS_PATH: ${{ steps.lighthouse.outputs.resultsPath }}
+          PAGE_PATH: ${{ matrix.path }}
+        run: |
+          echo "## Lighthouse: \`$PAGE_PATH\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Category | Score |" >> $GITHUB_STEP_SUMMARY
+          echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
+          jq -rn '
+            [inputs | .categories | to_entries[]] |
+            group_by(.key)[] |
+            { key: .[0].value.title, score: (map(.value.score) | add / length * 100 | round) } |
+            "| \(.key) | \(.score) |"
+          ' "$RESULTS_PATH"/*.json >> $GITHUB_STEP_SUMMARY

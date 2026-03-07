@@ -66,9 +66,9 @@ jobs:
           - path: /
             name: root
           - path: /P1
-            name: P1
+            name: level
           - path: /P1/3ckmgrhn
-            name: P1-3ckmgrhn
+            name: level-encoded
     steps:
       - uses: actions/checkout@v6.0.2
       - id: lighthouse
@@ -79,7 +79,3 @@ jobs:
           uploadArtifacts: true
           artifactName: "lighthouse-${{ matrix.name }}"
           configPath: ./lighthouserc.json
-      - name: Job summary
-        if: always()
-        run: |
-          echo "[View Lighthouse artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY

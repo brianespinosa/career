@@ -57,6 +57,8 @@ Follow the testing pyramid: unit tests at the bottom (many, fast, isolated), e2e
 
 If a unit test is hard to write without heavy mocking, that is a signal the behavior belongs in e2e — fix the level, not the mock.
 
+**When dropping behavior from unit tests:** always open a GitHub issue to add e2e coverage for that behavior before moving on. This ensures coverage gaps are tracked and closed at the correct level rather than left unverified.
+
 ## SSR / Code Splitting Note
 
 `RatingsChart` and `OpportunitiesCard` are loaded via `next/dynamic` with `ssr: false` in `CareerThemes.tsx`. This prevents their heavy dependencies (visx, motion/react) from being included in the initial bundle and eliminates visx/SVG SSR mismatches entirely. The old `isClient` guard (`useState(false)` + `useEffect`) has been removed — `next/dynamic` with `ssr: false` is the correct approach for client-only components with large dependency footprints. See ADR-007.

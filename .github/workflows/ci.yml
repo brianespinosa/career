@@ -60,6 +60,7 @@ jobs:
     needs: [build]
     if: github.event_name == 'pull_request'
     strategy:
+      fail-fast: false
       matrix:
         include:
           - path: /
@@ -80,17 +81,5 @@ jobs:
           configPath: ./lighthouserc.json
       - name: Job summary
         if: always()
-        env:
-          RESULTS_PATH: ${{ steps.lighthouse.outputs.resultsPath }}
-          PAGE_PATH: ${{ matrix.path }}
         run: |
-          echo "## Lighthouse: \`$PAGE_PATH\`" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Category | Score |" >> $GITHUB_STEP_SUMMARY
-          echo "| --- | --- |" >> $GITHUB_STEP_SUMMARY
-          jq -rn '
-            [inputs | .categories | to_entries[]] |
-            group_by(.key)[] |
-            { key: .[0].value.title, score: (map(.value.score) | add / length * 100 | round) } |
-            "| \(.key) | \(.score) |"
-          ' "$RESULTS_PATH"/*.json >> $GITHUB_STEP_SUMMARY
+          echo "[View Lighthouse artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY

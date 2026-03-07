@@ -16,6 +16,7 @@ Runs on push and pull request to `main`. Jobs:
 
 - **biome** and **typecheck** run in parallel on all events
 - **build** runs after both pass on all events — runs `vercel build`, then conditionally deploys to production when on the default branch (checked via `github.event.repository.default_branch`, not a hardcoded branch name). Exposes `url` as a job output for downstream jobs.
+- **e2e** runs on `pull_request` only, after `build`, in parallel with `lighthouse`. Runs Playwright tests against the Vercel preview URL via `PLAYWRIGHT_BASE_URL` (from the `build` job output) and `VERCEL_BYPASS_SECRET`. Installs Chromium only. Uploads `playwright-report/` as a CI artifact on every run. See `docs/adr/008-playwright-e2e.md` for framework selection rationale.
 - **lighthouse** runs on `pull_request` only, after `build`. Audits `/`, `/P1`, and `/P1/3ckmgrhn` against the Vercel preview URL using `treosh/lighthouse-ci-action@v12`. Runs 3 audits per URL and uploads artifacts. Thresholds defined in `lighthouserc.json` (performance/accessibility/best-practices: 1.0, SEO: 0.45). Requires `VERCEL_BYPASS_SECRET` repository secret.
 
 Concurrency is configured to cancel in-progress runs on PRs when new commits are pushed. Runs on `main` are never cancelled.

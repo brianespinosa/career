@@ -28,6 +28,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: [biome, typecheck]
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
     permissions:
       contents: read
       deployments: write
@@ -52,3 +54,19 @@ jobs:
             URL=$(yarn vercel deploy --prebuilt --prod --token $VERCEL_TOKEN)
           fi
           echo "url=$URL" >> $GITHUB_OUTPUT
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - uses: treosh/lighthouse-ci-action@12.6.1
+        with:
+          urls: |
+            ${{ needs.build.outputs.url }}/?x-vercel-protection-bypass=${{ secrets.VERCEL_BYPASS_SECRET }}
+            ${{ needs.build.outputs.url }}/P1?x-vercel-protection-bypass=${{ secrets.VERCEL_BYPASS_SECRET }}
+            ${{ needs.build.outputs.url }}/P1/3ckmgrhn?x-vercel-protection-bypass=${{ secrets.VERCEL_BYPASS_SECRET }}
+          runs: 3
+          uploadArtifacts: true
+          configPath: ./lighthouserc.json

@@ -24,6 +24,8 @@ jobs:
       - uses: actions/checkout@v6.0.2
       - uses: ./.github/actions/setup
       - run: yarn knip --reporter github-actions
+        env:
+          PLAYWRIGHT_BASE_URL: https://example.com
 
   typecheck:
     runs-on: ubuntu-latest

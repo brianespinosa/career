@@ -76,7 +76,7 @@ jobs:
         run: yarn playwright install chromium --with-deps
       - name: Run Playwright tests
         run: yarn e2e
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: playwright-report

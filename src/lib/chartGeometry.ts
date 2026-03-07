@@ -3,7 +3,7 @@ import { scaleBand, scaleRadial } from '@visx/scale';
 import { arc as d3Arc } from 'd3-shape';
 
 export const CHART_SIZE = 100;
-export const CHART_ARC_RADIANS = 2.03 * Math.PI;
+const CHART_ARC_RADIANS = 2.03 * Math.PI;
 const ATTRIBUTE_LEVELS = 4;
 export const RADIUS_MAX = CHART_SIZE / 2;
 export const INNER_RADIUS = RADIUS_MAX / 5; // 20% of radius, keeps the donut hole proportional
@@ -31,14 +31,14 @@ export type ArcGeometry = {
   pathD: string;
 };
 
-export type ChartAttributeInput = {
+type ChartAttributeInput = {
   key: string;
   name: string;
   colorName: string;
   value: number;
 };
 
-export type ChartGeometryInput = {
+type ChartGeometryInput = {
   attributes: ChartAttributeInput[];
 };
 

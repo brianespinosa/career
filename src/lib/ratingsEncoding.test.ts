@@ -75,6 +75,24 @@ describe('encodeRatings / decodeRatings round-trip', () => {
     expect(decoded).toEqual(ratings);
   });
 
+  it('pads or truncates when encoded segment length mismatches the level', () => {
+    // Encode for P1, then decode as M3 — the levels have different attribute counts.
+    // decodeRatings pads short digit strings with leading zeros and truncates long ones.
+    const p1Params = getAttributeParamsForLevel('P1');
+    const p1Ratings = Object.fromEntries(p1Params.map((p) => [p, 2]));
+    const p1Encoded = encodeRatings(p1Ratings, 'P1');
+
+    const m3Params = getAttributeParamsForLevel('M3');
+    const decoded = decodeRatings(p1Encoded, 'M3');
+
+    // All values must be in valid range regardless of length mismatch
+    expect(Object.keys(decoded)).toEqual(m3Params);
+    for (const v of Object.values(decoded)) {
+      expect(v).toBeGreaterThanOrEqual(0);
+      expect(v).toBeLessThanOrEqual(4);
+    }
+  });
+
   it('produces the known encoded value for the stable test URL', () => {
     // /P1/3ckmgrhn is used in e2e and Lighthouse CI as a stable known URL.
     // Decoding it should produce a valid ratings object with all values in [0,4].

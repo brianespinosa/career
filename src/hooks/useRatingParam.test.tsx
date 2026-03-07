@@ -25,6 +25,16 @@ describe('useRatingParam', () => {
     expect(rating).toBeNull();
   });
 
+  it('returns null when the stored rating is 0 (unrated)', () => {
+    // A value of 0 is falsy and treated as "unrated" by the hook.
+    // This documents the contract: explicit 0 === no selection.
+    const { result } = renderHook(() => useRatingParam('someParam'), {
+      wrapper: makeWrapper({ someParam: 0 }),
+    });
+    const [rating] = result.current;
+    expect(rating).toBeNull();
+  });
+
   it('returns the correct RatingKey when attribute has a rating', () => {
     const { result } = renderHook(() => useRatingParam('someParam'), {
       wrapper: makeWrapper({ someParam: 3 }),

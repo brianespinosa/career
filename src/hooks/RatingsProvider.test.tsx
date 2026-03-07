@@ -76,6 +76,33 @@ describe('RatingsProvider', () => {
     );
   });
 
+  it('setRating does nothing when window.location has no valid level', () => {
+    const replaceState = vi.fn();
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    Object.defineProperty(window, 'location', {
+      value: { pathname: '/' },
+      writable: true,
+    });
+    Object.defineProperty(window, 'history', {
+      value: { replaceState, state: null },
+      writable: true,
+    });
+
+    renderWithPathname('/P1');
+    act(() => {
+      screen.getByRole('button', { name: 'set' }).click();
+    });
+    expect(parseRatings(screen.getByTestId('ratings'))).toEqual({});
+    expect(replaceState).not.toHaveBeenCalled();
+    expect(consoleSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        '[RatingsProvider] setRating called with no valid level',
+      ),
+      expect.any(Object),
+    );
+    consoleSpy.mockRestore();
+  });
+
   it('setRating still updates state when replaceState throws', () => {
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     Object.defineProperty(window, 'location', {
@@ -124,5 +151,23 @@ describe('RatingsProvider', () => {
     });
     expect(parseRatings(screen.getByTestId('ratings'))).toEqual({});
     expect(replaceState).toHaveBeenLastCalledWith(null, '', '/P1');
+  });
+
+  it('clearRatings navigates to "/" when there is no valid level in the pathname', () => {
+    const replaceState = vi.fn();
+    Object.defineProperty(window, 'location', {
+      value: { pathname: '/' },
+      writable: true,
+    });
+    Object.defineProperty(window, 'history', {
+      value: { replaceState, state: null },
+      writable: true,
+    });
+
+    renderWithPathname('/P1');
+    act(() => {
+      screen.getByRole('button', { name: 'clear' }).click();
+    });
+    expect(replaceState).toHaveBeenCalledWith(null, '', '/');
   });
 });

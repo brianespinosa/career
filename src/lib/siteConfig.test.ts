@@ -18,7 +18,8 @@ describe('SITE_DESCRIPTION', () => {
 describe('formatRatingDate', () => {
   it('formats a known date correctly', () => {
     const date = new Date(2025, 0, 15); // January 15, 2025
-    expect(formatRatingDate(date)).toBe('January 15, 2025');
+    // Match loosely to avoid locale/ICU build differences across environments
+    expect(formatRatingDate(date)).toMatch(/January.+15.+2025/);
   });
 
   it('uses the current date when no argument is given', () => {

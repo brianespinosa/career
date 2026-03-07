@@ -18,5 +18,15 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./vitest.setup.ts'],
     exclude: ['e2e/**', 'node_modules/**'],
+    coverage: {
+      provider: 'v8',
+      exclude: ['data/**', 'node_modules/**', 'e2e/**'],
+      thresholds: {
+        statements: 82,
+        branches: 77,
+        functions: 86,
+        lines: 84,
+      },
+    },
   },
 });

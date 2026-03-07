@@ -72,7 +72,11 @@ const CareerThemes = () => {
             <PropertyList properties={properties} minWidth='8rem' />
           </Card>
           <Suspense>
-            <OpportunitiesCard attributeValues={attributeValues} />
+            <OpportunitiesCard
+              attributeValues={attributeValues}
+              levelKey={key}
+              levelName={name}
+            />
           </Suspense>
         </>
       }

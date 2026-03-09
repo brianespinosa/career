@@ -74,9 +74,11 @@ const OpportunitiesCard = ({
             </Tabs.List>
 
             <Tabs.Content value='opportunities'>
-              <Text as='p' size='2' color='gray' mb='3'>
-                Lowest-rated attributes sorted by impact. Never and Rarely
-                ratings are the most valuable areas to focus on.
+              <Text asChild size='2' color='gray' mb='3'>
+                <p>
+                  Lowest-rated attributes sorted by impact. Never and Rarely
+                  ratings are the most valuable areas to focus on.
+                </p>
               </Text>
               <Flex direction='column' gap='4' p='0' m='0' asChild>
                 <ul className='list-none'>

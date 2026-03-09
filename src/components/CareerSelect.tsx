@@ -4,7 +4,6 @@ import { Select } from '@radix-ui/themes';
 import EM from '@/data/em.json';
 import IC from '@/data/ic.json';
 import useCareerParam from '@/hooks/useCareerParam';
-import { LEVELS } from '@/lib/levels';
 import type { LevelDetails, LevelKeys, LevelRecord } from '@/types/levels';
 
 const getLabel = ({ name, key }: LevelDetails) => `[${key}] ${name}`;

@@ -1,5 +1,12 @@
 import { PlayIcon } from '@radix-ui/react-icons';
-import { Card, Callout, Flex, Heading, Separator, Text } from '@radix-ui/themes';
+import {
+  Callout,
+  Card,
+  Flex,
+  Heading,
+  Separator,
+  Text,
+} from '@radix-ui/themes';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 

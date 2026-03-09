@@ -54,52 +54,50 @@ export default function Home() {
           <Callout.Icon>
             <PlayIcon />
           </Callout.Icon>
-          <Callout.Text asChild>
-            <Flex direction='column' gap='2'>
-              <Heading asChild size='3'>
-                <h3>Get Started</h3>
-              </Heading>
-              <Flex direction='column' gap='2' pl='4' asChild>
-                <ol>
-                  <Text asChild size='2'>
-                    <li>
-                      Select your target career level from the dropdown in the
-                      header.
-                    </li>
-                  </Text>
-                  <Text asChild size='2'>
-                    <li>
-                      Rate yourself on each attribute using Never, Rarely,
-                      Sometimes, or Always.
-                    </li>
-                  </Text>
-                  <Text asChild size='2'>
-                    <li>
-                      Review the Opportunities tab to see your lowest-rated
-                      attributes sorted by impact.
-                    </li>
-                  </Text>
-                  <Text asChild size='2'>
-                    <li>
-                      Open the Goal Prompt tab and copy the generated prompt.
-                    </li>
-                  </Text>
-                  <Text asChild size='2'>
-                    <li>
-                      Paste the prompt into any LLM (Claude, ChatGPT, etc.) to
-                      craft your SMART goals for the quarter.
-                    </li>
-                  </Text>
-                  <Text asChild size='2'>
-                    <li>
-                      Save your URL: paste it into a Slack DM to yourself so
-                      you can return next quarter.
-                    </li>
-                  </Text>
-                </ol>
-              </Flex>
+          <Flex direction='column' gap='2'>
+            <Heading asChild size='3'>
+              <h3>Get Started</h3>
+            </Heading>
+            <Flex direction='column' gap='2' pl='4' asChild>
+              <ol>
+                <Text asChild size='2'>
+                  <li>
+                    Select your target career level from the dropdown in the
+                    header.
+                  </li>
+                </Text>
+                <Text asChild size='2'>
+                  <li>
+                    Rate yourself on each attribute using Never, Rarely,
+                    Sometimes, or Always.
+                  </li>
+                </Text>
+                <Text asChild size='2'>
+                  <li>
+                    Review the Opportunities tab to see your lowest-rated
+                    attributes sorted by impact.
+                  </li>
+                </Text>
+                <Text asChild size='2'>
+                  <li>
+                    Open the Goal Prompt tab and copy the generated prompt.
+                  </li>
+                </Text>
+                <Text asChild size='2'>
+                  <li>
+                    Paste the prompt into any LLM (Claude, ChatGPT, etc.) to
+                    craft your SMART goals for the quarter.
+                  </li>
+                </Text>
+                <Text asChild size='2'>
+                  <li>
+                    Save your URL: paste it into a Slack DM to yourself so you
+                    can return next quarter.
+                  </li>
+                </Text>
+              </ol>
             </Flex>
-          </Callout.Text>
+          </Flex>
         </Callout.Root>
       }
     />

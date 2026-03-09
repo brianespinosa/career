@@ -4,7 +4,7 @@
 
 State is path-based. No external state library.
 
-- URL scheme: `/` → redirects to `/P1`; `/{level}` → level, no ratings; `/{level}/{encoded}` → level with base-36 encoded ratings
+- URL scheme: `/` → home page with left-column instructional Card (intro, steps, framework note) and right-column Callout; `/{level}` → level, no ratings; `/{level}/{encoded}` → level with base-36 encoded ratings
 - `RatingsProvider` (`src/hooks/RatingsProvider.tsx`) — React context; initializes from URL synchronously on first render (lazy `useState` initializer, not `useEffect`), re-syncs on navigation; `setRating` calls `window.history.replaceState` (no remount)
 - `useCareerParam` — reads `useParams().level`; `setLevel` calls `router.push`
 - `useRatingParam` — reads/writes via `RatingsContext`

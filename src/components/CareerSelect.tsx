@@ -21,7 +21,7 @@ const CareerSelect = () => {
 
   return (
     <Select.Root
-      value={career ?? undefined}
+      value={career ?? ''}
       onValueChange={(v) => setCareer(v as LevelKeys)}
     >
       <Select.Trigger

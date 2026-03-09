@@ -6,10 +6,12 @@ import {
   Flex,
   Heading,
   IconButton,
+  Link,
   Theme,
   Tooltip,
 } from '@radix-ui/themes';
 import type { Metadata } from 'next';
+import NextLink from 'next/link';
 
 import HeaderControls from '@/components/HeaderControls';
 import RatingsProvider from '@/hooks/RatingsProvider';
@@ -47,7 +49,9 @@ export default function RootLayout({
               <header>
                 <Flex align='center'>
                   <Heading as='h1' size='7' my='4' trim='both'>
-                    {SITE_TITLE}
+                    <Link asChild color='gray' highContrast underline='none'>
+                      <NextLink href='/'>{SITE_TITLE}</NextLink>
+                    </Link>
                   </Heading>
                   <Flex ml='auto' gap='2'>
                     <HeaderControls />

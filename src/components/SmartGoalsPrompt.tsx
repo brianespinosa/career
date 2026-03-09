@@ -130,7 +130,9 @@ const SmartGoalsPrompt = ({
               <LightningBoltIcon />
             </Callout.Icon>
             <Callout.Text>
-              Paste into any LLM to build SMART goals from your opportunities.
+              This prompt is scoped to your identified opportunities. The LLM
+              will interview you about each one before proposing goals. Copy it
+              and paste it into any LLM (Claude, ChatGPT, etc.) to get started.
             </Callout.Text>
           </Callout.Root>
         </Box>

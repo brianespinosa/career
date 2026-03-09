@@ -46,7 +46,7 @@ export default function Home() {
                 you left off or reuse the goal prompt without starting over.
               </Text>
               <Image
-                src='https://career.bje.co/opengraph-image'
+                src='/opengraph-image'
                 alt='Example of a link preview card in Slack showing the ratings chart'
                 width={1200}
                 height={630}

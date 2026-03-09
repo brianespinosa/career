@@ -68,6 +68,8 @@ All commit messages MUST follow [Conventional Commits](https://www.conventionalc
 
 Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`
 
+**NEVER** commit with `--no-verify`. If a pre-commit hook fails, fix the underlying issue before committing. Bypassing hooks defeats the purpose of CI parity at commit time.
+
 **Commit message requirements:**
 
 - Keep messages brief and easy to parse - avoid lengthy descriptions

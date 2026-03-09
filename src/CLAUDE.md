@@ -4,7 +4,7 @@
 
 State is path-based. No external state library.
 
-- URL scheme: `/` → redirects to `/P1`; `/{level}` → level, no ratings; `/{level}/{encoded}` → level with base-36 encoded ratings
+- URL scheme: `/` → home page; left column has "About the App" and "Saving Assessments" Cards, right column has a "Get Started" Callout with numbered steps; `/{level}` → level, no ratings; `/{level}/{encoded}` → level with base-36 encoded ratings
 - `RatingsProvider` (`src/hooks/RatingsProvider.tsx`) — React context; initializes from URL synchronously on first render (lazy `useState` initializer, not `useEffect`), re-syncs on navigation; `setRating` calls `window.history.replaceState` (no remount)
 - `useCareerParam` — reads `useParams().level`; `setLevel` calls `router.push`
 - `useRatingParam` — reads/writes via `RatingsContext`
@@ -15,7 +15,7 @@ Data flows: URL path → RatingsProvider context → hooks → components → vi
 ## Component Tree
 
 ```
-layout.tsx         — header, CareerSelect, ResetButton, GitHub link; wraps body in RatingsProvider
+layout.tsx         — header (site title links to /), CareerSelect (value='' when no level), ResetButton, GitHub link; wraps body in RatingsProvider
 ├── [level]/page.tsx           — renders CareerThemes
 └── [level]/[encoded]/page.tsx — renders CareerThemes
     └── CareerThemes — main orchestrator; reads level, groups attributes by theme

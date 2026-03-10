@@ -6,9 +6,9 @@ export const runtime = 'nodejs';
 export const size = OG_SIZE;
 export const contentType = 'image/png';
 
-export default async function OgImage() {
+export default function OgImage() {
   return new ImageResponse(<OgSimpleLayout />, {
     ...OG_SIZE,
-    fonts: await loadOgFonts(),
+    fonts: loadOgFonts(),
   });
 }

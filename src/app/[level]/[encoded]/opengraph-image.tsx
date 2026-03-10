@@ -29,6 +29,6 @@ export default async function OgImage({ params }: Props) {
       arcs={arcs}
       date={date}
     />,
-    { ...size, fonts: await loadOgFonts() },
+    { ...size, fonts: loadOgFonts() },
   );
 }

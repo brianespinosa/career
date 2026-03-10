@@ -57,6 +57,10 @@ export default function RootLayout({
               <header>
                 <Flex align='center'>
                   <Heading as='h1' size='7' my='4' trim='both'>
+                    {/* style prop is intentional: Link inherits a washed-out
+                        color from the Heading context. Using var(--accent-11)
+                        directly is the only way to apply the correct accent
+                        step without a wrapping Theme override. */}
                     <Link
                       asChild
                       highContrast

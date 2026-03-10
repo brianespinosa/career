@@ -77,14 +77,13 @@ export function OgSimpleLayout() {
       >
         <svg
           role='img'
-          aria-labelledby='ladder-logo-title'
+          aria-label='Ladder'
           width='240'
           height='240'
           viewBox='0 0 32 32'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
-          <title id='ladder-logo-title'>Ladder</title>
           <path
             d='M13.9722 3.06962L7.11285 29.0903C6.97408 29.6301 6.48837 30 5.9432 30H2.85056C2.28556 30 1.88907 29.4702 2.02784 28.9304L8.88715 2.90968C9.02592 2.37986 9.51163 2 10.0667 2H13.1494C13.7144 2 14.1109 2.52981 13.9722 3.06962Z'
             fill='#7D4533'
@@ -149,7 +148,6 @@ export function OgLayout({
         alignItems: 'center',
         padding: '60px',
         gap: '60px',
-        fontFamily: 'sans-serif',
       }}
     >
       <div style={{ display: 'flex', flexShrink: 0 }}>

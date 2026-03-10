@@ -1,5 +1,6 @@
 import { PlayIcon } from '@radix-ui/react-icons';
 import {
+  Box,
   Callout,
   Card,
   Flex,
@@ -15,44 +16,49 @@ export default function Home() {
     <PageLayout
       left={
         <>
-          <Card>
-            <Flex direction='column' gap='4'>
-              <Heading asChild size='4'>
-                <h2>About the App</h2>
+          <Card asChild>
+            <section>
+              <Heading as='h2' size='4'>
+                About the App
               </Heading>
               <Separator my='2' size='4' />
-              <Text>
-                This app supports the first two parts of a three-part career
-                growth framework: rating yourself against the attributes of your
-                target level, and identifying your highest-impact opportunities.
-                The third part, partnering for execution with your manager or
-                mentor, happens outside the app.
-              </Text>
-            </Flex>
+              <Box pt='3'>
+                <Text as='p'>
+                  This app supports the first two parts of a three-part career
+                  growth framework: rating yourself against the attributes of
+                  your target level, and identifying your highest-impact
+                  opportunities. The third part, partnering for execution with
+                  your manager or mentor, happens outside the app.
+                </Text>
+              </Box>
+            </section>
           </Card>
-          <Card>
-            <Flex direction='column' gap='4'>
-              <Heading asChild size='4'>
-                <h2>Saving Assessments</h2>
+          <Card asChild>
+            <section>
+              <Heading as='h2' size='4'>
+                Saving Assessments
               </Heading>
               <Separator my='2' size='4' />
-              <Text>
-                This app is stateless: your ratings are encoded in the URL. To
-                save your assessment, paste the URL into a Slack DM to yourself.
-                Apps that support link previews will unfurl it into a card
-                showing your ratings chart, target level, and the date of your
-                assessment, making it easy to find later. When you come back,
-                your full assessment loads instantly so you can pick up where
-                you left off or reuse the goal prompt without starting over.
-              </Text>
-              <Image
-                src='/opengraph-image'
-                alt='Example of a link preview card in Slack showing the ratings chart'
-                width={1200}
-                height={630}
-                style={{ width: '100%', height: 'auto' }}
-              />
-            </Flex>
+              <Box pt='3'>
+                <Text as='p'>
+                  This app is stateless: your ratings are encoded in the URL. To
+                  save your assessment, paste the URL into a Slack DM to
+                  yourself. Apps that support link previews will unfurl it into
+                  a card showing your ratings chart, target level, and the date
+                  of your assessment, making it easy to find later. When you
+                  come back, your full assessment loads instantly so you can
+                  pick up where you left off or reuse the goal prompt without
+                  starting over.
+                </Text>
+                <Image
+                  src='/opengraph-image'
+                  alt='Example of a link preview card in Slack showing the ratings chart'
+                  width={1200}
+                  height={630}
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </Box>
+            </section>
           </Card>
         </>
       }

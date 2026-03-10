@@ -11,7 +11,15 @@ import {
   Tooltip,
 } from '@radix-ui/themes';
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 import NextLink from 'next/link';
+
+const sinkinSans = localFont({
+  src: '../fonts/SinkinSans-800Black-webfont.woff',
+  weight: '800',
+  display: 'swap',
+  variable: '--font-sinkin-sans',
+});
 
 import HeaderControls from '@/components/HeaderControls';
 import RatingsProvider from '@/hooks/RatingsProvider';
@@ -34,11 +42,11 @@ export default function RootLayout({
   children,
 }: Readonly<Props>): React.ReactNode {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning className={sinkinSans.variable}>
       <meta name='robots' content='noindex,nofollow' />
       <Theme
         appearance='dark'
-        accentColor='pink'
+        accentColor='yellow'
         grayColor='slate'
         radius='small'
         asChild
@@ -49,7 +57,16 @@ export default function RootLayout({
               <header>
                 <Flex align='center'>
                   <Heading as='h1' size='7' my='4' trim='both'>
-                    <Link asChild color='gray' highContrast underline='none'>
+                    {/* style prop is intentional: Link inherits a washed-out
+                        color from the Heading context. Using var(--accent-11)
+                        directly is the only way to apply the correct accent
+                        step without a wrapping Theme override. */}
+                    <Link
+                      asChild
+                      highContrast
+                      underline='none'
+                      style={{ color: 'var(--accent-11)' }}
+                    >
                       <NextLink href='/'>{SITE_TITLE}</NextLink>
                     </Link>
                   </Heading>

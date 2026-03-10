@@ -22,13 +22,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const date = formatRatingDate();
   return {
     title: levelData.name,
-    description: `Self-assessment ratings for [${level}] ${levelData.name} on the engineering career ladder.`,
-    other: {
-      'twitter:label1': 'Level',
-      'twitter:data1': `[${level}] ${levelData.name}`,
-      'twitter:label2': 'Rating Date',
-      'twitter:data2': date,
-    },
+    description: `Ratings snapshot & goal-setting prompt · ${date}`,
+    // other: {
+    //   'twitter:label1': 'Level',
+    //   'twitter:data1': `[${level}] ${levelData.name}`,
+    //   'twitter:label2': 'Rating Date',
+    //   'twitter:data2': date,
+    // },
   };
 }
 

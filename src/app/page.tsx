@@ -1,4 +1,3 @@
-import { PlayIcon } from '@radix-ui/react-icons';
 import {
   Box,
   Callout,
@@ -10,6 +9,7 @@ import {
 } from '@radix-ui/themes';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
+import linkUnfurl from '@/img/link-unfurl.png';
 
 export default function Home() {
   return (
@@ -51,10 +51,8 @@ export default function Home() {
                   starting over.
                 </Text>
                 <Image
-                  src='/opengraph-image'
+                  src={linkUnfurl}
                   alt='Example of a link preview card in Slack showing the ratings chart'
-                  width={1200}
-                  height={630}
                   style={{ width: '100%', height: 'auto' }}
                 />
               </Box>
@@ -63,10 +61,7 @@ export default function Home() {
         </>
       }
       right={
-        <Callout.Root>
-          <Callout.Icon>
-            <PlayIcon />
-          </Callout.Icon>
+        <Callout.Root variant='outline'>
           <Flex direction='column' gap='2'>
             <Heading asChild size='3'>
               <h3>Get Started</h3>

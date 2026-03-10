@@ -1,7 +1,7 @@
 'use client';
 
 import type { ThemeProps } from '@radix-ui/themes';
-import { Card, Flex, Link, Tabs, Text } from '@radix-ui/themes';
+import { Callout, Card, Flex, Link, Tabs, Text } from '@radix-ui/themes';
 import { AnimatePresence, motion } from 'motion/react';
 import { useContext } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
@@ -74,12 +74,12 @@ const OpportunitiesCard = ({
             </Tabs.List>
 
             <Tabs.Content value='opportunities'>
-              <Text asChild size='2' color='gray' mb='3'>
-                <p>
+              <Callout.Root variant='outline' mb='3'>
+                <Callout.Text>
                   Lowest-rated attributes sorted by impact. Never and Rarely
                   ratings are the most valuable areas to focus on.
-                </p>
-              </Text>
+                </Callout.Text>
+              </Callout.Root>
               <Flex direction='column' gap='4' p='0' m='0' asChild>
                 <ul className='list-none'>
                   <AnimatePresence>

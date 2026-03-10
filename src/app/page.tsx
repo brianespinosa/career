@@ -1,4 +1,3 @@
-import { PlayIcon } from '@radix-ui/react-icons';
 import {
   Box,
   Callout,
@@ -62,10 +61,7 @@ export default function Home() {
         </>
       }
       right={
-        <Callout.Root>
-          <Callout.Icon>
-            <PlayIcon />
-          </Callout.Icon>
+        <Callout.Root variant='outline'>
           <Flex direction='column' gap='2'>
             <Heading asChild size='3'>
               <h3>Get Started</h3>

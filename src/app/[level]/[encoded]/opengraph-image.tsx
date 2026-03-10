@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { ImageResponse } from 'next/og';
 import { LEVELS } from '@/lib/levels';
 import { buildArcs, OG_SIZE, OgLayout } from '@/lib/ogChart';
+import { loadOgFonts } from '@/lib/ogFonts';
 import { decodeRatings } from '@/lib/ratingsEncoding';
 import { formatRatingDate } from '@/lib/siteConfig';
 import type { LevelKeys } from '@/types/levels';
@@ -28,6 +29,6 @@ export default async function OgImage({ params }: Props) {
       arcs={arcs}
       date={date}
     />,
-    size,
+    { ...size, fonts: await loadOgFonts() },
   );
 }

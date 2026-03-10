@@ -26,7 +26,7 @@ const CareerSelect = () => {
       <Select.Trigger
         variant='soft'
         aria-label='Career level'
-        placeholder='Select role...'
+        placeholder='Select level...'
       />
       <Select.Content position='popper'>
         <Select.Group>

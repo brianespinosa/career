@@ -1,4 +1,10 @@
-import { blueDark, greenDark, redDark, yellowDark } from '@radix-ui/colors';
+import {
+  amberDark,
+  blueDark,
+  greenDark,
+  redDark,
+  yellowDark,
+} from '@radix-ui/colors';
 import { scaleBand, scaleRadial } from '@visx/scale';
 import { arc as d3Arc } from 'd3-shape';
 
@@ -9,9 +15,10 @@ export const RADIUS_MAX = CHART_SIZE / 2;
 export const INNER_RADIUS = RADIUS_MAX / 5; // 20% of radius, keeps the donut hole proportional
 
 export const THEME_HEX_COLORS: Record<string, string> = {
-  red: redDark.red6,
+  amber: amberDark.amber6,
   blue: blueDark.blue6,
   green: greenDark.green6,
+  red: redDark.red6,
   yellow: yellowDark.yellow6,
 };
 

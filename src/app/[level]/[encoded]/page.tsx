@@ -23,12 +23,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: levelData.name,
     description: `Ratings snapshot & goal-setting prompt · ${date}`,
-    // other: {
-    //   'twitter:label1': 'Level',
-    //   'twitter:data1': `[${level}] ${levelData.name}`,
-    //   'twitter:label2': 'Rating Date',
-    //   'twitter:data2': date,
-    // },
   };
 }
 

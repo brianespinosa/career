@@ -10,6 +10,7 @@ import {
 } from '@radix-ui/themes';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
+import linkUnfurl from '@/img/link-unfurl.png';
 
 export default function Home() {
   return (
@@ -51,10 +52,8 @@ export default function Home() {
                   starting over.
                 </Text>
                 <Image
-                  src='/opengraph-image'
+                  src={linkUnfurl}
                   alt='Example of a link preview card in Slack showing the ratings chart'
-                  width={1200}
-                  height={630}
                   style={{ width: '100%', height: 'auto' }}
                 />
               </Box>

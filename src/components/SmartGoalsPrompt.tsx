@@ -1,6 +1,6 @@
 'use client';
 
-import { CopyIcon, LightningBoltIcon } from '@radix-ui/react-icons';
+import { CopyIcon } from '@radix-ui/react-icons';
 import {
   Box,
   Callout,
@@ -125,20 +125,16 @@ const SmartGoalsPrompt = ({
     <Flex direction='column' gap='2'>
       <Flex align='center' justify='between'>
         <Box flexGrow='1' mr='2'>
-          <Callout.Root>
-            <Callout.Icon>
-              <LightningBoltIcon />
-            </Callout.Icon>
+          <Callout.Root variant='outline'>
             <Callout.Text>
-              This prompt is scoped to your identified opportunities. The LLM
-              will interview you about each one before proposing goals. Copy it
-              and paste it into any LLM (Claude, ChatGPT, etc.) to get started.
+              Copy this prompt into any LLM to generate SMART goals from your
+              identified opportunities.
             </Callout.Text>
           </Callout.Root>
         </Box>
         <Tooltip content={COPY_TOOLTIP[copyState]}>
           <IconButton
-            variant='surface'
+            variant='soft'
             size='2'
             aria-label={COPY_TOOLTIP[copyState]}
             onClick={handleCopy}

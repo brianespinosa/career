@@ -1,7 +1,6 @@
 import {
   AspectRatio,
   Box,
-  Card,
   DataList,
   Flex,
   Heading,
@@ -9,6 +8,7 @@ import {
   Skeleton,
   type ThemeProps,
 } from '@radix-ui/themes';
+import AppCard from './AppCard';
 import LoadingSpinner from './LoadingSpinner';
 import PageLayout from './PageLayout';
 
@@ -46,23 +46,21 @@ const CareerThemesLoading = () => (
   <Box style={skeletonStyle}>
     <PageLayout
       left={THEME_SKELETONS.map(({ key, color, count }) => (
-        <Card key={key} asChild>
-          <section>
-            <Box ml='8rem'>
-              <Heading as='h3' size='4' color={color}>
-                {key}
-              </Heading>
-              <Separator my='2' size='4' color={color} />
-            </Box>
-            {Array.from({ length: count }, (_, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: skeleton rows are static placeholders with no identity
-              <AttributeRowSkeleton key={i} />
-            ))}
-          </section>
-        </Card>
+        <AppCard key={key}>
+          <Box ml='8rem'>
+            <Heading as='h3' size='4' color={color}>
+              {key}
+            </Heading>
+            <Separator my='2' size='4' color={color} />
+          </Box>
+          {Array.from({ length: count }, (_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: skeleton rows are static placeholders with no identity
+            <AttributeRowSkeleton key={i} />
+          ))}
+        </AppCard>
       ))}
       right={
-        <Card>
+        <AppCard>
           <AspectRatio>
             <Flex align='center' justify='center' width='100%' height='100%'>
               <LoadingSpinner />
@@ -79,7 +77,7 @@ const CareerThemesLoading = () => (
               </DataList.Item>
             ))}
           </DataList.Root>
-        </Card>
+        </AppCard>
       }
     />
   </Box>

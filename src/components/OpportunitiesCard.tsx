@@ -1,7 +1,7 @@
 'use client';
 
 import type { ThemeProps } from '@radix-ui/themes';
-import { Callout, Card, Flex, Link, Tabs, Text } from '@radix-ui/themes';
+import { Flex, Link, Tabs, Text } from '@radix-ui/themes';
 import { AnimatePresence, motion } from 'motion/react';
 import { useContext } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
@@ -10,6 +10,8 @@ import { RATINGS } from '@/hooks/useRatingParam';
 import { cardFadeAnimation } from '@/lib/animations';
 import { scrollToAttribute, toAttributeId } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';
+import AppCallout from './AppCallout';
+import AppCard from './AppCard';
 import SmartGoalsPrompt from './SmartGoalsPrompt';
 
 type AttributeOption = Omit<AttributeValues, 'value'>;
@@ -20,7 +22,7 @@ interface OpportunitiesCardProps {
   levelName: string;
 }
 
-const MotionCard = motion(Card);
+const MotionAside = motion.aside;
 
 const toOpacity = (rating: number, min: number, max: number): number => {
   if (min === max) return 1;
@@ -66,7 +68,7 @@ const OpportunitiesCard = ({
   return (
     <AnimatePresence>
       {rated.length > 0 && (
-        <MotionCard key='opportunities' {...cardFadeAnimation}>
+        <AppCard as={MotionAside} key='opportunities' {...cardFadeAnimation}>
           <Tabs.Root defaultValue='opportunities'>
             <Tabs.List mb='4'>
               <Tabs.Trigger value='opportunities'>Opportunities</Tabs.Trigger>
@@ -74,13 +76,11 @@ const OpportunitiesCard = ({
             </Tabs.List>
 
             <Tabs.Content value='opportunities'>
-              <Callout.Root variant='outline' mb='3'>
-                <Callout.Text>
-                  Lowest-rated attributes sorted by impact. Never and Rarely
-                  ratings are the most valuable areas to focus on.
-                </Callout.Text>
-              </Callout.Root>
-              <Flex direction='column' gap='4' p='0' m='0' asChild>
+              <AppCallout>
+                Lowest-rated attributes sorted by impact. Never and Rarely
+                ratings are the most valuable areas to focus on.
+              </AppCallout>
+              <Flex direction='column' gap='3' p='0' m='0' mt='3' asChild>
                 <ul className='list-none'>
                   <AnimatePresence>
                     {visible.map(({ key, name, color, rating }) => (
@@ -125,7 +125,7 @@ const OpportunitiesCard = ({
               />
             </Tabs.Content>
           </Tabs.Root>
-        </MotionCard>
+        </AppCard>
       )}
     </AnimatePresence>
   );

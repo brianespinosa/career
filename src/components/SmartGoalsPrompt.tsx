@@ -1,15 +1,9 @@
 'use client';
 
 import { CopyIcon } from '@radix-ui/react-icons';
-import {
-  Box,
-  Callout,
-  Flex,
-  IconButton,
-  TextArea,
-  Tooltip,
-} from '@radix-ui/themes';
+import { Box, Flex, IconButton, TextArea, Tooltip } from '@radix-ui/themes';
 import { useEffect, useRef, useState } from 'react';
+import AppCallout from './AppCallout';
 
 type Attribute = {
   name: string;
@@ -125,12 +119,10 @@ const SmartGoalsPrompt = ({
     <Flex direction='column' gap='2'>
       <Flex align='center' justify='between'>
         <Box flexGrow='1' mr='2'>
-          <Callout.Root variant='outline'>
-            <Callout.Text>
-              Copy this prompt into any LLM to generate SMART goals from your
-              identified opportunities.
-            </Callout.Text>
-          </Callout.Root>
+          <AppCallout>
+            Copy this prompt into any LLM to generate SMART goals from your
+            identified opportunities.
+          </AppCallout>
         </Box>
         <Tooltip content={COPY_TOOLTIP[copyState]}>
           <IconButton

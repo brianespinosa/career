@@ -4,7 +4,7 @@ const AppCallout = ({
   children,
   ...props
 }: Omit<React.ComponentProps<typeof Callout.Root>, 'variant'>) => (
-  <Callout.Root variant='outline' {...props}>
+  <Callout.Root variant='outline' size='1' {...props}>
     <Callout.Text>{children}</Callout.Text>
   </Callout.Root>
 );

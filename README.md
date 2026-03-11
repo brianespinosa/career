@@ -1,4 +1,4 @@
-# Career Growth Self-Assessment
+# career
 
 [![CI](https://github.com/brianespinosa/career/actions/workflows/ci.yml/badge.svg)](https://github.com/brianespinosa/career/actions/workflows/ci.yml)
 

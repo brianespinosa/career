@@ -1,13 +1,7 @@
-import {
-  Box,
-  Callout,
-  Card,
-  Flex,
-  Heading,
-  Separator,
-  Text,
-} from '@radix-ui/themes';
+import { Box, Flex, Heading, Separator, Text } from '@radix-ui/themes';
 import Image from 'next/image';
+import AppCallout from '@/components/AppCallout';
+import AppCard from '@/components/AppCard';
 import PageLayout from '@/components/PageLayout';
 import linkUnfurl from '@/img/link-unfurl.png';
 
@@ -16,52 +10,47 @@ export default function Home() {
     <PageLayout
       left={
         <>
-          <Card asChild>
-            <section>
-              <Heading as='h2' size='4'>
-                About the App
-              </Heading>
-              <Separator my='2' size='4' />
-              <Box pt='3'>
-                <Text as='p'>
-                  This app supports the first two parts of a three-part career
-                  growth framework: rating yourself against the attributes of
-                  your target level, and identifying your highest-impact
-                  opportunities. The third part, partnering for execution with
-                  your manager or mentor, happens outside the app.
-                </Text>
-              </Box>
-            </section>
-          </Card>
-          <Card asChild>
-            <section>
-              <Heading as='h2' size='4'>
-                Saving Assessments
-              </Heading>
-              <Separator my='2' size='4' />
-              <Box pt='3'>
-                <Text as='p'>
-                  This app is stateless: your ratings are encoded in the URL. To
-                  save your assessment, paste the URL into a Slack DM to
-                  yourself. Apps that support link previews will unfurl it into
-                  a card showing your ratings chart, target level, and the date
-                  of your assessment, making it easy to find later. When you
-                  come back, your full assessment loads instantly so you can
-                  pick up where you left off or reuse the goal prompt without
-                  starting over.
-                </Text>
-                <Image
-                  src={linkUnfurl}
-                  alt='Example of a link preview card in Slack showing the ratings chart'
-                  style={{ width: '100%', height: 'auto' }}
-                />
-              </Box>
-            </section>
-          </Card>
+          <AppCard>
+            <Heading as='h2' size='4'>
+              About the App
+            </Heading>
+            <Separator my='2' size='4' />
+            <Box pt='3'>
+              <Text as='p'>
+                This app supports the first two parts of a three-part career
+                growth framework: rating yourself against the attributes of your
+                target level, and identifying your highest-impact opportunities.
+                The third part, partnering for execution with your manager or
+                mentor, happens outside the app.
+              </Text>
+            </Box>
+          </AppCard>
+          <AppCard>
+            <Heading as='h2' size='4'>
+              Saving Assessments
+            </Heading>
+            <Separator my='2' size='4' />
+            <Box pt='3'>
+              <Text as='p'>
+                This app is stateless: your ratings are encoded in the URL. To
+                save your assessment, paste the URL into a Slack DM to yourself.
+                Apps that support link previews will unfurl it into a card
+                showing your ratings chart, target level, and the date of your
+                assessment, making it easy to find later. When you come back,
+                your full assessment loads instantly so you can pick up where
+                you left off or reuse the goal prompt without starting over.
+              </Text>
+              <Image
+                src={linkUnfurl}
+                alt='Example of a link preview card in Slack showing the ratings chart'
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </Box>
+          </AppCard>
         </>
       }
       right={
-        <Callout.Root variant='outline'>
+        <AppCallout>
           <Flex direction='column' gap='2'>
             <Heading asChild size='3'>
               <h3>Get Started</h3>
@@ -106,7 +95,7 @@ export default function Home() {
               </ol>
             </Flex>
           </Flex>
-        </Callout.Root>
+        </AppCallout>
       }
     />
   );

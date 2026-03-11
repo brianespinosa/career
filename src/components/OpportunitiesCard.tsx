@@ -1,7 +1,7 @@
 'use client';
 
 import type { ThemeProps } from '@radix-ui/themes';
-import { Callout, Card, Flex, Link, Tabs, Text } from '@radix-ui/themes';
+import { Card, Flex, Link, Tabs, Text } from '@radix-ui/themes';
 import { AnimatePresence, motion } from 'motion/react';
 import { useContext } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
@@ -10,6 +10,7 @@ import { RATINGS } from '@/hooks/useRatingParam';
 import { cardFadeAnimation } from '@/lib/animations';
 import { scrollToAttribute, toAttributeId } from '@/lib/attributeId';
 import type { AttributeValues } from '@/types/attributes';
+import AppCallout from './AppCallout';
 import SmartGoalsPrompt from './SmartGoalsPrompt';
 
 type AttributeOption = Omit<AttributeValues, 'value'>;
@@ -66,65 +67,65 @@ const OpportunitiesCard = ({
   return (
     <AnimatePresence>
       {rated.length > 0 && (
-        <MotionCard key='opportunities' {...cardFadeAnimation}>
-          <Tabs.Root defaultValue='opportunities'>
-            <Tabs.List mb='4'>
-              <Tabs.Trigger value='opportunities'>Opportunities</Tabs.Trigger>
-              <Tabs.Trigger value='goal-prompt'>Goal Prompt</Tabs.Trigger>
-            </Tabs.List>
+        <MotionCard key='opportunities' asChild {...cardFadeAnimation}>
+          <aside>
+            <Tabs.Root defaultValue='opportunities'>
+              <Tabs.List mb='4'>
+                <Tabs.Trigger value='opportunities'>Opportunities</Tabs.Trigger>
+                <Tabs.Trigger value='goal-prompt'>Goal Prompt</Tabs.Trigger>
+              </Tabs.List>
 
-            <Tabs.Content value='opportunities'>
-              <Callout.Root variant='outline' mb='3'>
-                <Callout.Text>
+              <Tabs.Content value='opportunities'>
+                <AppCallout>
                   Lowest-rated attributes sorted by impact. Never and Rarely
                   ratings are the most valuable areas to focus on.
-                </Callout.Text>
-              </Callout.Root>
-              <Flex direction='column' gap='4' p='0' m='0' asChild>
-                <ul className='list-none'>
-                  <AnimatePresence>
-                    {visible.map(({ key, name, color, rating }) => (
-                      <motion.li
-                        key={key}
-                        layout
-                        initial={{ opacity: 0 }}
-                        animate={{
-                          opacity: toOpacity(rating, minRating, maxRating),
-                        }}
-                        exit={{ opacity: 0 }}
-                        transition={{ opacity: { duration: 0.6 } }}
-                      >
-                        <Link
-                          href={`#${toAttributeId(name)}`}
-                          color={color as ThemeProps['accentColor']}
-                          size='2'
-                          weight='medium'
-                          underline='hover'
-                          onClick={(e) => {
-                            e.preventDefault();
-                            scrollToAttribute(name);
+                </AppCallout>
+                <Flex direction='column' gap='3' p='0' m='0' mt='3' asChild>
+                  <ul className='list-none'>
+                    <AnimatePresence>
+                      {visible.map(({ key, name, color, rating }) => (
+                        <motion.li
+                          key={key}
+                          layout
+                          initial={{ opacity: 0 }}
+                          animate={{
+                            opacity: toOpacity(rating, minRating, maxRating),
                           }}
+                          exit={{ opacity: 0 }}
+                          transition={{ opacity: { duration: 0.6 } }}
                         >
-                          {name}
-                          <Text as='span' size='1' color='gray' ml='2'>
-                            ({RATINGS[String(rating) as RatingKey]})
-                          </Text>
-                        </Link>
-                      </motion.li>
-                    ))}
-                  </AnimatePresence>
-                </ul>
-              </Flex>
-            </Tabs.Content>
+                          <Link
+                            href={`#${toAttributeId(name)}`}
+                            color={color as ThemeProps['accentColor']}
+                            size='2'
+                            weight='medium'
+                            underline='hover'
+                            onClick={(e) => {
+                              e.preventDefault();
+                              scrollToAttribute(name);
+                            }}
+                          >
+                            {name}
+                            <Text as='span' size='1' color='gray' ml='2'>
+                              ({RATINGS[String(rating) as RatingKey]})
+                            </Text>
+                          </Link>
+                        </motion.li>
+                      ))}
+                    </AnimatePresence>
+                  </ul>
+                </Flex>
+              </Tabs.Content>
 
-            <Tabs.Content value='goal-prompt'>
-              <SmartGoalsPrompt
-                levelKey={levelKey}
-                levelName={levelName}
-                themeGroups={themeGroups}
-              />
-            </Tabs.Content>
-          </Tabs.Root>
+              <Tabs.Content value='goal-prompt'>
+                <SmartGoalsPrompt
+                  levelKey={levelKey}
+                  levelName={levelName}
+                  themeGroups={themeGroups}
+                />
+              </Tabs.Content>
+            </Tabs.Root>
+          </aside>
         </MotionCard>
       )}
     </AnimatePresence>

@@ -3,7 +3,6 @@
 import {
   AspectRatio,
   Box,
-  Card,
   Flex,
   Heading,
   Separator,
@@ -18,6 +17,7 @@ import useCareerParam from '@/hooks/useCareerParam';
 import { LEVELS } from '@/lib/levels';
 import type { AttributeKeys, AttributeValues } from '@/types/attributes';
 import type { LevelKeys } from '@/types/levels';
+import AppCard from './AppCard';
 import CareerAttribute from './CareerAttribute';
 import LoadingSpinner from './LoadingSpinner';
 import PageLayout from './PageLayout';
@@ -59,7 +59,7 @@ const CareerThemes = () => {
       leftId='role-visualization'
       left={
         <>
-          <Card>
+          <AppCard>
             <AspectRatio>
               <RatingsChart
                 themeGroups={themeGroups as Record<string, AttributeValues[]>}
@@ -70,7 +70,7 @@ const CareerThemes = () => {
               {name}
             </Heading>
             <PropertyList properties={properties} minWidth='8rem' />
-          </Card>
+          </AppCard>
           <Suspense>
             <OpportunitiesCard
               attributeValues={attributeValues}
@@ -81,32 +81,30 @@ const CareerThemes = () => {
         </>
       }
       right={Object.entries(themeGroups).map(([theme, attributes]) => (
-        <Card key={theme} asChild>
-          <section>
-            <Box ml='8rem'>
-              <Heading
-                as='h3'
-                size='4'
-                color={attributes?.[0].color as ThemeProps['accentColor']}
-              >
-                {theme}
-              </Heading>
-              <Separator
-                my='2'
-                size='4'
-                color={attributes?.[0].color as ThemeProps['accentColor']}
+        <AppCard key={theme}>
+          <Box ml='8rem'>
+            <Heading
+              as='h3'
+              size='4'
+              color={attributes?.[0].color as ThemeProps['accentColor']}
+            >
+              {theme}
+            </Heading>
+            <Separator
+              my='2'
+              size='4'
+              color={attributes?.[0].color as ThemeProps['accentColor']}
+            />
+          </Box>
+          {attributes?.map(({ key, description, color }) => (
+            <Theme key={key} accentColor={color as ThemeProps['accentColor']}>
+              <CareerAttribute
+                attribute={key as AttributeKeys}
+                description={description}
               />
-            </Box>
-            {attributes?.map(({ key, description, color }) => (
-              <Theme key={key} accentColor={color as ThemeProps['accentColor']}>
-                <CareerAttribute
-                  attribute={key as AttributeKeys}
-                  description={description}
-                />
-              </Theme>
-            ))}
-          </section>
-        </Card>
+            </Theme>
+          ))}
+        </AppCard>
       ))}
     />
   );

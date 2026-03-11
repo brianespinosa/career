@@ -2,10 +2,13 @@ import { Card } from '@radix-ui/themes';
 
 const AppCard = ({
   children,
+  as: Element = 'section',
   ...props
-}: Omit<React.ComponentProps<typeof Card>, 'asChild'>) => (
+}: Omit<React.ComponentProps<typeof Card>, 'asChild'> & {
+  as?: React.ElementType;
+}) => (
   <Card asChild {...props}>
-    <section>{children}</section>
+    <Element>{children}</Element>
   </Card>
 );
 

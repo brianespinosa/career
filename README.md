@@ -29,3 +29,5 @@ This app supports the first two parts of a three-part career growth framework: r
 ## Saving Assessments
 
 This app is stateless: your ratings are encoded in the URL. To save your assessment, paste the URL into a Slack DM to yourself. Apps that support link previews will unfurl it into a card showing your ratings chart, target level, and the date of your assessment, making it easy to find later. When you come back, your full assessment loads instantly so you can pick up where you left off or reuse the goal prompt without starting over.
+
+![Example of a link preview card in Slack showing the ratings chart](src/img/link-unfurl.png)

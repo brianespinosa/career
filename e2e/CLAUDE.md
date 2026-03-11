@@ -61,7 +61,11 @@ Note: `OpportunitiesCard` renders a `Tabs.Root` (Radix UI) — "Opportunities" i
 
 ## Test Files
 
+- `home.spec.ts` — home page headings render; axe accessibility scan passes
 - `level-navigation.spec.ts` — CareerSelect navigates to the correct level URL and renders the level heading
 - `url-rating-encoding.spec.ts` — pre-encoded URLs restore correct rating state in RatingSelect dropdowns
 - `reset.spec.ts` — ResetButton clears ratings and updates URL; AlertDialog cancel leaves state unchanged
-- `opportunities-card.spec.ts` — OpportunitiesCard is absent with no ratings, visible with ratings
+- `opportunities-card.spec.ts` — OpportunitiesCard is absent with no ratings, visible with ratings; sort order and animated opacity; axe scan on rated page
+- `smart-goals.spec.ts` — Goal Prompt tab renders textarea with level name; copy button writes to clipboard
+- `og-image.spec.ts` — OG image routes return status 200 with image content-type
+- `ratings-chart.spec.ts` — arc click scrolls attribute heading into viewport; EM level page renders heading and comboboxes

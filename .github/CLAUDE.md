@@ -42,6 +42,10 @@ Config: `.github/workflows/dependabot-auto-merge.yml`
 
 Triggers on `pull_request_target` (runs in base branch context so `GITHUB_TOKEN` has full permissions). Checks `github.actor == 'dependabot[bot]'` and enables auto-merge via squash. `pull_request_target` is safe here because no PR code is checked out or executed.
 
+## E2E Coverage Policy
+
+Any new user-facing feature must have a corresponding e2e spec added or updated before the PR is merged. Document the spec in the PR description's test plan section.
+
 ## Notes
 
 - Node version is pinned via `.nvmrc` — update there to change it everywhere

@@ -3782,6 +3782,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/analytics@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@vercel/analytics@npm:2.0.0"
+  peerDependencies:
+    "@remix-run/react": ^2
+    "@sveltejs/kit": ^1 || ^2
+    next: ">= 13"
+    nuxt: ">= 3"
+    react: ^18 || ^19 || ^19.0.0-rc
+    svelte: ">= 4"
+    vue: ^3
+    vue-router: ^4
+  peerDependenciesMeta:
+    "@remix-run/react":
+      optional: true
+    "@sveltejs/kit":
+      optional: true
+    next:
+      optional: true
+    react:
+      optional: true
+    svelte:
+      optional: true
+    vue:
+      optional: true
+    vue-router:
+      optional: true
+  checksum: 10c0/21b646859616899012bf3056bdc2d79db096c95b5717189ea1ef7947136cbb2a4efb704ed66fbf56d43cf6c78c1acf1fc52b43ebfec8765df19a5c88fbf96255
+  languageName: node
+  linkType: hard
+
 "@vercel/backends@npm:0.0.42":
   version: 0.0.42
   resolution: "@vercel/backends@npm:0.0.42"
@@ -4146,6 +4177,36 @@ __metadata:
     "@iarna/toml": "npm:^2.2.5"
     execa: "npm:5"
   checksum: 10c0/60240d7ea6f9fe376adf9d7b51c51d1d13cfb61c7e65a0ea157f6e3e1cae31629e3f0c01580759ffef09a50f280e1373b8bba93a59c9a89f179c2ba8eb615991
+  languageName: node
+  linkType: hard
+
+"@vercel/speed-insights@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@vercel/speed-insights@npm:2.0.0"
+  peerDependencies:
+    "@sveltejs/kit": ^1 || ^2
+    next: ">= 13"
+    nuxt: ">= 3"
+    react: ^18 || ^19 || ^19.0.0-rc
+    svelte: ">= 4"
+    vue: ^3
+    vue-router: ^4
+  peerDependenciesMeta:
+    "@sveltejs/kit":
+      optional: true
+    next:
+      optional: true
+    nuxt:
+      optional: true
+    react:
+      optional: true
+    svelte:
+      optional: true
+    vue:
+      optional: true
+    vue-router:
+      optional: true
+  checksum: 10c0/a8703abcf72f6317183be13a5e991883589c48a8107fedb47d075af08e2d5a71d93e22c1927c8d0c28a69bb0e4712e90386d50947851883b6169c715cd43b4eb
   languageName: node
   linkType: hard
 
@@ -5229,6 +5290,8 @@ __metadata:
     "@types/node": "npm:25.4.0"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
+    "@vercel/analytics": "npm:2.0.0"
+    "@vercel/speed-insights": "npm:2.0.0"
     "@visx/visx": "npm:4.0.1-alpha.0"
     "@vitejs/plugin-react": "npm:5.1.4"
     "@vitest/coverage-v8": "npm:4.0.18"

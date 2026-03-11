@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { SITE_TITLE } from '@/lib/siteConfig';
 import type { LevelKeys } from '@/types/levels';
 import { buildArcs, OgLayout, OgSimpleLayout } from './ogChart';
@@ -35,6 +35,12 @@ describe('buildArcs', () => {
   });
 
   describe('unknown theme', () => {
+    // This test uses vi.resetModules() + vi.doMock() to inject a synthetic bad-theme
+    // attribute without affecting the statically-imported buildArcs used by other tests.
+    // Sequencing: resetModules clears the cache → doMock registers the overrides →
+    // dynamic import() picks them up → doUnmock + resetModules restores a clean state.
+    // All other tests in this file use the already-resolved static import, so they
+    // are unaffected by the module registry changes made here.
     it('logs console.error and uses fallback colorName', async () => {
       const consoleErrorSpy = vi
         .spyOn(console, 'error')
@@ -83,8 +89,16 @@ describe('OgSimpleLayout', () => {
 });
 
 describe('OgLayout', () => {
-  const arcsWithRatings = buildArcs('P1', { acc: 2 });
-  const arcsEmpty = buildArcs('P1', {});
+  // Fixtures are initialized in beforeAll rather than at module level to keep
+  // their evaluation clearly sequenced after the unknown-theme test's module
+  // registry cleanup.
+  let arcsWithRatings: ReturnType<typeof buildArcs>;
+  let arcsEmpty: ReturnType<typeof buildArcs>;
+
+  beforeAll(() => {
+    arcsWithRatings = buildArcs('P1', { acc: 2 });
+    arcsEmpty = buildArcs('P1', {});
+  });
 
   it('renders svg with aria-label containing the levelName prop', () => {
     render(

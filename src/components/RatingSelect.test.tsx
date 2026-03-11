@@ -5,11 +5,13 @@ import { describe, expect, it, vi } from 'vitest';
 import { RatingsContext } from '@/hooks/RatingsProvider';
 import RatingSelect from './RatingSelect';
 
+const mockSetRating = vi.fn();
+
 const renderRatingSelect = (ratings: Record<string, number> = {}) =>
   render(
     <Theme>
       <RatingsContext.Provider
-        value={{ ratings, setRating: vi.fn(), clearRatings: vi.fn() }}
+        value={{ ratings, setRating: mockSetRating, clearRatings: vi.fn() }}
       >
         <RatingSelect attributeParam='acc' attributeId='accountability' />
       </RatingsContext.Provider>
@@ -27,14 +29,19 @@ describe('RatingSelect', () => {
     expect(screen.getByText('Sometimes')).toBeInTheDocument();
   });
 
-  it('trigger has surface variant class when not rated', () => {
+  it('trigger has surface variant class when not rated, not soft', () => {
+    // rt-variant-* classes are how @radix-ui/themes expresses the variant prop on the DOM element
     renderRatingSelect();
-    expect(screen.getByRole('combobox')).toHaveClass('rt-variant-surface');
+    const trigger = screen.getByRole('combobox');
+    expect(trigger).toHaveClass('rt-variant-surface');
+    expect(trigger).not.toHaveClass('rt-variant-soft');
   });
 
-  it('trigger has soft variant class when rated', () => {
+  it('trigger has soft variant class when rated, not surface', () => {
     renderRatingSelect({ acc: 2 });
-    expect(screen.getByRole('combobox')).toHaveClass('rt-variant-soft');
+    const trigger = screen.getByRole('combobox');
+    expect(trigger).toHaveClass('rt-variant-soft');
+    expect(trigger).not.toHaveClass('rt-variant-surface');
   });
 
   it('all four rating options are present when dropdown is opened', async () => {
@@ -47,5 +54,13 @@ describe('RatingSelect', () => {
       screen.getByRole('option', { name: 'Sometimes' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('option', { name: 'Always' })).toBeInTheDocument();
+  });
+
+  it('calls setRating with the numeric value when an option is selected', async () => {
+    const user = userEvent.setup();
+    renderRatingSelect();
+    await user.click(screen.getByRole('combobox'));
+    await user.click(screen.getByRole('option', { name: 'Never' }));
+    expect(mockSetRating).toHaveBeenCalledWith('acc', 1);
   });
 });

@@ -1,5 +1,3 @@
-'use client';
-
 import { Theme } from '@radix-ui/themes';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -53,5 +51,13 @@ describe('CareerSelect', () => {
     await user.click(screen.getByRole('combobox', { name: 'Career level' }));
     expect(screen.getByText('IC')).toBeInTheDocument();
     expect(screen.getByText('EM')).toBeInTheDocument();
+  });
+
+  it('calls router.push with the selected level path when an option is chosen', async () => {
+    const user = userEvent.setup();
+    renderCareerSelect();
+    await user.click(screen.getByRole('combobox', { name: 'Career level' }));
+    await user.click(screen.getByRole('option', { name: /P1/ }));
+    expect(mockPush).toHaveBeenCalledWith('/P1');
   });
 });

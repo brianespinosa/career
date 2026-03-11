@@ -3,10 +3,13 @@ import { P1_ENCODED } from './fixtures/ratings';
 
 test.describe('RatingsChart', () => {
   test.describe('arc click scrolls to attribute heading', () => {
-    // Direction is rated Never(1) in P1_ENCODED and uses the HOW theme (amber color).
-    // Its arc path is identifiable by fill="var(--amber-6)".
-    // Clicking the arc calls scrollToAttribute('Direction'), which scrolls the
-    // Direction heading into view.
+    // Direction is rated Never(1) in P1_ENCODED and uses the HOW theme (amber
+    // color). Its arc is the inner motion.path rendered by the visx Arc render
+    // prop, identifiable by fill="var(--amber-6)".
+    // CSS attribute selector is used as a last resort — SVG <path> elements have
+    // no accessible role or name (see e2e/CLAUDE.md locator priority). P1_ENCODED
+    // rates only Direction with an amber color, so toHaveCount(1) asserts the
+    // selector is unambiguous for this fixture.
     test('clicking a rated arc scrolls the matching attribute heading into view', async ({
       page,
     }) => {
@@ -14,6 +17,7 @@ test.describe('RatingsChart', () => {
 
       // Wait for the chart to mount (next/dynamic with ssr: false).
       const arc = page.locator('path[fill="var(--amber-6)"]');
+      await expect(arc).toHaveCount(1);
       await expect(arc).toBeVisible();
 
       await arc.click();

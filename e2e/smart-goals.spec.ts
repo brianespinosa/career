@@ -8,6 +8,8 @@ test.describe('SmartGoalsPrompt', () => {
     await page.goto(`/P1/${P1_ENCODED}`);
     await expect(app.opportunitiesTab).toBeVisible();
     await app.goalPromptTab.click();
+    // Wait for the Goal Prompt panel to open before each test runs.
+    await expect(page.getByRole('textbox')).toBeVisible();
   });
 
   test('clicking Goal Prompt tab makes the panel visible', async ({ page }) => {
@@ -15,9 +17,7 @@ test.describe('SmartGoalsPrompt', () => {
   });
 
   test('textarea contains the level name', async ({ page }) => {
-    await expect(page.getByRole('textbox')).toContainText(
-      'Software Engineer I',
-    );
+    await expect(page.getByRole('textbox')).toHaveValue(/Software Engineer I/);
   });
 
   test('clicking copy writes textarea content to clipboard', async ({
@@ -27,6 +27,7 @@ test.describe('SmartGoalsPrompt', () => {
     await context.grantPermissions(['clipboard-read', 'clipboard-write']);
     const app = new AppPage(page);
     const promptText = await page.getByRole('textbox').inputValue();
+    expect(promptText).toBeTruthy();
 
     await app.copyPromptButton.click();
 

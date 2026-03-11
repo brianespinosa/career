@@ -26,6 +26,13 @@ test.describe('home page', () => {
 
   test('passes axe accessibility scan', async ({ page }) => {
     const results = await new AxeBuilder({ page }).analyze();
-    expect(results.violations).toEqual([]);
+    expect(
+      results.violations.map((v) => ({
+        id: v.id,
+        impact: v.impact,
+        description: v.description,
+        nodes: v.nodes.map((n) => n.html),
+      })),
+    ).toEqual([]);
   });
 });

@@ -24,7 +24,7 @@ interface OpportunitiesCardProps {
 
 const MotionAside = motion.aside;
 
-const toOpacity = (rating: number, min: number, max: number): number => {
+export const toOpacity = (rating: number, min: number, max: number): number => {
   if (min === max) return 1;
   return 1 - ((rating - min) / (max - min)) * 0.75;
 };

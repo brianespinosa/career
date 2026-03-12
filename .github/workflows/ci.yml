@@ -122,7 +122,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
       - id: lighthouse
-        uses: treosh/lighthouse-ci-action@12.6.1
+        uses: treosh/lighthouse-ci-action@12.6.2
         with:
           urls: "${{ needs.build.outputs.url }}${{ matrix.path }}?x-vercel-protection-bypass=${{ secrets.VERCEL_BYPASS_SECRET }}"
           runs: 2

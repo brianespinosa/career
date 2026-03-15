@@ -39,7 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6.0.2
       - uses: ./.github/actions/setup
-      - run: yarn test --coverage
+      - run: yarn test
 
   build:
     runs-on: ubuntu-latest

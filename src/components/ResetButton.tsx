@@ -8,9 +8,9 @@ import {
   IconButton,
   Tooltip,
 } from '@radix-ui/themes';
-import { track } from '@vercel/analytics';
 import { useContext } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
+import { track } from '@/lib/track';
 
 export default function ResetButton(): React.ReactNode {
   const { ratings, clearRatings } = useContext(RatingsContext);

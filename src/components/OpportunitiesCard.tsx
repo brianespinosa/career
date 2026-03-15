@@ -2,7 +2,6 @@
 
 import type { ThemeProps } from '@radix-ui/themes';
 import { Flex, Link, Tabs, Text } from '@radix-ui/themes';
-import { track } from '@vercel/analytics';
 import { AnimatePresence, motion } from 'motion/react';
 import { useContext } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
@@ -10,6 +9,7 @@ import type { RatingKey } from '@/hooks/useRatingParam';
 import { RATINGS } from '@/hooks/useRatingParam';
 import { cardFadeAnimation } from '@/lib/animations';
 import { scrollToAttribute, toAttributeId } from '@/lib/attributeId';
+import { track } from '@/lib/track';
 import type { AttributeValues } from '@/types/attributes';
 import AppCallout from './AppCallout';
 import AppCard from './AppCard';

@@ -1,6 +1,5 @@
 'use client';
 
-import { track } from '@vercel/analytics';
 import { localPoint } from '@visx/event';
 import { Group } from '@visx/group';
 import { ScaleSVG } from '@visx/responsive';
@@ -18,6 +17,7 @@ import { RatingsContext } from '@/hooks/RatingsProvider';
 import { ratingAppearAnimation } from '@/lib/animations';
 import { scrollToAttribute } from '@/lib/attributeId';
 import { CHART_SIZE, computeChartGeometry } from '@/lib/chartGeometry';
+import { track } from '@/lib/track';
 import type { AttributeValues } from '@/types/attributes';
 
 const TEXT_COLOR = 'var(--color-panel-solid)';
@@ -89,7 +89,6 @@ const RatingsChart = ({ themeGroups }: RatingsChartProps) => {
                   outerRadius={geo.outerRadius}
                   innerRadius={geo.innerRadius}
                   fill={`var(--${geo.colorName}-6)`}
-                  onClick={() => scrollToAttribute(geo.name)}
                   onPointerMove={(event) => {
                     const ownerSVGElement = (event.target as SVGElement)
                       .ownerSVGElement;

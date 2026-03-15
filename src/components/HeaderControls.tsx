@@ -2,7 +2,7 @@
 
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { IconButton, Tooltip } from '@radix-ui/themes';
-import { track } from '@vercel/analytics';
+import { track } from '@/lib/track';
 import CareerSelect from './CareerSelect';
 import ResetButton from './ResetButton';
 

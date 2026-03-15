@@ -2,8 +2,8 @@
 
 import { CopyIcon } from '@radix-ui/react-icons';
 import { Box, Flex, IconButton, TextArea, Tooltip } from '@radix-ui/themes';
-import { track } from '@vercel/analytics';
 import { useEffect, useRef, useState } from 'react';
+import { track } from '@/lib/track';
 import AppCallout from './AppCallout';
 
 type Attribute = {

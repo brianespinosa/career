@@ -22,15 +22,8 @@ const renderPrompt = (props = defaultProps) =>
     </Theme>,
   );
 
-let writeText: ReturnType<typeof vi.fn>;
-
 beforeEach(() => {
-  writeText = vi.fn().mockResolvedValue(undefined);
-  Object.defineProperty(navigator, 'clipboard', {
-    value: { writeText },
-    writable: true,
-    configurable: true,
-  });
+  vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue(undefined);
 });
 
 describe('SmartGoalsPrompt', () => {
@@ -76,6 +69,22 @@ describe('SmartGoalsPrompt', () => {
     await waitFor(() => {
       expect(
         screen.getByRole('button', { name: /copied/i }),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it('shows error label when clipboard.writeText rejects', async () => {
+    vi.spyOn(navigator.clipboard, 'writeText').mockRejectedValue(
+      new Error('denied'),
+    );
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    const user = userEvent.setup();
+    renderPrompt();
+    await user.click(screen.getByRole('button', { name: /copy prompt/i }));
+    await waitFor(() => {
+      expect(
+        screen.getByRole('button', { name: /copy failed/i }),
       ).toBeInTheDocument();
     });
   });

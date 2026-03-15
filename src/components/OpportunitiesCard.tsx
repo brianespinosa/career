@@ -9,6 +9,7 @@ import type { RatingKey } from '@/hooks/useRatingParam';
 import { RATINGS } from '@/hooks/useRatingParam';
 import { cardFadeAnimation } from '@/lib/animations';
 import { scrollToAttribute, toAttributeId } from '@/lib/attributeId';
+import { track } from '@/lib/track';
 import type { AttributeValues } from '@/types/attributes';
 import AppCallout from './AppCallout';
 import AppCard from './AppCard';
@@ -69,7 +70,10 @@ const OpportunitiesCard = ({
     <AnimatePresence>
       {rated.length > 0 && (
         <AppCard as={MotionAside} key='opportunities' {...cardFadeAnimation}>
-          <Tabs.Root defaultValue='opportunities'>
+          <Tabs.Root
+            defaultValue='opportunities'
+            onValueChange={(tab) => track('view_tab', { tab })}
+          >
             <Tabs.List mb='4'>
               <Tabs.Trigger value='opportunities'>Opportunities</Tabs.Trigger>
               <Tabs.Trigger value='goal-prompt'>Goal Prompt</Tabs.Trigger>
@@ -103,6 +107,10 @@ const OpportunitiesCard = ({
                           onClick={(e) => {
                             e.preventDefault();
                             scrollToAttribute(name);
+                            track('scroll_to_attribute', {
+                              name,
+                              source: 'opportunities_list',
+                            });
                           }}
                         >
                           {name}

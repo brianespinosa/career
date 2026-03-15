@@ -1,15 +1,6 @@
 import './global.scss';
 
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import {
-  Container,
-  Flex,
-  Heading,
-  IconButton,
-  Link,
-  Theme,
-  Tooltip,
-} from '@radix-ui/themes';
+import { Container, Flex, Heading, Link, Theme } from '@radix-ui/themes';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
@@ -74,13 +65,6 @@ export default function RootLayout({
                   </Heading>
                   <Flex ml='auto' gap='2'>
                     <HeaderControls />
-                    <Tooltip content='GitHub'>
-                      <IconButton variant='soft' asChild aria-label='GitHub'>
-                        <a href='https://github.com/brianespinosa/career'>
-                          <GitHubLogoIcon />
-                        </a>
-                      </IconButton>
-                    </Tooltip>
                   </Flex>
                 </Flex>
               </header>

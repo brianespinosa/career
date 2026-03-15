@@ -19,6 +19,7 @@ export default defineConfig({
     setupFiles: ['./vitest.setup.ts'],
     exclude: ['e2e/**', 'node_modules/**'],
     coverage: {
+      enabled: true,
       provider: 'v8',
       exclude: ['data/**', 'node_modules/**', 'e2e/**'],
       thresholds: {

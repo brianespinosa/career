@@ -111,6 +111,10 @@ ADRs are stored in `docs/adr/` and follow the naming convention `NNN-descriptive
 - **Existing ADRs followed?** — Verify the changes comply with accepted ADRs. If a change conflicts, either revise the ADR first or explicitly note the deviation.
 - **Revise an ADR?** — If the constraints that drove a previous decision have changed, revisiting it is valid. Update the ADR's status to `Superseded by ADR-NNN` and write the replacement.
 
+### Yarn Install Warnings
+
+`yarn install` may produce warnings. All warnings MUST be resolved before closing any PR — investigate the cause and fix it (e.g. add or remove a `packageExtensions` entry in `.yarnrc.yml`, pin a transitive dependency, or update the offending package).
+
 ### Technical Review Standards
 
 Always fully evaluate the technical merits of questions and suggestions against relevant sources of truth and documentation.

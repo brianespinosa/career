@@ -10,6 +10,7 @@ import {
 } from '@radix-ui/themes';
 import { useContext } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
+import { track } from '@/lib/track';
 
 export default function ResetButton(): React.ReactNode {
   const { ratings, clearRatings } = useContext(RatingsContext);
@@ -37,7 +38,12 @@ export default function ResetButton(): React.ReactNode {
               Cancel
             </Button>
           </AlertDialog.Cancel>
-          <AlertDialog.Action onClick={clearRatings}>
+          <AlertDialog.Action
+            onClick={() => {
+              clearRatings();
+              track('reset_ratings');
+            }}
+          >
             <Button>Reset</Button>
           </AlertDialog.Action>
         </Flex>

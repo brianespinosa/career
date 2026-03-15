@@ -17,6 +17,7 @@ import { RatingsContext } from '@/hooks/RatingsProvider';
 import { ratingAppearAnimation } from '@/lib/animations';
 import { scrollToAttribute } from '@/lib/attributeId';
 import { CHART_SIZE, computeChartGeometry } from '@/lib/chartGeometry';
+import { track } from '@/lib/track';
 import type { AttributeValues } from '@/types/attributes';
 
 const TEXT_COLOR = 'var(--color-panel-solid)';
@@ -88,7 +89,6 @@ const RatingsChart = ({ themeGroups }: RatingsChartProps) => {
                   outerRadius={geo.outerRadius}
                   innerRadius={geo.innerRadius}
                   fill={`var(--${geo.colorName}-6)`}
-                  onClick={() => scrollToAttribute(geo.name)}
                   onPointerMove={(event) => {
                     const ownerSVGElement = (event.target as SVGElement)
                       .ownerSVGElement;
@@ -112,7 +112,13 @@ const RatingsChart = ({ themeGroups }: RatingsChartProps) => {
                           <motion.path
                             fill={`var(--${geo.colorName}-6)`}
                             style={{ cursor: 'pointer' }}
-                            onClick={() => scrollToAttribute(geo.name)}
+                            onClick={() => {
+                              scrollToAttribute(geo.name);
+                              track('scroll_to_attribute', {
+                                name: geo.name,
+                                source: 'chart',
+                              });
+                            }}
                             whileHover={{ filter: 'brightness(1.3)' }}
                             whileTap={{ filter: 'brightness(0.85)' }}
                             initial={{ ...ratingAppearAnimation.initial, d }}

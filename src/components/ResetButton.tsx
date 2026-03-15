@@ -8,6 +8,7 @@ import {
   IconButton,
   Tooltip,
 } from '@radix-ui/themes';
+import { track } from '@vercel/analytics';
 import { useContext } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
 
@@ -37,7 +38,12 @@ export default function ResetButton(): React.ReactNode {
               Cancel
             </Button>
           </AlertDialog.Cancel>
-          <AlertDialog.Action onClick={clearRatings}>
+          <AlertDialog.Action
+            onClick={() => {
+              clearRatings();
+              track('reset_ratings');
+            }}
+          >
             <Button>Reset</Button>
           </AlertDialog.Action>
         </Flex>

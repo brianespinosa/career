@@ -1,5 +1,6 @@
 'use client';
 
+import { track } from '@vercel/analytics';
 import { localPoint } from '@visx/event';
 import { Group } from '@visx/group';
 import { ScaleSVG } from '@visx/responsive';
@@ -112,7 +113,13 @@ const RatingsChart = ({ themeGroups }: RatingsChartProps) => {
                           <motion.path
                             fill={`var(--${geo.colorName}-6)`}
                             style={{ cursor: 'pointer' }}
-                            onClick={() => scrollToAttribute(geo.name)}
+                            onClick={() => {
+                              scrollToAttribute(geo.name);
+                              track('scroll_to_attribute', {
+                                name: geo.name,
+                                source: 'chart',
+                              });
+                            }}
                             whileHover={{ filter: 'brightness(1.3)' }}
                             whileTap={{ filter: 'brightness(0.85)' }}
                             initial={{ ...ratingAppearAnimation.initial, d }}

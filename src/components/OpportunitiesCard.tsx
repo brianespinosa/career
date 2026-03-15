@@ -2,6 +2,7 @@
 
 import type { ThemeProps } from '@radix-ui/themes';
 import { Flex, Link, Tabs, Text } from '@radix-ui/themes';
+import { track } from '@vercel/analytics';
 import { AnimatePresence, motion } from 'motion/react';
 import { useContext } from 'react';
 import { RatingsContext } from '@/hooks/RatingsProvider';
@@ -69,7 +70,10 @@ const OpportunitiesCard = ({
     <AnimatePresence>
       {rated.length > 0 && (
         <AppCard as={MotionAside} key='opportunities' {...cardFadeAnimation}>
-          <Tabs.Root defaultValue='opportunities'>
+          <Tabs.Root
+            defaultValue='opportunities'
+            onValueChange={(tab) => track('view_tab', { tab })}
+          >
             <Tabs.List mb='4'>
               <Tabs.Trigger value='opportunities'>Opportunities</Tabs.Trigger>
               <Tabs.Trigger value='goal-prompt'>Goal Prompt</Tabs.Trigger>
@@ -103,6 +107,10 @@ const OpportunitiesCard = ({
                           onClick={(e) => {
                             e.preventDefault();
                             scrollToAttribute(name);
+                            track('scroll_to_attribute', {
+                              name,
+                              source: 'opportunities_list',
+                            });
                           }}
                         >
                           {name}

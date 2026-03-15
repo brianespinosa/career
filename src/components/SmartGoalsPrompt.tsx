@@ -2,6 +2,7 @@
 
 import { CopyIcon } from '@radix-ui/react-icons';
 import { Box, Flex, IconButton, TextArea, Tooltip } from '@radix-ui/themes';
+import { track } from '@vercel/analytics';
 import { useEffect, useRef, useState } from 'react';
 import AppCallout from './AppCallout';
 
@@ -27,7 +28,9 @@ const buildPrompt = (
   themeGroups: ThemeGroup[],
 ): string => {
   const isIC = levelKey.startsWith('P');
-  const track = isIC ? 'Software Engineer (IC)' : 'Engineering Manager (EM)';
+  const careerTrack = isIC
+    ? 'Software Engineer (IC)'
+    : 'Engineering Manager (EM)';
   const themeList = themeGroups
     .map(({ theme, attributes }) => {
       const attrs = attributes
@@ -41,7 +44,7 @@ const buildPrompt = (
 
 ## Engineer Context
 - Target level: ${levelKey} — ${levelName}
-- Track: ${track}
+- Track: ${careerTrack}
 - Note: This is the level the engineer is working toward being promoted to, not their current level. The attribute descriptions below reflect the expectations they need to consistently demonstrate to achieve that promotion.
 - Opportunity themes and attributes identified:
 ${themeList}
@@ -100,6 +103,11 @@ const SmartGoalsPrompt = ({
         '[SmartGoalsPrompt] navigator.clipboard unavailable — insecure context or unsupported browser.',
       );
       setCopyState('error');
+      track('copy_goal_prompt', {
+        level_key: levelKey,
+        level_name: levelName,
+        result: 'error',
+      });
       timeoutRef.current = setTimeout(() => setCopyState('idle'), 3000);
       return;
     }
@@ -107,10 +115,20 @@ const SmartGoalsPrompt = ({
     try {
       await navigator.clipboard.writeText(prompt);
       setCopyState('copied');
+      track('copy_goal_prompt', {
+        level_key: levelKey,
+        level_name: levelName,
+        result: 'success',
+      });
       timeoutRef.current = setTimeout(() => setCopyState('idle'), 2000);
     } catch (err) {
       console.error('[SmartGoalsPrompt] Failed to write to clipboard.', err);
       setCopyState('error');
+      track('copy_goal_prompt', {
+        level_key: levelKey,
+        level_name: levelName,
+        result: 'error',
+      });
       timeoutRef.current = setTimeout(() => setCopyState('idle'), 3000);
     }
   };

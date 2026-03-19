@@ -46,6 +46,12 @@ Triggers on `pull_request_target` (runs in base branch context so `GITHUB_TOKEN`
 
 Any new user-facing feature must have a corresponding e2e spec added or updated before the PR is merged. Document the spec in the PR description's test plan section.
 
+## Repository Settings
+
+Config: `.github/settings.yml`
+
+Managed by the [probot/settings](https://github.com/probot/settings) GitHub App. Extends shared defaults from `brianespinosa/settings:nextjs.yml` and overrides repository-specific metadata (name, description, homepage, topics). Changes to this file are applied automatically by the app on push to the default branch.
+
 ## Notes
 
 - Node version is pinned via `.nvmrc` — update there to change it everywhere

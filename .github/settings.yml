@@ -1,0 +1,8 @@
+_extends: brianespinosa/settings:nextjs.yml
+
+repository:
+  name: career
+  description: "A self-assessment tool for engineers to rate themselves against the attributes of their target career level, identify their highest-impact growth opportunities, and generate SMART goals with an LLM."
+  homepage: https://career.bje.co
+  topics: nextjs, react, typescript
+  private: false

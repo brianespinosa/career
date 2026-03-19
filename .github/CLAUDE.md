@@ -34,7 +34,7 @@ Project IDs are sourced from `.vercel/project.json` (gitignored). Re-run `vercel
 
 Config: `.github/settings.yml`
 
-Managed by the [repository-settings/app](https://github.com/repository-settings/app) GitHub App. Syncs repository settings (description, merge strategy, branch protection) from the YAML file to GitHub on push to the default branch. Changes to repo settings should be made via PR to this file, not through the GitHub UI.
+Managed by the [repository-settings/app](https://github.com/repository-settings/app) GitHub App. Extends `brianespinosa/settings:nextjs.yml` for shared defaults (merge strategy, branch protection, etc.) and only overrides repository-specific fields (name, description, homepage, topics). Changes to repo settings should be made via PR to this file, not through the GitHub UI.
 
 ## Dependabot
 

@@ -1,4 +1,5 @@
 # https://github.com/repository-settings/app
+_extends: brianespinosa/settings:nextjs.yml
 
 repository:
   name: career
@@ -7,37 +8,5 @@ repository:
     attributes of their target career level, identify their highest-impact
     growth opportunities, and generate SMART goals with an LLM.
   homepage: https://career.bje.co
+  topics: nextjs, react, typescript
   private: false
-
-  has_issues: true
-  has_projects: false
-  has_wiki: false
-  has_downloads: false
-
-  default_branch: main
-
-  allow_squash_merge: true
-  allow_merge_commit: false
-  allow_rebase_merge: false
-  delete_branch_on_merge: true
-
-  enable_automated_security_fixes: true
-  enable_vulnerability_alerts: true
-
-branches:
-  - name: main
-    protection:
-      required_pull_request_reviews:
-        required_approving_review_count: 0
-        dismiss_stale_reviews: false
-        require_code_owner_reviews: false
-      required_status_checks:
-        strict: true
-        contexts:
-          - biome
-          - knip
-          - typecheck
-          - test
-          - build
-      enforce_admins: false
-      restrictions: null

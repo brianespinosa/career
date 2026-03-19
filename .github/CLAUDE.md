@@ -30,6 +30,12 @@ The `build` job uses the Vercel CLI (`vercel` devDependency) with three required
 
 Project IDs are sourced from `.vercel/project.json` (gitignored). Re-run `vercel link` locally to regenerate if needed.
 
+## Repository Settings
+
+Config: `.github/settings.yml`
+
+Managed by the [repository-settings/app](https://github.com/repository-settings/app) GitHub App. Syncs repository settings (description, merge strategy, branch protection) from the YAML file to GitHub on push to the default branch. Changes to repo settings should be made via PR to this file, not through the GitHub UI.
+
 ## Dependabot
 
 Config: `.github/dependabot.yml`

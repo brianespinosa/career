@@ -5462,7 +5462,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:4.0.18"
     d3-shape: "npm:3.2.0"
     happy-dom: "npm:20.8.8"
-    knip: "npm:6.0.5"
+    knip: "npm:6.0.6"
     lefthook: "npm:2.1.4"
     motion: "npm:12.38.0"
     next: "npm:16.2.1"
@@ -7150,9 +7150,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:6.0.5":
-  version: 6.0.5
-  resolution: "knip@npm:6.0.5"
+"knip@npm:6.0.6":
+  version: 6.0.6
+  resolution: "knip@npm:6.0.6"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -7172,7 +7172,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10c0/1cb4d9af8cb50768e26c01df2b8c63c38aa2f69e6fae1d9cb27c6c538dd8b7bb7351ceef30c451defaae91f50bc10789199be42bbbdf457e55fd7a88736cf71d
+  checksum: 10c0/8fc1f1902d1667adf0352cb86daafef6e230b4caae221724dd40daed983e366558db571b216a32c80dd1ccf23900e85da5ee6cb2268c4c44a7c8c371912e2217
   languageName: node
   linkType: hard
 

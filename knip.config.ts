@@ -1,6 +1,12 @@
 import type { KnipConfig } from 'knip';
 
 const config: KnipConfig = {
+  ignore: [
+    // Git worktrees used by Claude Code are checked out under .claude/worktrees/.
+    // Knip would otherwise scan them and report false positives.
+    '.claude/**',
+  ],
+
   ignoreDependencies: [
     // Required peer dependency of @visx/xychart, which is bundled inside the
     // @visx/visx meta-package. .yarnrc.yml enforces peer deps as errors (YN0002),

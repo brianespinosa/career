@@ -21,6 +21,8 @@ Runs on push and pull request to `main`. Jobs:
 
 Concurrency is configured to cancel in-progress runs on PRs when new commits are pushed. Runs on `main` are never cancelled.
 
+A top-level `permissions: contents: read` block restricts all jobs to read-only token access by default. The `build` job overrides this with `contents: read` + `deployments: write` for Vercel deployment.
+
 ## Vercel Deployment
 
 The `build` job uses the Vercel CLI (`vercel` devDependency) with three required repository secrets:

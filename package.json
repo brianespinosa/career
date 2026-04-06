@@ -32,7 +32,9 @@
     ]
   },
   "resolutions": {
-    "@vercel/fun/tar": ">=7.5.11"
+    "@vercel/fun/tar": ">=7.5.11",
+    "@vercel/prepare-flags-definitions/minimatch": "^10.2.3",
+    "@vercel/python-analysis/minimatch": "^10.2.3"
   },
   "dependencies": {
     "@radix-ui/colors": "3.0.0",

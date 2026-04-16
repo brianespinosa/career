@@ -4296,12 +4296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/python@npm:6.33.0":
-  version: 6.33.0
-  resolution: "@vercel/python@npm:6.33.0"
+"@vercel/python@npm:6.33.1":
+  version: 6.33.1
+  resolution: "@vercel/python@npm:6.33.1"
   dependencies:
     "@vercel/python-analysis": "npm:0.11.0"
-  checksum: 10c0/cc9aead375b4c4884c82a0394df96ae0d78a4953e052b44f96821ece709540d20fab4d334c5f35ca0e4c5ff76e7fd915d8791342d8d4470e55030646becf3b5d
+  checksum: 10c0/71166d23c01665903de7ff1737f9424d9cef2e92715f2681e4a6df2e0e8890a0077f2148eb606c1421b66cbc45e2a339cb16cc0228b3b29ebe35c3332310d1a1
   languageName: node
   linkType: hard
 
@@ -4338,13 +4338,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/rust@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@vercel/rust@npm:1.1.0"
+"@vercel/rust@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@vercel/rust@npm:1.1.1"
   dependencies:
     execa: "npm:5"
     smol-toml: "npm:1.5.2"
-  checksum: 10c0/3c35d7824b25e8e131b3e55a425640a7bb992ce0d60be4fdf095656049c3c16a4e2203780c39dcb700264c3591f73324d8d499db378c78b3e4e55ef44f8fe4ed
+  checksum: 10c0/3bb9a31b3c3d6a96df2d3fd91d111c347d4b6dfa99e0de54e9f4b9a480720cfdc5d411906262e82830efabf1e578c40fa6fe3cde4c1c1129b84984819fc197fc
   languageName: node
   linkType: hard
 
@@ -5482,7 +5482,7 @@ __metadata:
     react-dom: "npm:19.2.5"
     sass: "npm:1.99.0"
     typescript: "npm:5.9.3"
-    vercel: "npm:51.4.0"
+    vercel: "npm:51.5.0"
     vite: "npm:7.3.2"
     vitest: "npm:4.0.18"
   languageName: unknown
@@ -9368,9 +9368,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vercel@npm:51.4.0":
-  version: 51.4.0
-  resolution: "vercel@npm:51.4.0"
+"vercel@npm:51.5.0":
+  version: 51.5.0
+  resolution: "vercel@npm:51.5.0"
   dependencies:
     "@vercel/backends": "npm:0.0.62"
     "@vercel/blob": "npm:2.3.0"
@@ -9389,11 +9389,11 @@ __metadata:
     "@vercel/next": "npm:4.16.8"
     "@vercel/node": "npm:5.7.7"
     "@vercel/prepare-flags-definitions": "npm:0.2.1"
-    "@vercel/python": "npm:6.33.0"
+    "@vercel/python": "npm:6.33.1"
     "@vercel/redwood": "npm:2.4.12"
     "@vercel/remix-builder": "npm:5.7.2"
     "@vercel/ruby": "npm:2.3.2"
-    "@vercel/rust": "npm:1.1.0"
+    "@vercel/rust": "npm:1.1.1"
     "@vercel/static-build": "npm:2.9.15"
     chokidar: "npm:4.0.0"
     esbuild: "npm:0.27.0"
@@ -9406,7 +9406,7 @@ __metadata:
   bin:
     vc: dist/vc.js
     vercel: dist/vc.js
-  checksum: 10c0/cecafcd81fdd5df695a5909dd98d7a3dbd024c1da5ba96c64b1bb0ac8d90e7aa429f213b916eaa1a84debd1054d5911486d31bd1c891e6c2047b9f8fc2e890b6
+  checksum: 10c0/eba131fd1e261236121258f97cd0856bf8a3012bb98017a59873dce21665df2496e66fa0ac46ac1ae394d81e3a44ffe68301a9a4c312790ba272d5f3c3a1dd86
   languageName: node
   linkType: hard
 

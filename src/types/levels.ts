@@ -1,12 +1,20 @@
 import type EM from '@/data/em.json';
+import type EMML from '@/data/em-ml.json';
 import type IC from '@/data/ic.json';
+import type ICMML from '@/data/ic-ml.json';
 
 export type EMKeys = keyof typeof EM;
 export type ICKeys = keyof typeof IC;
+export type EMMLKeys = keyof typeof EMML;
+export type ICMMLKeys = keyof typeof ICMML;
 export type EMDetails = (typeof EM)[EMKeys];
 export type ICDetails = (typeof IC)[ICKeys];
+export type EMMLDetails = (typeof EMML)[EMMLKeys];
+export type ICMMLDetails = (typeof ICMML)[ICMMLKeys];
 export type ICRecord = Record<ICKeys, ICDetails>;
 export type EMRecord = Record<EMKeys, EMDetails>;
-export type LevelRecord = ICRecord | EMRecord;
-export type LevelKeys = EMKeys | ICKeys;
-export type LevelDetails = EMDetails | ICDetails;
+export type EMMLRecord = Record<EMMLKeys, EMMLDetails>;
+export type ICMMLRecord = Record<ICMMLKeys, ICMMLDetails>;
+export type LevelRecord = ICRecord | EMRecord | EMMLRecord | ICMMLRecord;
+export type LevelKeys = EMKeys | ICKeys | EMMLKeys | ICMMLKeys;
+export type LevelDetails = EMDetails | ICDetails | EMMLDetails | ICMMLDetails;

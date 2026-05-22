@@ -42,7 +42,7 @@ Monitors `npm` dependencies weekly, targeting `main`. Commit messages use `chore
 
 Config: `.github/workflows/dependabot-auto-merge.yml`
 
-Triggers on `pull_request_target` (runs in base branch context so `GITHUB_TOKEN` has full permissions). Checks `github.actor == 'dependabot[bot]'` and enables auto-merge via squash. `pull_request_target` is safe here because no PR code is checked out or executed.
+Triggers on `pull_request_target` (runs in base branch context so `GITHUB_TOKEN` has full permissions). Checks `github.actor == 'dependabot[bot]'`, approves the PR, then enables auto-merge via squash. The approve step is required when branch protection requires a review before merge; `GITHUB_TOKEN` can approve PRs it did not author, and Dependabot PRs are authored by `dependabot[bot]`. `pull_request_target` is safe here because no PR code is checked out or executed.
 
 ## E2E Coverage Policy
 

@@ -10,6 +10,8 @@
     "e2e": "playwright test",
     "em": "mlr --c2j --jlistwrap cat data/em.csv > data/em.json",
     "ic": "mlr --c2j --jlistwrap cat data/ic.csv > data/ic.json",
+    "em-ml": "mlr --c2j --jlistwrap cat data/em-ml.csv > data/em-ml.json",
+    "ic-ml": "mlr --c2j --jlistwrap cat data/ic-ml.csv > data/ic-ml.json",
     "knip": "knip",
     "start": "next start",
     "test": "vitest run",

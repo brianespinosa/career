@@ -2,7 +2,9 @@
 
 import { Select } from '@radix-ui/themes';
 import EM from '@/data/em.json';
+import EMML from '@/data/em-ml.json';
 import IC from '@/data/ic.json';
+import ICML from '@/data/ic-ml.json';
 import useCareerParam from '@/hooks/useCareerParam';
 import type { LevelDetails, LevelKeys, LevelRecord } from '@/types/levels';
 
@@ -17,7 +19,6 @@ const renderOptions = (obj: LevelRecord) =>
 
 const CareerSelect = () => {
   const [career, setCareer] = useCareerParam();
-
   return (
     <Select.Root
       value={career ?? ''}
@@ -37,6 +38,16 @@ const CareerSelect = () => {
         <Select.Group>
           <Select.Label>EM</Select.Label>
           {renderOptions(EM)}
+        </Select.Group>
+        <Select.Separator />
+        <Select.Group>
+          <Select.Label>IC ML</Select.Label>
+          {renderOptions(ICML)}
+        </Select.Group>
+        <Select.Separator />
+        <Select.Group>
+          <Select.Label>EM ML</Select.Label>
+          {renderOptions(EMML)}
         </Select.Group>
       </Select.Content>
     </Select.Root>

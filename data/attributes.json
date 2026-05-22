@@ -118,5 +118,35 @@
     "param": "tcon",
     "name": "Technical Contribution",
     "theme": "WHAT"
+  },
+  "machine_learning": {
+    "key": "machine_learning",
+    "param": "mlml",
+    "name": "Machine Learning",
+    "theme": "WHAT"
+  },
+  "business_understanding_requirements_design": {
+    "key": "business_understanding_requirements_design",
+    "param": "mlburd",
+    "name": "Business Understanding, Requirements & Design",
+    "theme": "WHAT"
+  },
+  "data_modeling": {
+    "key": "data_modeling",
+    "param": "mldm",
+    "name": "Data Modeling",
+    "theme": "WHAT"
+  },
+  "integration_evaluation_performance_optimization": {
+    "key": "integration_evaluation_performance_optimization",
+    "param": "mliepo",
+    "name": "Integration, Evaluation & Performance Optimization",
+    "theme": "WHAT"
+  },
+  "availability_data_driven_process": {
+    "key": "availability_data_driven_process",
+    "param": "mladp",
+    "name": "Availability & Data Driven Process",
+    "theme": "WHAT"
   }
 }

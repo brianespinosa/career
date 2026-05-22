@@ -57,7 +57,9 @@ describe('CareerSelect', () => {
     const user = userEvent.setup();
     renderCareerSelect();
     await user.click(screen.getByRole('combobox', { name: 'Career level' }));
-    await user.click(screen.getByRole('option', { name: /P1/ }));
+    await user.click(
+      screen.getByRole('option', { name: '[P1] Software Engineer I' }),
+    );
     expect(mockPush).toHaveBeenCalledWith('/P1');
   });
 });

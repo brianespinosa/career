@@ -5686,7 +5686,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:5.1.4"
     "@vitest/coverage-v8": "npm:4.0.18"
     d3-shape: "npm:3.2.0"
-    happy-dom: "npm:20.10.3"
+    happy-dom: "npm:20.10.4"
     knip: "npm:6.16.1"
     lefthook: "npm:2.1.9"
     motion: "npm:12.40.0"
@@ -6919,9 +6919,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:20.10.3":
-  version: 20.10.3
-  resolution: "happy-dom@npm:20.10.3"
+"happy-dom@npm:20.10.4":
+  version: 20.10.4
+  resolution: "happy-dom@npm:20.10.4"
   dependencies:
     "@types/node": "npm:>=20.0.0"
     "@types/whatwg-mimetype": "npm:^3.0.2"
@@ -6930,7 +6930,7 @@ __metadata:
     entities: "npm:^7.0.1"
     whatwg-mimetype: "npm:^3.0.0"
     ws: "npm:^8.21.0"
-  checksum: 10c0/d3d1766645ee802f012982d4ddcb6e3817548b40466c91b4216a241bcaf80b18e3417d08503d59ebc10be2a3299f5f3dcf327081bc47b13895c3c22c6dbb00fa
+  checksum: 10c0/cc45b7392e13f8da8069df0206381ad4b531086df2e5dc1b5bcb5e88c6c7df0262154925708e338fed3bb041907ad9bf77a24c437706bb3e9f7753bc1816d652
   languageName: node
   linkType: hard
 

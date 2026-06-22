@@ -5687,7 +5687,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:4.0.18"
     d3-shape: "npm:3.2.0"
     happy-dom: "npm:20.10.6"
-    knip: "npm:6.17.1"
+    knip: "npm:6.17.2"
     lefthook: "npm:2.1.9"
     motion: "npm:12.40.0"
     next: "npm:16.2.9"
@@ -7294,9 +7294,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:6.17.1":
-  version: 6.17.1
-  resolution: "knip@npm:6.17.1"
+"knip@npm:6.17.2":
+  version: 6.17.2
+  resolution: "knip@npm:6.17.2"
   dependencies:
     fdir: "npm:^6.5.0"
     formatly: "npm:^0.3.0"
@@ -7314,7 +7314,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10c0/caaa77c702eb7b39d63b1d434ae6c8d10eb54255d123f30181ee86bd9eae9289da5d987a16ce17c664071d76b980d7e7f2dcc0dcb30b8468d06893cbbff822a3
+  checksum: 10c0/ac598b8da4eda9baa313486b80e74275cf5ac8a20f175accd993d32a9f58c9cfd5fb11e97ea5d0d9051979c7067d9aacdcc4acf1c6c36657244346d775be5c0f
   languageName: node
   linkType: hard
 

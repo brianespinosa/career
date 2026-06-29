@@ -76,7 +76,7 @@
     "sass": "1.101.0",
     "typescript": "6.0.3",
     "vercel": "54.17.3",
-    "vite": "7.3.2",
+    "vite": "7.3.5",
     "vitest": "4.0.18"
   },
   "packageManager": "yarn@4.13.0"

@@ -1,6 +1,9 @@
 'use client';
 
 import { Select } from '@radix-ui/themes';
+import CSEM from '@/data/cs-em.json';
+import CSPS from '@/data/cs-ps.json';
+import CSTSE from '@/data/cs-tse.json';
 import EM from '@/data/em.json';
 import EMML from '@/data/em-ml.json';
 import IC from '@/data/ic.json';
@@ -48,6 +51,21 @@ const CareerSelect = () => {
         <Select.Group>
           <Select.Label>EM ML</Select.Label>
           {renderOptions(EMML)}
+        </Select.Group>
+        <Select.Separator />
+        <Select.Group>
+          <Select.Label>Product Support (IC)</Select.Label>
+          {renderOptions(CSPS)}
+        </Select.Group>
+        <Select.Separator />
+        <Select.Group>
+          <Select.Label>Technical Support (IC)</Select.Label>
+          {renderOptions(CSTSE)}
+        </Select.Group>
+        <Select.Separator />
+        <Select.Group>
+          <Select.Label>Customer Support (EM)</Select.Label>
+          {renderOptions(CSEM)}
         </Select.Group>
       </Select.Content>
     </Select.Root>

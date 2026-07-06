@@ -2,11 +2,13 @@
 
 ## Files
 
-- `attributes.json` — the 20 competency attributes, each with a `key`, short `param` (used as URL query param), display `name`, and `theme` grouping
-- `themes.json` — the four theme groups (`WHAT`, `WHO`, `WHY`, `HOW`) with display name, description, and Radix UI `color`
+- `attributes.json` — the competency attributes, each with a `key`, short `param` (used as URL query param), display `name`, and `theme` grouping. Customer Support attributes are namespaced with a `cs_` key prefix and `cs`-prefixed `param`
+- `themes.json` — the theme groups: the SWE set (`WHAT`, `WHO`, `WHY`, `HOW`) plus the Customer Support set (`IMPACT`, `COLLABORATION`, `GROWTH`), each with display name, description, and Radix UI `color`
 - `ic.json` — IC track levels (P1–P7), each with a `key`, `name`, `experience` range, and per-attribute `attributes` descriptions
 - `em.json` — EM track levels (M3–M6), same structure as `ic.json`
-- `ic.csv` / `em.csv` — source-of-truth CSVs; the JSON files are generated from these
+- `ic-ml.json` / `em-ml.json` — IC/EM ML-track levels, same structure
+- `cs-ps.json` / `cs-tse.json` / `cs-em.json` — Customer Support tracks (Product Support IC `P1PS`–`P3PS`, Technical Support Engineering IC `P1TSE`–`P3TSE`, managers `M2CS`–`M5CS`). Same structure; `experience` holds the proficiency stage (e.g. `Doing → Doing+`). **JSON-native — authored directly, no CSV/`mlr` step** (see ADR-012)
+- `ic.csv` / `em.csv` / `ic-ml.csv` / `em-ml.csv` — source-of-truth CSVs for the SWE tracks only; those JSON files are generated from these
 
 ## Updating Level Data
 

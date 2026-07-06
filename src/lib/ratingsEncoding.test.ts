@@ -75,6 +75,35 @@ describe('encodeRatings / decodeRatings round-trip', () => {
     expect(decoded).toEqual(ratings);
   });
 
+  it('works for a Customer Support manager level (M2CS, 9 attributes)', () => {
+    const params = getAttributeParamsForLevel('M2CS');
+    expect(params).toHaveLength(9);
+    const ratings: Record<string, number> = {};
+    params.forEach((p, i) => {
+      ratings[p] = (i % 5) as 0 | 1 | 2 | 3 | 4;
+    });
+    const encoded = encodeRatings(ratings, 'M2CS');
+    const decoded = decodeRatings(encoded, 'M2CS');
+    expect(decoded).toEqual(ratings);
+  });
+
+  it('works for a Customer Support IC level (P1PS)', () => {
+    const params = getAttributeParamsForLevel('P1PS');
+    // All Customer Support params are namespaced with a `cs` prefix.
+    expect(params.every((p) => p.startsWith('cs'))).toBe(true);
+    const ratings = Object.fromEntries(params.map((p) => [p, 3]));
+    const decoded = decodeRatings(encodeRatings(ratings, 'P1PS'), 'P1PS');
+    expect(decoded).toEqual(ratings);
+  });
+
+  it('leaves existing SWE encodings unchanged after appending CS attributes', () => {
+    // Regression: appending CS attributes to attributes.json must not shift the
+    // param slots of pre-existing tracks. The stable /P1/3ckmgrhn URL must still
+    // round-trip to the same encoded string.
+    const decoded = decodeRatings('3ckmgrhn', 'P1');
+    expect(encodeRatings(decoded, 'P1')).toBe('3ckmgrhn');
+  });
+
   it('pads or truncates when encoded segment length mismatches the level', () => {
     // Encode for P1, then decode as M3 — the levels have different attribute counts.
     // decodeRatings pads short digit strings with leading zeros and truncates long ones.

@@ -148,5 +148,89 @@
     "param": "mladp",
     "name": "Availability & Data Driven Process",
     "theme": "WHAT"
+  },
+  "cs_customer_centricity": {
+    "key": "cs_customer_centricity",
+    "param": "cscc",
+    "name": "Customer Centricity",
+    "theme": "IMPACT"
+  },
+  "cs_customer_centricity_technical": {
+    "key": "cs_customer_centricity_technical",
+    "param": "csct",
+    "name": "Customer Centricity (Technical)",
+    "theme": "IMPACT"
+  },
+  "cs_problem_solving": {
+    "key": "cs_problem_solving",
+    "param": "csps",
+    "name": "Problem Solving & Critical Thinking",
+    "theme": "IMPACT"
+  },
+  "cs_technical_proficiency": {
+    "key": "cs_technical_proficiency",
+    "param": "cstp",
+    "name": "Technical Proficiency",
+    "theme": "IMPACT"
+  },
+  "cs_accountability": {
+    "key": "cs_accountability",
+    "param": "csacc",
+    "name": "Accountability",
+    "theme": "IMPACT"
+  },
+  "cs_strategic_execution": {
+    "key": "cs_strategic_execution",
+    "param": "csse",
+    "name": "Strategic Execution",
+    "theme": "IMPACT"
+  },
+  "cs_business_acumen": {
+    "key": "cs_business_acumen",
+    "param": "csba",
+    "name": "Business Acumen",
+    "theme": "IMPACT"
+  },
+  "cs_vision_leadership_strategy": {
+    "key": "cs_vision_leadership_strategy",
+    "param": "csvls",
+    "name": "Vision, Leadership & Strategy",
+    "theme": "IMPACT"
+  },
+  "cs_change_management": {
+    "key": "cs_change_management",
+    "param": "cscm",
+    "name": "Change Management",
+    "theme": "IMPACT"
+  },
+  "cs_collaboration_communication": {
+    "key": "cs_collaboration_communication",
+    "param": "cscol",
+    "name": "Collaboration & Communication",
+    "theme": "COLLABORATION"
+  },
+  "cs_cross_functional_partnerships": {
+    "key": "cs_cross_functional_partnerships",
+    "param": "csxfp",
+    "name": "Cross-functional Partnerships",
+    "theme": "COLLABORATION"
+  },
+  "cs_leadership": {
+    "key": "cs_leadership",
+    "param": "cslead",
+    "name": "Leadership",
+    "theme": "GROWTH"
+  },
+  "cs_resourcefulness": {
+    "key": "cs_resourcefulness",
+    "param": "csres",
+    "name": "Resourcefulness",
+    "theme": "GROWTH"
+  },
+  "cs_feedback": {
+    "key": "cs_feedback",
+    "param": "csfb",
+    "name": "Feedback",
+    "theme": "GROWTH"
   }
 }

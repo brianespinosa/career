@@ -12,6 +12,7 @@
 /coverage
 /playwright-report
 /test-results
+.playwright-mcp/
 
 # next.js
 /.next/
@@ -23,6 +24,9 @@
 # misc
 .DS_Store
 *.pem
+
+# source PDFs are transcribed into data/*.json, never committed
+data/*.pdf
 
 # debug
 npm-debug.log*

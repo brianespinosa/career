@@ -33,11 +33,15 @@ test.describe('level navigation', () => {
       await page.goto(url);
 
       await expect(page.getByRole('heading', { name: heading })).toBeVisible();
-      await expect(page.getByRole('heading', { name: 'Impact' })).toBeVisible();
       await expect(
-        page.getByRole('heading', { name: 'Collaboration' }),
+        page.getByRole('heading', { name: 'Impact', exact: true }),
       ).toBeVisible();
-      await expect(page.getByRole('heading', { name: 'Growth' })).toBeVisible();
+      await expect(
+        page.getByRole('heading', { name: 'Collaboration', exact: true }),
+      ).toBeVisible();
+      await expect(
+        page.getByRole('heading', { name: 'Growth', exact: true }),
+      ).toBeVisible();
     });
   }
 

@@ -88,7 +88,7 @@ const CareerThemes = () => {
               size='4'
               color={attributes?.[0].color as ThemeProps['accentColor']}
             >
-              {theme}
+              {THEMES[theme as keyof typeof THEMES]?.name ?? theme}
             </Heading>
             <Separator
               my='2'

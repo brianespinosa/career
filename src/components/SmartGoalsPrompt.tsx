@@ -3,6 +3,7 @@
 import { CopyIcon } from '@radix-ui/react-icons';
 import { Box, Flex, IconButton, TextArea, Tooltip } from '@radix-ui/themes';
 import { useEffect, useRef, useState } from 'react';
+import { getTrackContext } from '@/lib/levels';
 import { track } from '@/lib/track';
 import AppCallout from './AppCallout';
 
@@ -27,10 +28,7 @@ const buildPrompt = (
   levelName: string,
   themeGroups: ThemeGroup[],
 ): string => {
-  const isIC = levelKey.startsWith('P');
-  const careerTrack = isIC
-    ? 'Software Engineer (IC)'
-    : 'Engineering Manager (EM)';
+  const { trackLabel, roleNoun } = getTrackContext(levelKey);
   const themeList = themeGroups
     .map(({ theme, attributes }) => {
       const attrs = attributes
@@ -40,19 +38,19 @@ const buildPrompt = (
     })
     .join('\n');
 
-  return `You are a career coach helping an engineer build SMART goals scoped to a single quarter. Be direct and honest, but stay supportive and non-judgmental — career growth conversations can be sensitive.
+  return `You are a career coach helping a ${roleNoun} build SMART goals scoped to a single quarter. Be direct and honest, but stay supportive and non-judgmental — career growth conversations can be sensitive.
 
-## Engineer Context
+## Context
 - Target level: ${levelKey} — ${levelName}
-- Track: ${careerTrack}
-- Note: This is the level the engineer is working toward being promoted to, not their current level. The attribute descriptions below reflect the expectations they need to consistently demonstrate to achieve that promotion.
+- Track: ${trackLabel}
+- Note: This is the level the ${roleNoun} is working toward being promoted to, not their current level. The attribute descriptions below reflect the expectations they need to consistently demonstrate to achieve that promotion.
 - Opportunity themes and attributes identified:
 ${themeList}
 
 ## Interview
-For each opportunity theme, reference the specific attributes and their descriptions above. Ask the engineer to describe a real-world situation where they fell short of or struggled with those specific expectations. Keep the conversation strictly anchored to the listed attributes — do not broaden it to general growth areas or existing strengths.
+For each opportunity theme, reference the specific attributes and their descriptions above. Ask the ${roleNoun} to describe a real-world situation where they fell short of or struggled with those specific expectations. Keep the conversation strictly anchored to the listed attributes — do not broaden it to general growth areas or existing strengths.
 
-Ask follow-up questions based on the engineer's responses, with the goal of understanding which specific gaps are most impactful and actionable to build a goal around. Examples of useful probes (use your judgment based on what is said):
+Ask follow-up questions based on the ${roleNoun}'s responses, with the goal of understanding which specific gaps are most impactful and actionable to build a goal around. Examples of useful probes (use your judgment based on what is said):
 - Where specifically did you find it difficult to meet this expectation?
 - How often does this situation arise?
 - What does meeting this expectation fully look like to you?
@@ -64,12 +62,12 @@ Work through themes one at a time. Don't move on until you have enough to propos
 Based on the interview, propose 2–3 SMART goals (Specific, Measurable, Achievable, Relevant, Time-bound) scoped to a single quarter. Each goal must directly address one of the listed opportunity attributes — do not suggest goals outside those areas.
 
 ## Refinement
-Ask which goal(s) resonate most. Offer to fine-tune wording, adjust scope, or make goals more concrete. If any opportunity themes haven't been addressed, invite the engineer to describe a scenario for those as well. Push back if any goal drifts outside the identified opportunity attributes.
+Ask which goal(s) resonate most. Offer to fine-tune wording, adjust scope, or make goals more concrete. If any opportunity themes haven't been addressed, invite the ${roleNoun} to describe a scenario for those as well. Push back if any goal drifts outside the identified opportunity attributes.
 
 Pay close attention to the combined effort of the full goal set. A goal that is attainable in isolation may become unattainable alongside 3–4 others. As the set grows or becomes more ambitious, evaluate whether the total effort is realistic for a single quarter. If the cumulative load looks too great, say so directly and suggest reducing scope, deferring a goal, or simplifying one or more to bring the set back into reach.
 
 ## Final output
-Once the engineer is satisfied, produce a clean list of agreed SMART goals formatted with their theme label. Do not output this until the engineer confirms they are done.`.trim();
+Once the ${roleNoun} is satisfied, produce a clean list of agreed SMART goals formatted with their theme label. Do not output this until the ${roleNoun} confirms they are done.`.trim();
 };
 
 type CopyState = 'idle' | 'copied' | 'error';

@@ -1,0 +1,44 @@
+{
+  "P1PS": {
+    "key": "P1PS",
+    "name": "Product Support Specialist",
+    "experience": "Learning → Learning+",
+    "attributes": {
+      "cs_customer_centricity": "Demonstrates basic understanding of customer needs; resolves straightforward issues with appropriate guidance. Begins to tailor interactions to individual customer needs.",
+      "cs_problem_solving": "Efficiently identifies customer issues and swiftly applies standard protocols to resolve them. Utilises available tools and resources effectively; actively seeks feedback to continually improve.",
+      "cs_accountability": "Demonstrates basic reliability and integrity in following through on commitments within scope of work. Begins to take ownership of work; starts to take personal responsibility for decisions, actions, and failures.",
+      "cs_collaboration_communication": "Develops proficiency engaging customers across multiple channels. Actively participates in team discussions; starts providing feedback on operational processes to improve quality.",
+      "cs_leadership": "Demonstrates foundational leadership by setting a positive example. Assists peers by sharing knowledge; actively seeks feedback to enhance personal and team performance.",
+      "cs_resourcefulness": "Actively develops basic navigation skills by learning to identify the limits of their knowledge and beginning to locate information with internal resources and key contacts.",
+      "cs_feedback": "Actively seeks and constructively receives feedback to understand personal strengths and areas for improvement. Begins to provide basic, constructive feedback to peers."
+    }
+  },
+  "P2PS": {
+    "key": "P2PS",
+    "name": "Senior, Product Support Specialist",
+    "experience": "Doing → Doing+",
+    "attributes": {
+      "cs_customer_centricity": "Demonstrates deep understanding of customer needs; proactively tailors interactions to exceed expectations. Consistently meets or exceeds expectations; actively identifies emerging customer needs.",
+      "cs_problem_solving": "Delves into more complex customer requests to uncover underlying needs and potential solutions. Crafts and applies creative solutions for challenging problems, sharing successful approaches with the team.",
+      "cs_accountability": "Demonstrates reliability and integrity in following through on commitments, at times extending beyond their immediate team. Begins to establish clear responsibilities and processes for monitoring work and measuring results.",
+      "cs_collaboration_communication": "Proficient in complex customer interactions across support channels. Serves as a mentor to junior team members, guiding technical skills and professional development.",
+      "cs_leadership": "Exhibits leadership by consistently setting an example, particularly in challenging situations. Actively seeks and utilises feedback for self-improvement and enhances team performance through collaborative discussions.",
+      "cs_resourcefulness": "Demonstrates enhanced proficiency in recognising knowledge limits and efficiently uses resources to fill gaps, while helping others navigate those resources.",
+      "cs_feedback": "Regularly engages in bi-directional feedback with peers and supervisors to foster personal and team growth. Uses feedback received to make significant adjustments to work processes."
+    }
+  },
+  "P3PS": {
+    "key": "P3PS",
+    "name": "Lead, Product Support Specialist",
+    "experience": "Teaching",
+    "attributes": {
+      "cs_customer_centricity": "Expertly anticipates and exceeds customer expectations through tailored interactions. Guides and mentors junior staff in adopting customer-centric practices. Proactively identifies and implements improvements to enhance overall customer satisfaction.",
+      "cs_problem_solving": "Skilfully resolves the most complex customer requests with innovative and strategic solutions. Drives the evolution of problem-solving techniques, mentoring the team in advanced and creative resolution strategies.",
+      "cs_accountability": "Demonstrates reliability and integrity in following through on commitments within their scope of work, at times extending beyond their role. Identifies and seizes new opportunities, demonstrating a proactive approach and growth mindset.",
+      "cs_collaboration_communication": "Monitors the support queue and partners with leadership to coordinate team coverage during peak times. Leads small to medium projects aimed at operational efficiency; provides strategic feedback to enhance customer support practices.",
+      "cs_leadership": "Embodies leadership through high ethical standards, professionalism, and proactive mentorship. Strategically aligns team efforts with organisational goals, ensuring full engagement and support for all team members.",
+      "cs_resourcefulness": "Expertly navigates numerous information sources to address challenges and guide team members. Fosters a culture of continuous learning and knowledge sharing.",
+      "cs_feedback": "Facilitates a feedback-rich environment by encouraging and modelling open, honest, and constructive communication among the team."
+    }
+  }
+}

@@ -47,7 +47,7 @@ const CareerThemes = () => {
   const attributeValues = Object.values(ATTRIBUTES)
     .map((attribute) => ({
       ...attribute,
-      description: attributes[attribute.key as keyof typeof attributes],
+      description: (attributes as Record<string, string>)[attribute.key],
       color: THEMES[attribute.theme as keyof typeof THEMES].color,
     }))
     .filter(({ description }) => description !== undefined);
@@ -88,7 +88,7 @@ const CareerThemes = () => {
               size='4'
               color={attributes?.[0].color as ThemeProps['accentColor']}
             >
-              {theme}
+              {THEMES[theme as keyof typeof THEMES]?.name ?? theme}
             </Heading>
             <Separator
               my='2'

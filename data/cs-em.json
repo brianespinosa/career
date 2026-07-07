@@ -1,0 +1,66 @@
+{
+  "M2CS": {
+    "key": "M2CS",
+    "name": "Customer Operations Manager I / TSE Manager I",
+    "experience": "Doing",
+    "attributes": {
+      "cs_strategic_execution": "Supports execution of team objectives; assists in identifying small-scale operational improvements. Contributes to project management efforts under guidance of senior leadership.",
+      "cs_business_acumen": "Gains understanding of key business metrics and basic operations. Uses data and insights to assist in decision-making and contribute to team planning.",
+      "cs_vision_leadership_strategy": "Begins to understand team and organisational goals; communicates their importance under guidance. Takes an active role in personal development, aligning career goals with team and business needs.",
+      "cs_accountability": "Demonstrates basic reliability and integrity in following through on commitments within scope of work. Begins to establish clear responsibilities and processes for monitoring work.",
+      "cs_change_management": "Understands and communicates the basics of upcoming changes to the team. Supports the team's adaptation by providing guidance and resources.",
+      "cs_collaboration_communication": "Begins to understand team and organisational goals. Takes an active role in personal development, aligning career goals with team and business needs.",
+      "cs_cross_functional_partnerships": "Builds initial relationships with cross-functional peers. Supports leadership by sharing relevant information and helping align team goals with cross-functional teams.",
+      "cs_leadership": "Demonstrates foundational leadership by setting a positive example in work ethic and collaboration. Actively seeks feedback to enhance personal and team performance.",
+      "cs_feedback": "Actively seeks and constructively receives feedback to understand personal strengths and areas for improvement. Begins to provide basic, constructive feedback to peers."
+    }
+  },
+  "M3CS": {
+    "key": "M3CS",
+    "name": "Customer Operations Manager II / TSE Manager II",
+    "experience": "Doing+",
+    "attributes": {
+      "cs_strategic_execution": "Translates team goals into actionable plans and ensures adherence to team timelines. Leads the execution of projects ensuring completion of operational initiatives.",
+      "cs_business_acumen": "Understands the core business and aligns team to make decisions and improve team efficiency and performance. Identifies areas for operational improvements.",
+      "cs_vision_leadership_strategy": "Understands and communicates the team's objectives and contributions to organisational goals. Sets clear goals for the team and people, ensuring alignment while communicating the vision.",
+      "cs_accountability": "Demonstrates reliability and integrity in following through on commitments within their scope of work. Takes personal responsibility for decisions, actions, and failures.",
+      "cs_change_management": "Helps implement change initiatives and communicates their impact to the team. Coaches team members through transitions, ensuring understanding and buy-in.",
+      "cs_collaboration_communication": "Fosters customer, peer and/or stakeholder collaboration within their area of expertise. Effectively communicates in multiple settings, at times including cross-functional or broadly across the team.",
+      "cs_cross_functional_partnerships": "Builds and maintains strong relationships with stakeholders to align goals. Proactively identifies and addresses challenges to ensure smooth teamwork and partnership with other functions.",
+      "cs_leadership": "Exhibits leadership by consistently setting an example, particularly in challenging situations, and supports team members with experienced guidance.",
+      "cs_feedback": "Regularly engages in bi-directional feedback with peers and supervisors to foster personal and team growth. Uses feedback to make significant adjustments to work processes."
+    }
+  },
+  "M4CS": {
+    "key": "M4CS",
+    "name": "Senior Customer Operations Manager / Senior TSE Manager",
+    "experience": "Teaching",
+    "attributes": {
+      "cs_strategic_execution": "Leads execution of projects ensuring that all tasks align with broader business objectives. Identifies strategic goals and takes ownership of execution steps.",
+      "cs_business_acumen": "Demonstrates an in-depth understanding of business functions; leverages data to guide decisions and drive improvements in operations.",
+      "cs_vision_leadership_strategy": "Articulates department vision and strategy as it relates to business objectives. Communicates team and individual goals clearly, aligning them with business objectives.",
+      "cs_accountability": "Demonstrates reliability and integrity in following through on commitments within their team or department. Identifies and seizes new opportunities, displaying a proactive approach and growth mindset.",
+      "cs_change_management": "Leads the execution of change initiatives, ensuring alignment with business goals. Collaborates with cross-functional teams to ensure smooth implementation and minimise resistance.",
+      "cs_collaboration_communication": "Builds and maintains effective stakeholder relationships, understanding and addressing their needs through strategic and innovative solutions. Collaborates with colleagues across departments, roles, and locations.",
+      "cs_cross_functional_partnerships": "Acts as a strategic partner across multiple departments. Leads efforts to optimise cross-functional collaboration, ensuring alignment on long-term goals. Documents and resolves cross-functional issues.",
+      "cs_leadership": "Consistently models the highest ethical standards, professionalism, and proactive mentorship that drive team development and success. Fosters a feedback-rich environment.",
+      "cs_feedback": "Facilitates a feedback-rich environment by encouraging and modelling open, honest, and constructive communication among the team."
+    }
+  },
+  "M5CS": {
+    "key": "M5CS",
+    "name": "Director, Customer Support",
+    "experience": "Teaching+",
+    "attributes": {
+      "cs_strategic_execution": "Develops and drives long-term strategies to achieve business goals. Drives cross-functional strategy, ensuring team's work is in alignment with organisational objectives.",
+      "cs_business_acumen": "Gains comprehensive business knowledge and strategies to drive strong decisions. Leads the alignment of operational plans and executes large-scale ideas effectively.",
+      "cs_vision_leadership_strategy": "Develops and executes strategies to drive department vision, aligning strategy to the mission and long-term business goals. Builds and leads strategic plans, holding teams accountable for key milestones and results.",
+      "cs_accountability": "Demonstrates reliability and integrity often extending beyond team or department. Takes ownership and personal responsibility, ensuring that the organisation's goals and values are met.",
+      "cs_change_management": "Leads transformational change at an organisational level. Designs and executes large-scale change strategies while ensuring alignment with long-term objectives. Coaches other leaders in change management.",
+      "cs_collaboration_communication": "Drives collaboration at the highest level, aligning departments by example in establishing and maintaining strategic partnerships. Creates formal networks with key decision-makers.",
+      "cs_cross_functional_partnerships": "Sets the strategic direction for cross-functional collaboration at the senior leadership level. Establishes processes for continuous collaboration, fostering strong relationships across all functions.",
+      "cs_leadership": "Embodies leadership through high ethical standards, professionalism, and proactive mentorship. Strategically aligns team efforts with organisational goals, ensuring full engagement for all team members.",
+      "cs_feedback": "Provides comprehensive and strategically focused feedback to team members, aiding in their professional development and addressing complex areas of performance."
+    }
+  }
+}

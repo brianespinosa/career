@@ -5710,7 +5710,7 @@ __metadata:
     react-dom: "npm:19.2.7"
     sass: "npm:1.101.0"
     typescript: "npm:6.0.3"
-    vercel: "npm:56.1.0"
+    vercel: "npm:56.2.0"
     vite: "npm:7.3.2"
     vitest: "npm:4.0.18"
   languageName: unknown
@@ -9540,9 +9540,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vercel@npm:56.1.0":
-  version: 56.1.0
-  resolution: "vercel@npm:56.1.0"
+"vercel@npm:56.2.0":
+  version: 56.2.0
+  resolution: "vercel@npm:56.2.0"
   dependencies:
     "@vercel/backends": "npm:0.8.23"
     "@vercel/blob": "npm:2.4.0"
@@ -9583,7 +9583,7 @@ __metadata:
   bin:
     vc: dist/vc.js
     vercel: dist/vc.js
-  checksum: 10c0/87341dda1295875f1185d5d691857c7e277f2014b308fb84c424b3067d70eefcfa193092a45fbf1c0607a9aaa99e4e114e54b24be4898ee00ce5d7429fbd149c
+  checksum: 10c0/4683197e73c0597a2cba7673ba14ed95c2a759867559f953d69e617feaafe8e31e083f16410cc2298aae14e59c8d80b997f6d4a977a0f737186b0cb4b9dfdd5d
   languageName: node
   linkType: hard
 

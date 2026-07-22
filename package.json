@@ -70,7 +70,7 @@
     "@vitejs/plugin-react": "5.1.4",
     "@vitest/coverage-v8": "4.0.18",
     "happy-dom": "20.11.0",
-    "knip": "6.27.0",
+    "knip": "6.29.0",
     "lefthook": "2.1.10",
     "normalize.css": "8.0.1",
     "sass": "1.101.3",

@@ -35,13 +35,16 @@
   },
   "resolutions": {
     "@vercel/backends/srvx": "^0.11.13",
+    "@vercel/blob/undici": ">=7.28.0 <8",
     "@vercel/fastify/@tootallnate/once": "^3.0.1",
     "@vercel/fun/@tootallnate/once": "^3.0.1",
     "@vercel/fun/tar": ">=7.5.11",
-    "@vercel/node/undici": "^6.24.0",
+    "@vercel/node/undici": ">=7.28.0 <8",
     "@vercel/prepare-flags-definitions/minimatch": "^10.2.3",
     "@vercel/python-analysis/minimatch": "^10.2.3",
-    "sass/immutable": ">=5.1.8 <6"
+    "@vercel/sandbox/undici": ">=7.28.0 <8",
+    "sass/immutable": ">=5.1.8 <6",
+    "vercel/undici": ">=7.28.0 <8"
   },
   "dependencies": {
     "@radix-ui/colors": "3.0.0",

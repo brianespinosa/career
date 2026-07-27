@@ -10,6 +10,12 @@ Set environment variables before running:
 - `PLAYWRIGHT_BASE_URL` — the target URL (e.g., a Vercel preview deployment URL)
 - `VERCEL_BYPASS_SECRET` — Vercel protection bypass token
 
+These variables are required for tests to pass, not for the config to load. When
+`PLAYWRIGHT_BASE_URL` is unset, `playwright.config.ts` falls back to
+`http://localhost:3000` so config-loading tools (e.g. knip) work without it;
+running the tests without a deployed URL fails at test time with connection
+errors. Never set a fabricated `PLAYWRIGHT_BASE_URL` to satisfy tooling.
+
 ## Selector Strategy
 
 **Prefer `getByRole` and other accessible locators. Never use `data-testid` or other test-only attributes.**

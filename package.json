@@ -79,7 +79,7 @@
     "normalize.css": "8.0.1",
     "sass": "1.102.0",
     "typescript": "6.0.3",
-    "vercel": "58.5.1",
+    "vercel": "58.7.1",
     "vite": "7.3.2",
     "vitest": "4.1.0"
   },

@@ -5894,7 +5894,7 @@ __metadata:
     happy-dom: "npm:20.11.2"
     knip: "npm:6.32.0"
     lefthook: "npm:2.1.10"
-    motion: "npm:13.0.0"
+    motion: "npm:13.1.0"
     next: "npm:16.3.0"
     normalize.css: "npm:8.0.1"
     react: "npm:19.2.8"
@@ -6746,7 +6746,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^13.0.0":
+"framer-motion@npm:^13.1.0":
   version: 13.1.0
   resolution: "framer-motion@npm:13.1.0"
   dependencies:
@@ -7832,11 +7832,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"motion@npm:13.0.0":
-  version: 13.0.0
-  resolution: "motion@npm:13.0.0"
+"motion@npm:13.1.0":
+  version: 13.1.0
+  resolution: "motion@npm:13.1.0"
   dependencies:
-    framer-motion: "npm:^13.0.0"
+    framer-motion: "npm:^13.1.0"
     tslib: "npm:^2.4.0"
   peerDependencies:
     react: ^18.0.0 || ^19.0.0
@@ -7846,7 +7846,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/08d32acb63fff8763d6591d6e4f114b0e16aea878969aecea65de696481e7af3eecd0a5c1a1ba91e504e82e5a9b851b4f8387da7afbfbb2db3d77f5d941fa6a4
+  checksum: 10c0/2f974b22929945cf96d0164916fb04c470d993ab81ca9006bd590638edb35d04e202dc3f4e61fede4fd81bc9ef9d8a47555d73c776e428a357e09097e35b2750
   languageName: node
   linkType: hard
 

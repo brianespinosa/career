@@ -44,6 +44,7 @@
     "@vercel/python-analysis/js-yaml": ">=4.3.1 <5",
     "@vercel/python-analysis/minimatch": "^10.2.3",
     "@vercel/sandbox/undici": ">=7.28.0 <8",
+    "minimatch/brace-expansion": ">=5.0.7 <6",
     "next/postcss": ">=8.5.23 <9",
     "sass/immutable": ">=5.1.8 <6",
     "vercel/undici": ">=7.28.0 <8",

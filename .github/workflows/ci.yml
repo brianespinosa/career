@@ -86,7 +86,13 @@ jobs:
       - uses: ./.github/actions/setup
       - name: Get Playwright version
         id: playwright-version
-        run: echo "version=$(jq -r '.devDependencies.playwright' package.json)" >> $GITHUB_OUTPUT
+        run: |
+          VERSION=$(jq -r '.devDependencies["@playwright/test"]' package.json)
+          if [[ -z "$VERSION" || "$VERSION" == "null" ]]; then
+            echo "::error::Could not resolve @playwright/test version from package.json"
+            exit 1
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
       - name: Cache Playwright browsers
         id: playwright-cache
         uses: actions/cache@v6

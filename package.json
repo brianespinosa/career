@@ -92,7 +92,7 @@
     "@vitejs/plugin-react": "5.1.4",
     "@vitest/coverage-v8": "4.1.11",
     "happy-dom": "20.14.0",
-    "knip": "6.34.0",
+    "knip": "6.35.1",
     "lefthook": "2.1.12",
     "normalize.css": "8.0.1",
     "sass": "1.104.0",

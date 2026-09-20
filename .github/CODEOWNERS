@@ -2,4 +2,4 @@
 
 # Set no owners on these files so Dependabot PRs can auto merge
 package.json
-yarn.lock
+pnpm-lock.yaml

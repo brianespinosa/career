@@ -25,9 +25,9 @@ CSV files in `data/` are the source of truth:
 
 JSON files are generated from CSVs using `mlr` (Miller):
 
-- `yarn ic` → `data/ic.json`
-- `yarn em` → `data/em.json`
-- `yarn data-types` → TypeScript type declarations from JSON
+- `pnpm ic` → `data/ic.json`
+- `pnpm em` → `data/em.json`
+- `pnpm data-types` → TypeScript type declarations from JSON
 
 The application imports only the generated JSON/types. **Edits to `data/*.json` or `data/*.d.ts` directly are incorrect** — they will be overwritten on the next generation run. See `data/CLAUDE.md` for details.
 

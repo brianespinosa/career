@@ -41,3 +41,4 @@ Note: `d3-shape` (`arc`) is also used directly in `src/lib/chartGeometry.ts` as 
 
 - We accept the risk of depending on a pre-release version of visx.
 - Once a stable 4.x release is published, we should migrate off the alpha channel.
+- The six sub-packages listed above are declared as explicit `dependencies` in `package.json` alongside `@visx/visx`, pinned to the same version. Under Yarn's `node-modules` linker they were resolvable without a declaration because hoisting placed them at the top of `node_modules`; pnpm's isolated linker only resolves declared dependencies, so the same pattern already used for `d3-shape` (see above) was applied to these six as part of the pnpm migration (`docs/adr/013-pnpm-migration.md`).

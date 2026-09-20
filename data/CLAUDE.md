@@ -15,8 +15,8 @@
 Edit the CSV files, then regenerate the JSON:
 
 ```
-yarn ic    # regenerates data/ic.json from data/ic.csv
-yarn em    # regenerates data/em.json from data/em.csv
+pnpm ic    # regenerates data/ic.json from data/ic.csv
+pnpm em    # regenerates data/em.json from data/em.csv
 ```
 
 Requires [Miller (`mlr`)](https://miller.readthedocs.io/) to be installed locally.
@@ -26,7 +26,7 @@ Requires [Miller (`mlr`)](https://miller.readthedocs.io/) to be installed locall
 After changing `attributes.json` or the level JSONs, regenerate TypeScript types:
 
 ```
-yarn data-types
+pnpm data-types
 ```
 
 This runs `./json-d-ts.sh` to produce `.d.ts` files from the JSON data.

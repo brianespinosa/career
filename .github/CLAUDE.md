@@ -4,7 +4,7 @@
 
 Config: `.github/actions/setup/action.yml`
 
-Shared setup used by all CI jobs after checkout: Node (from `.nvmrc`), corepack enable, `yarn install --immutable`.
+Shared setup used by all CI jobs after checkout: `pnpm/action-setup` (reads `packageManager` from `package.json`), Node (from `.nvmrc`) with `actions/setup-node`'s built-in `cache: pnpm`, `pnpm install --frozen-lockfile`.
 
 Note: `actions/checkout` must remain in each job directly — local composite actions can only be resolved after the repo is checked out.
 
@@ -51,4 +51,4 @@ Any new user-facing feature must have a corresponding e2e spec added or updated 
 ## Notes
 
 - Node version is pinned via `.nvmrc` — update there to change it everywhere
-- Corepack must be enabled before running any `yarn` commands — handled in the composite action
+- `pnpm/action-setup` installs the `packageManager`-pinned pnpm version before any `pnpm` command runs — handled in the composite action

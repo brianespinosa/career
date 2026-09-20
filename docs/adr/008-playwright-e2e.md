@@ -37,7 +37,7 @@ Tests run against Vercel preview deployments only — not against `next dev`. Th
 
 ## Consequences
 
-- `@playwright/test` added as a devDependency (pinned exactly per `.yarnrc.yml` convention).
+- `@playwright/test` added as a devDependency (pinned exactly per `pnpm-workspace.yaml`'s `savePrefix: ''` convention).
 - Tests live in `e2e/` at the repository root. See `e2e/CLAUDE.md` for conventions.
 - A new `e2e` CI job runs after `build`, in parallel with `lighthouse`, on `pull_request` only.
 - `PLAYWRIGHT_BASE_URL` is injected from the `build` job's Vercel preview URL output.

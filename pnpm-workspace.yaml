@@ -22,7 +22,7 @@ overrides:
   "@vercel/rust>smol-toml": ">=1.7.1 <2"
   "@vercel/sandbox>undici": ">=7.28.0 <8"
   "@vitejs/plugin-react>@babel/core": ">=7.29.6 <8"
-  "minimatch>brace-expansion": ">=5.0.7 <6"
+  "minimatch@^10>brace-expansion": ">=5.0.7 <6"
   "next>postcss": ">=8.5.23 <9"
   "node-gyp>tar": ">=7.5.18 <8"
   "postcss>nanoid": ">=3.3.18 <4"

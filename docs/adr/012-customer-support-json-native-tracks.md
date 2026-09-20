@@ -28,7 +28,7 @@ app consumes).
 
 1. **Add three JSON-native track files** — `data/cs-ps.json`, `data/cs-tse.json`,
    `data/cs-em.json` — authored directly in the committed level-keyed nested shape
-   (`{ key, name, experience, attributes }`). No CSV source and no `yarn` generation script.
+   (`{ key, name, experience, attributes }`). No CSV source and no `pnpm` generation script.
    This is a **scoped deviation from ADR-006**: ladders sourced from a spreadsheet remain
    CSV-backed; ladders sourced from prose are authored as JSON. ADR-006 stays `Accepted` for
    the SWE tracks.

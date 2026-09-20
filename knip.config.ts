@@ -9,9 +9,10 @@ const config: KnipConfig = {
 
   ignoreDependencies: [
     // Required peer dependency of @visx/xychart, which is bundled inside the
-    // @visx/visx meta-package. .yarnrc.yml enforces peer deps as errors (YN0002),
-    // so removing it breaks yarn install. No direct source import exists because
-    // only individual @visx/* sub-packages are imported.
+    // @visx/visx meta-package. pnpm-workspace.yaml enforces peer deps as errors
+    // (strictPeerDependencies: true), so removing it breaks pnpm install. No
+    // direct source import exists because only individual @visx/* sub-packages
+    // are imported.
     '@react-spring/web',
 
     // Code imports individual @visx/* sub-packages (e.g. @visx/shape, @visx/scale),

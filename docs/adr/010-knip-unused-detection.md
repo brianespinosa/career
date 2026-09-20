@@ -29,7 +29,7 @@ Some packages are legitimately present but undetectable by static import analysi
 
 | Entry | Reason |
 |---|---|
-| `@react-spring/web` | Required peer dependency of `@visx/xychart` (bundled in `@visx/visx`). `.yarnrc.yml` enforces peer deps as errors (`YN0002`); removing it breaks `yarn install`. No direct source import exists because only `@visx/*` sub-packages are imported directly. |
+| `@react-spring/web` | Required peer dependency of `@visx/xychart` (bundled in `@visx/visx`). `pnpm-workspace.yaml` enforces peer deps as errors (`strictPeerDependencies: true`); removing it breaks `pnpm install`. No direct source import exists because only `@visx/*` sub-packages are imported directly. |
 | `@visx/*` | Code imports individual `@visx/` sub-packages (e.g. `@visx/shape`, `@visx/scale`), all of which are installed via the `@visx/visx` meta-package. knip cannot correlate sub-package import paths with the meta-package entry in `package.json`. |
 | `normalize.css` | Imported via `@import url('normalize.css')` in `src/app/global.scss`. knip does not parse SCSS files, so the reference is invisible to static analysis. |
 | `mlr` | External system binary (Miller) used in `em` and `ic` npm scripts. It is not an npm package; no `node_modules` entry exists for knip to resolve. |

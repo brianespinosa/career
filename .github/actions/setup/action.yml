@@ -1,34 +1,23 @@
 # NOTE: This is a local composite action and requires the repository to have
 # already been checked out before it is called (e.g. actions/checkout@v6.0.2).
 #
-# NOTE: We do not use the built-in `cache: yarn` option on actions/setup-node
-# because v6 restricts automatic caching to npm only. Yarn caching is handled
-# explicitly below. See docs/adr/002-github-actions-yarn-cache.md for details.
+# NOTE: pnpm/action-setup installs pnpm (reading the `packageManager` field
+# from package.json) before actions/setup-node runs, so setup-node's built-in
+# `cache: pnpm` option can resolve the pnpm store path directly. See
+# docs/adr/013-pnpm-migration.md.
 
 name: Setup
-description: Enable corepack and install dependencies
+description: Install pnpm and dependencies
 
 runs:
   using: composite
   steps:
+    - uses: pnpm/action-setup@v4
+
     - uses: actions/setup-node@v6.2.0
       with:
         node-version-file: .nvmrc
+        cache: pnpm
 
-    - run: corepack enable
-      shell: bash
-
-    - name: Get yarn cache directory
-      id: yarn-cache-dir
-      run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
-      shell: bash
-
-    - uses: actions/cache@v5.0.3
-      with:
-        path: ${{ steps.yarn-cache-dir.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-
-    - run: yarn install --immutable
+    - run: pnpm install --frozen-lockfile
       shell: bash

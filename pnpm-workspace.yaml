@@ -1,0 +1,72 @@
+savePrefix: ''
+strictPeerDependencies: true
+autoInstallPeers: false
+engineStrict: true
+strictDepBuilds: true
+minimumReleaseAge: 7200 # minutes; keep <= Dependabot cooldown default-days
+
+overrides:
+  "@mapbox/node-pre-gyp>tar": ">=7.5.18 <8"
+  "@vercel/backends>srvx": "^0.11.13"
+  "@vercel/blob>undici": ">=7.28.0 <8"
+  "@vercel/fastify>@tootallnate/once": "^3.0.1"
+  "@vercel/fun>@tootallnate/once": "^3.0.1"
+  "@vercel/fun>tar": ">=7.5.18 <8"
+  "@vercel/gatsby-plugin-vercel-builder>esbuild": ">=0.28.1 <1"
+  "@vercel/node>esbuild": ">=0.28.1 <1"
+  "@vercel/node>undici": ">=7.28.0 <8"
+  "@vercel/prepare-flags-definitions>minimatch": "^10.2.3"
+  "@vercel/python-analysis>js-yaml": ">=4.3.2 <5"
+  "@vercel/python-analysis>minimatch": "^10.2.3"
+  "@vercel/python-analysis>smol-toml": ">=1.7.1 <2"
+  "@vercel/rust>smol-toml": ">=1.7.1 <2"
+  "@vercel/sandbox>undici": ">=7.28.0 <8"
+  "@vitejs/plugin-react>@babel/core": ">=7.29.6 <8"
+  "minimatch@^10>brace-expansion": ">=5.0.7 <6"
+  "next>postcss": ">=8.5.23 <9"
+  "node-gyp>tar": ">=7.5.18 <8"
+  "postcss>nanoid": ">=3.3.18 <4"
+  "sass>immutable": ">=5.1.8 <6"
+  "socks>ip-address": ">=10.3.1 <11"
+  "tsx>esbuild": ">=0.28.1 <1"
+  "vercel>esbuild": ">=0.28.1 <1"
+  "vercel>smol-toml": ">=1.7.1 <2"
+  "vercel>undici": ">=7.28.0 <8"
+  "vite>esbuild": ">=0.28.1 <1"
+  "vite>postcss": ">=8.5.23 <9"
+  "vitest>vite": ">=7.3.5 <8"
+
+packageExtensions:
+  "@napi-rs/wasm-runtime@*":
+    peerDependenciesMeta:
+      "@emnapi/core":
+        optional: true
+      "@emnapi/runtime":
+        optional: true
+  "@axe-core/playwright@*":
+    peerDependenciesMeta:
+      playwright-core:
+        optional: true
+  "@vercel/express@*":
+    peerDependencies:
+      typescript: ">=4.9.5"
+  "@visx/visx@*":
+    peerDependencies:
+      "@react-spring/web": "^9.7.5 || ^10.0.0"
+      react-dom: "^16.14.0 || ^17.0.0-0 || ^18.0.0-0 || ^19.0.0-0"
+  "@visx/xychart@*":
+    peerDependencies:
+      react-dom: "^16.14.0 || ^17.0.0-0 || ^18.0.0-0 || ^19.0.0-0"
+  vercel@*:
+    peerDependencies:
+      typescript: ">=4.9.5"
+allowBuilds:
+  # @parcel/watcher: native file-watcher binding, transitive dep of vite/vitest's
+  # chokidar-based watch mode. Build compiles/downloads the prebuilt binary.
+  '@parcel/watcher': true
+  # esbuild: postinstall downloads the platform-specific binary; required by
+  # vite/vitest/tsx which bundle via esbuild.
+  esbuild: true
+  # lefthook: postinstall installs the git hook manager binary and wires up
+  # .git/hooks; required for the pre-commit hooks this repo relies on.
+  lefthook: true

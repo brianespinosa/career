@@ -4,6 +4,9 @@
     "pr": ""
   },
   "enableAllProjectMcpServers": true,
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  },
   "enabledMcpjsonServers": [
     "github"
   ],

@@ -4,9 +4,6 @@
     "pr": ""
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "github"
-  ],
   "permissions": {
     "allow": [
       "Bash(gh issue:*)",

@@ -213,10 +213,10 @@ importers:
         version: 10.1.2(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@vercel/analytics':
         specifier: 2.0.1
-        version: 2.0.1(next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.1))(react@19.3.1)
+        version: 2.0.1(next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.2))(react@19.3.1)
       '@vercel/speed-insights':
         specifier: 2.0.0
-        version: 2.0.0(next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.1))(react@19.3.1)
+        version: 2.0.0(next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.2))(react@19.3.1)
       '@visx/event':
         specifier: 4.0.1-alpha.0
         version: 4.0.1-alpha.0
@@ -246,7 +246,7 @@ importers:
         version: 14.3.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       next:
         specifier: 16.4.2
-        version: 16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.1)
+        version: 16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.2)
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -289,7 +289,7 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: 5.2.0
-        version: 5.2.0(supports-color@7.2.0)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1))
+        version: 5.2.0(supports-color@7.2.0)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1))
       '@vitest/coverage-v8':
         specifier: 4.1.11
         version: 4.1.11(vitest@4.1.11)
@@ -306,8 +306,8 @@ importers:
         specifier: 8.0.1
         version: 8.0.1
       sass:
-        specifier: 1.105.1
-        version: 1.105.1
+        specifier: 1.105.2
+        version: 1.105.2
       typescript:
         specifier: 7.0.2
         version: 7.0.2
@@ -316,10 +316,10 @@ importers:
         version: 64.3.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.3)(rollup@4.63.3)(supports-color@7.2.0)(typescript@7.0.2)
       vite:
         specifier: 7.3.5
-        version: 7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1)
+        version: 7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1)
       vitest:
         specifier: 4.1.11
-        version: 4.1.11(@edge-runtime/vm@3.2.0)(@types/node@26.6.5)(@vitest/coverage-v8@4.1.11)(happy-dom@21.0.1)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1))
+        version: 4.1.11(@edge-runtime/vm@3.2.0)(@types/node@26.6.5)(@vitest/coverage-v8@4.1.11)(happy-dom@21.0.1)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1))
 
 packages:
 
@@ -4487,8 +4487,8 @@ packages:
     resolution: {integrity: sha512-8DlAEKlHbOQmz5R05dAYE+P1wNQ44nEvAnf1jnWtF0LZWHiu/F48USSMKyY8Ib8iE1MCfo3Yvhmky8bUppLaWA==}
     hasBin: true
 
-  sass@1.105.1:
-    resolution: {integrity: sha512-1CnAWPyrrnVQzXGB/DUep1vYCKCm1CIBr+YxjjiW6wk9qtzemnGP4qicH56T2F9S4Hjtv/Ne3jDz8JqfdDU4oA==}
+  sass@1.105.2:
+    resolution: {integrity: sha512-KxW6ZKZiBKWK3ziQ4YZ3cpqo8/1TlHXE8t9nBNvGDZFoBFbk2MD7RacxYFs8zy8hzeFwpFYkVyAhboi47uYPEQ==}
     engines: {node: '>=20.19.0'}
     hasBin: true
 
@@ -6732,7 +6732,7 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
     optionalDependencies:
-      vitest: 4.1.11(@edge-runtime/vm@3.2.0)(@types/node@26.6.5)(@vitest/coverage-v8@4.1.11)(happy-dom@21.0.1)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1))
+      vitest: 4.1.11(@edge-runtime/vm@3.2.0)(@types/node@26.6.5)(@vitest/coverage-v8@4.1.11)(happy-dom@21.0.1)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1))
 
   '@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
     dependencies:
@@ -6939,9 +6939,9 @@ snapshots:
       '@use-gesture/core': 10.3.1
       react: 19.3.1
 
-  '@vercel/analytics@2.0.1(next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.1))(react@19.3.1)':
+  '@vercel/analytics@2.0.1(next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.2))(react@19.3.1)':
     optionalDependencies:
-      next: 16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.1)
+      next: 16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.2)
       react: 19.3.1
 
   '@vercel/backends@19.0.2(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.21.2)(rollup@4.63.3)(supports-color@7.2.0)':
@@ -7310,9 +7310,9 @@ snapshots:
       - bare-abort-controller
       - react-native-b4a
 
-  '@vercel/speed-insights@2.0.0(next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.1))(react@19.3.1)':
+  '@vercel/speed-insights@2.0.0(next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.2))(react@19.3.1)':
     optionalDependencies:
-      next: 16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.1)
+      next: 16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.2)
       react: 19.3.1
 
   '@vercel/static-build@21.0.2(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.3)(@vercel/build-utils@14.21.2)':
@@ -7696,7 +7696,7 @@ snapshots:
       '@visx/event': 4.0.1-alpha.0
       react: 19.3.1
 
-  '@vitejs/plugin-react@5.2.0(supports-color@7.2.0)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1))':
+  '@vitejs/plugin-react@5.2.0(supports-color@7.2.0)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1))':
     dependencies:
       '@babel/core': 7.29.7(supports-color@7.2.0)
       '@babel/plugin-transform-react-jsx-self': 7.29.7(@babel/core@7.29.7(supports-color@7.2.0))
@@ -7704,7 +7704,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-rc.3
       '@types/babel__core': 7.20.5
       react-refresh: 0.18.0
-      vite: 7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1)
+      vite: 7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -7720,7 +7720,7 @@ snapshots:
       obug: 2.2.1
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 4.1.11(@edge-runtime/vm@3.2.0)(@types/node@26.6.5)(@vitest/coverage-v8@4.1.11)(happy-dom@21.0.1)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1))
+      vitest: 4.1.11(@edge-runtime/vm@3.2.0)(@types/node@26.6.5)(@vitest/coverage-v8@4.1.11)(happy-dom@21.0.1)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1))
 
   '@vitest/expect@4.1.11':
     dependencies:
@@ -7731,13 +7731,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.1
 
-  '@vitest/mocker@4.1.11(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1))':
+  '@vitest/mocker@4.1.11(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1))':
     dependencies:
       '@vitest/spy': 4.1.11
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1)
+      vite: 7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1)
 
   '@vitest/pretty-format@4.1.11':
     dependencies:
@@ -8486,7 +8486,7 @@ snapshots:
 
   nanoid@3.3.19: {}
 
-  next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.1):
+  next@16.4.2(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.63.0)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.105.2):
     dependencies:
       '@next/env': 16.4.2
       '@swc/helpers': 0.5.23
@@ -8506,7 +8506,7 @@ snapshots:
       '@next/swc-win32-arm64-msvc': 16.4.2
       '@next/swc-win32-x64-msvc': 16.4.2
       '@playwright/test': 1.63.0
-      sass: 1.105.1
+      sass: 1.105.2
       sharp: 0.35.5(@types/node@26.6.5)
     transitivePeerDependencies:
       - '@babel/core'
@@ -8947,7 +8947,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  sass@1.105.1:
+  sass@1.105.2:
     dependencies:
       chokidar: 5.0.0
       immutable: 5.1.9
@@ -9257,7 +9257,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1):
+  vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1):
     dependencies:
       esbuild: 0.28.2
       fdir: 6.5.0(picomatch@4.0.7)
@@ -9269,14 +9269,14 @@ snapshots:
       '@types/node': 26.6.5
       fsevents: 2.3.3
       jiti: 2.7.0
-      sass: 1.105.1
+      sass: 1.105.2
       tsx: 4.21.0
       yaml: 2.9.1
 
-  vitest@4.1.11(@edge-runtime/vm@3.2.0)(@types/node@26.6.5)(@vitest/coverage-v8@4.1.11)(happy-dom@21.0.1)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1)):
+  vitest@4.1.11(@edge-runtime/vm@3.2.0)(@types/node@26.6.5)(@vitest/coverage-v8@4.1.11)(happy-dom@21.0.1)(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1)):
     dependencies:
       '@vitest/expect': 4.1.11
-      '@vitest/mocker': 4.1.11(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1))
+      '@vitest/mocker': 4.1.11(vite@7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1))
       '@vitest/pretty-format': 4.1.11
       '@vitest/runner': 4.1.11
       '@vitest/snapshot': 4.1.11
@@ -9293,7 +9293,7 @@ snapshots:
       tinyexec: 1.3.1
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.1
-      vite: 7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.1)(tsx@4.21.0)(yaml@2.9.1)
+      vite: 7.3.5(@types/node@26.6.5)(jiti@2.7.0)(sass@1.105.2)(tsx@4.21.0)(yaml@2.9.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@edge-runtime/vm': 3.2.0

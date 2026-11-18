@@ -39,7 +39,7 @@
     "@radix-ui/themes": "3.3.0",
     "@react-spring/web": "10.1.2",
     "@vercel/analytics": "2.0.1",
-    "@vercel/speed-insights": "2.0.0",
+    "@vercel/speed-insights": "2.1.0",
     "@visx/event": "4.0.1-alpha.0",
     "@visx/group": "4.0.1-alpha.0",
     "@visx/responsive": "4.0.1-alpha.0",
